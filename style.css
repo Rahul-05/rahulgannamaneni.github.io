@@ -727,7 +727,7 @@ align-items: center;
     }
     .dimg{
         background-image: url(./static/pag/mpag.png);
-/*         margin-top: 20%; */
+        margin-top: 20%;
     }
     .hdiv{
         font-family: 'mon1';
