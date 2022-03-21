@@ -660,7 +660,7 @@ align-items: center;
     
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1300px){
     .container .section{
         position: relative;
         width: 90%;
@@ -740,7 +740,7 @@ align-items: center;
     }
     
     .h1div{
-        padding-bottom: 5%;
+        padding-bottom: 1%;
         font-family: 'mon1';
         font-size:2em;
     }
@@ -884,7 +884,7 @@ align-items: center;
             display: none;
         }
     }
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1200px) {
     
         .middle,.right{
             display: none;
