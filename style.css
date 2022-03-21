@@ -727,7 +727,7 @@ align-items: center;
     }
     .dimg{
         background-image: url(./static/pag/mpag.png);
-        margin-top: 20%;
+/*         margin-top: 20%; */
     }
     .hdiv{
         font-family: 'mon1';
@@ -761,6 +761,11 @@ align-items: center;
         width: 92vw;
         color: wheat;
         
+    }
+    .container .pr{
+
+        height: 800px;
+    
     }
     
     
