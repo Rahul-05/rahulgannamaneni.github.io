@@ -369,7 +369,7 @@ width: 400px;
     }
     .footer{
         background-color: #ffffff00;
-        padding: 100px 0;
+/*         padding: 100px 0; */
         border-top: 2px solid #F5AF57;
     }
     .footer .footer-col{
@@ -438,7 +438,7 @@ width: 400px;
         }}
     
     
-        @media(max-width: 574px){
+/*         @media(max-width: 574px){
             .footer{
                 
                 padding: 30px 0;
@@ -446,7 +446,7 @@ width: 400px;
             .footer .footer-col{
               width: 100%;
           }
-          }
+          } */
           @media only screen and (max-width: 1200px) {
         
             .cursor{
@@ -489,13 +489,13 @@ width: 400px;
     
     
     
-    footer{
+/*     footer{
         
         
         padding: 0px 0px 0px 0px;
         
         margin: 0px 50px 50px 50px;
-    }
+    } */
     .oa{
         display: none;
     }
