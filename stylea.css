@@ -560,7 +560,7 @@ font-size: 1.3rem;
 
         display: flex;
         flex-direction: column;
-        margin: 0% 6% 0 9%;
+        margin: 0% 9% 9% 9%;
         margin-top: 5rem;
     }
     .about{
