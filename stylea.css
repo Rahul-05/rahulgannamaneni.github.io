@@ -60,7 +60,7 @@ body
     width: 100%;
     font-family: 'Poppins';
     color: rgb(255, 255, 255);
-    cursor: none;
+/*     cursor: none; */
     overflow-x: hidden;
    
 
@@ -68,6 +68,16 @@ body
     
     
 }
+
+@media screen and (min-width: 900px) {
+    body, html {
+    
+        cursor: none;
+    
+    
+    }
+    
+  }
 
 body::-webkit-scrollbar {
     display: none;
