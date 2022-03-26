@@ -45,7 +45,7 @@ body, html {
     margin: 0;
     font-family: 'Poppins';
     
-    cursor: none;
+/*     cursor: none; */
 
 
 }
@@ -659,6 +659,16 @@ align-items: center;
     color: wheat;
     
 }
+
+@media screen and (min-width: 900px) {
+    body, html {
+    
+        cursor: none;
+    
+    
+    }
+    
+  }
 
 @media (max-width: 1300px){
     .container .section{
