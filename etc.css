@@ -369,7 +369,7 @@ width: 400px;
     }
     .footer{
         background-color: #ffffff00;
-/*         padding: 100px 0; */
+        padding-top: 100px;
         border-top: 2px solid #F5AF57;
     }
     .footer .footer-col{
