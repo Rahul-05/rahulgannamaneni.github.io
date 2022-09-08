@@ -18,11 +18,12 @@
         <div id="toggle" class="c1"></div>
         <div id="navbar" class="c1">
             <ul>
-                <li><a style="color: white; -webkit-text-stroke-width: 0px;" href="#">Work</a></li>
-
-                <li><a href="./etc.html">Etc.</a></li>
-                <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                <li><a style="color: white; -webkit-text-stroke-width: 0px;" href="#work1">Work</a></li>
                 <li><a href="./about.html">About</a></li>
+
+                
+                <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                <li><a href="./etc.html">Etc.</a></li>
             </ul>
         </div>
     </header>
@@ -42,7 +43,7 @@
                         <div class="main1">
                             <div class="nav">
                                 <div class="logo resf">
-                                    <a href="#" class="case c">
+                                    <a href="#" class="case c1">
                                         <div class="nvm1">NVM</div>
                                         <div class="nvm2">NVM</div>
                                         <div class="nvm3">NVM</div>
@@ -66,18 +67,22 @@
                                 </div>
                                 <div class="middle"></div>
                                 <div class="right">
-                                    <a href="#work" class="work c">
+                                    <a href="#work1" class="work c">
+                                        <div class="work1">Work</div>
+                                        <div class="work2">Work</div>
+                                        <div class="work3">Work</div>
         
+                                    </a>
+
+                                    <a href="./about.html" class="about c">
+        
+                                        <div class="about1">About</div>
+                                        <div class="about2">About</div>
+                                        <div class="about3">About</div>
         
                                     </a>
         
-                                    <a href="./etc.html" class="hobbies c">
-        
-                                        <div class="hobbies1">Etc.</div>
-                                        <div class="hobbies2">Etc.</div>
-                                        <div class="hobbies3">Etc.</div>
-        
-                                    </a>
+                                
                                     <a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" class="resume c" target="_blank" rel="noopener noreferrer">
         
                                         <div class="resume1">Resume</div>
@@ -85,11 +90,12 @@
                                         <div class="resume3">Resume</div>
         
                                     </a>
-                                    <a href="./about.html" class="about c">
+                                    
+                                    <a href="./etc.html" class="hobbies c">
         
-                                        <div class="about1">About</div>
-                                        <div class="about2">About</div>
-                                        <div class="about3">About</div>
+                                        <div class="hobbies1">Etc.</div>
+                                        <div class="hobbies2">Etc.</div>
+                                        <div class="hobbies3">Etc.</div>
         
                                     </a>
                                 </div>
@@ -111,7 +117,7 @@
 
                     </div>
                 </div>
-                <div class="rdiv">
+                <div id="work1" class="rdiv">
                     
                     <h1 class="hdiv">#01</h1>
                     <h1 class="h1div">ADHD Space App</h1>
@@ -173,12 +179,23 @@
                 <div class="contain">
                     <div class="row">
                         <div class="footer-col">
+                            
+                            <h4>Hi!</h4>
+    
+                            <ul>
+                                <li style="color: white;">© Rahul Rao 2022</li>
+  
+                            </ul>
+                        </div>
+                        <div class="footer-col">
                             <h4>Pages</h4>
                             <ul>
-                                <li><a href="./index.html">Work</a></li>
-                                <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
-                                <li><a href="./etc.html">Etc</a></li>
+                                <li><a href="#work1">Work</a></li>
+                                
                                 <li><a href="./about.html">About</a></li>
+                                <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
+
+                                <li><a href="./etc.html">Etc</a></li>
                             </ul>
                         </div>
                         <div class="footer-col">
@@ -190,13 +207,13 @@
                                 <li><a href="./pa4.html">Google maps back seat</a></li>
                             </ul>
                         </div>
-                        <div class="footer-col">
+                        <!-- <div class="footer-col">
                             <h4>Built team</h4>
                             <ul>
                                 <li style="color: white;">This site is designed and built by me(Rahul Rao Gannamaneni) and launched using Github pages.</li>
   
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="footer-col">
                             <h4>Contact me</h4>
                             <div class="social-links">
@@ -239,7 +256,7 @@
         const output = document.querySelector("#speed");
 
         // global variables
-        let screen, starsElements, starsParams = { speed: 1, number: 200, extinction: 2 };
+        let screen, starsElements, starsParams = { speed: 0.5, number: 200, extinction: 2 };
 
         // run stars
         setupStars();
@@ -304,7 +321,7 @@
 
         // redraw the frame
         function updateStars() {
-            starsCtx.fillStyle = "black";
+            starsCtx.fillStyle = "#0f0f11";
             starsCtx.fillRect(0, 0, stars.width, stars.height);
             starsElements.forEach(function (s) {
                 s.show();

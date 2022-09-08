@@ -20,9 +20,11 @@
             <ul>
                 <li><a href="./index.html">Work</a></li>
 
-                <li><a href="./etc.html">Etc.</a></li>
+                <li><a href="./about.html">About</a></li>
+
+                
                 <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
-                <li><a style="color: white; -webkit-text-stroke-width: 0px;" href="./about.html">About</a></li>
+                <li><a href="./etc.html">Etc.</a></li>
             </ul>
         </div>
     </header>
@@ -40,7 +42,7 @@
                 <div class="main1">
                     <div class="nav">
                         <div class="logo resf">
-                            <a href="./index.html" class="case c">
+                            <a href="./index.html" class="case c1">
                                 <div class="nvm1">NVM</div>
                                 <div class="nvm2">NVM</div>
                                 <div class="nvm3">NVM</div>
@@ -69,11 +71,11 @@
             <div class="about">
                 <div class="aboutl">
 
-                    <img src="./static/Ea/about.png" alt="">
+                    <img class="reimg" src="./static/Ea/about.png" alt="">
                 </div>
                 <div class="aboutr">
-                    <h1 class="arh">Hi iam Rahul</h1>
-                    <p class="aph">I'm a Product Designer passionate about solving problems at scale for millions of
+                    <h1 class="arh">Hi!</h1>
+                    <!-- <p class="aph">I'm a Product Designer passionate about solving problems at scale for millions of
                         people and creating ease to use products. <br><br> I am currently a junior pursuing my undergrad
                         as a bachelor in Electronics and Electrical engineering and minoring in Computer science with
                         Machine learning-related concepts. <br><br> I started my career as a child observing a small
@@ -83,7 +85,17 @@
                         without knowing there exists a field called UX. After a few side projects, I fell in love with
                         the why behind problem-solving and the process of finding a solution. <br><br> I like to think
                         of myself as a product designer who can lead a project from start to end while enjoying the
-                        process behind it.</p>
+                        process behind it.</p> -->
+                        <p class="aph">My name is Rahul.
+
+                            <br><br>I'm a designer focused on Product and Brand, with a healthy addiction to animation and visual design. My goal is to create simple, beautiful, and accessible interfaces and interactions.
+                            
+                            <br><br>I like <br> How different people see the same thing from different perspectives. 
+                            
+                            <br><br>Working on something cool?
+                            Let's chat!
+                            
+                            </p>
                 </div>
             </div>
         </div>
@@ -122,12 +134,23 @@
             <div class="contain">
                 <div class="row">
                     <div class="footer-col">
+                            
+                        <h4>Hi!</h4>
+
+                        <ul>
+                            <li style="color: white;">© Rahul Rao 2022</li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-col">
                         <h4>Pages</h4>
                         <ul>
                             <li><a href="./index.html">Work</a></li>
-                            <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
-                            <li><a href="./etc.html">Etc</a></li>
+                                
                             <li><a href="./about.html">About</a></li>
+                            <li><a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
+
+                            <li><a href="./etc.html">Etc</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -139,13 +162,7 @@
                             <li><a href="./pa4.html">Google maps back seat</a></li>
                         </ul>
                     </div>
-                    <div class="footer-col">
-                            <h4>Built team</h4>
-                            <ul>
-                                <li style="color: white;">This site is designed and built by me(Rahul Rao Gannamaneni) and launched using Github pages.</li>
-  
-                            </ul>
-                        </div>
+                    
                     <div class="footer-col">
                         <h4>Contact me</h4>
                         <div class="social-links">
@@ -257,7 +274,7 @@
 
         // redraw the frame
         function updateStars() {
-            starsCtx.fillStyle = "black";
+            starsCtx.fillStyle = "#0f0f11";
             starsCtx.fillRect(0, 0, stars.width, stars.height);
             starsElements.forEach(function (s) {
                 s.show();

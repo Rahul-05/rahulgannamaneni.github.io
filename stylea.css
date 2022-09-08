@@ -28,6 +28,12 @@ body, html {
     margin: 0;
 
 }
+
+p{
+    color: #CFCFCF;
+}
+
+
 .slider {
     position: fixed;
     top: 10px;
@@ -311,7 +317,7 @@ width: 400px;
     font-size: 3em;
     line-height: 78px;
     letter-spacing: 0.225em;
-    color: #000000;
+    color: #0f0f11;
     -webkit-text-stroke-width: 0.03em;
     -webkit-text-stroke-color: #F5AF57;
     transition: 0.7s;
@@ -372,6 +378,7 @@ margin-left: 8%;
  .contain .row{
 	display: flex;
 	flex-wrap: wrap;
+    
 }
 .contain ul{
 	list-style: none;
@@ -379,6 +386,7 @@ margin-left: 8%;
 .footer{
 	background-color: #ffffff00;
     padding-top: 100px;
+    padding-bottom: 50px;
     border-top: 2px solid #F5AF57;
 }
 .footer .footer-col{
@@ -433,7 +441,7 @@ margin-left: 8%;
 	transition: all 0.5s ease;
 }
 .footer .footer-col .social-links a:hover{
-	color: #000000;
+	color: #0f0f11;
 	background-color: #ffffff;
 }
 
@@ -489,7 +497,7 @@ margin-left: 8%;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #000000;
+        background: #0f0f11;
         font-size: 50px;
     }
 
@@ -506,7 +514,7 @@ margin-left: 8%;
     }
     #navbar ul li a{
         line-height: 135px;
-        color: #000000;
+        color: #0f0f11;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #F5AF57;
         }
@@ -516,8 +524,8 @@ margin-left: 8%;
 
     display: flex;
     flex-direction: column;
-    margin: 0% 9% 0 9%;
-    margin-top: 5rem;
+    margin: 9%9% 0 9%;
+    /* margin-top: 5rem; */
     margin-bottom: 10%;
 }
 
@@ -538,14 +546,15 @@ margin-left: 8%;
     flex-basis: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content:end;
 }
 
 
 
 
 img{
-    height: 45vw;
+    height: 30rem;
+    padding-left: 4vw;
     
 }
 
@@ -565,13 +574,20 @@ font-size: 1.3rem;
     height: 35vw; 
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
     .aboutm{
 
         display: flex;
         flex-direction: column;
-        margin: 0% 9% 9% 9%;
+        margin: 9% 9% 9% 9%;
         margin-top: 5rem;
+    }
+    .aboutl{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     
     }
     .about{
         position: relative;
@@ -581,8 +597,10 @@ font-size: 1.3rem;
     }
     
     img{
-        height:120vw;
+        height:90vw;
         margin-bottom: 3rem;
+        padding-left: 0rem;
+        
     }
     .re{
         height: 95vw; 

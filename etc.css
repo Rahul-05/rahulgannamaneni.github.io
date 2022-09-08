@@ -28,6 +28,12 @@ body, html {
     margin: 0;
 
 }
+
+p{
+    color: #CFCFCF;
+}
+
+
 .slider {
     position: fixed;
     top: 10px;
@@ -171,7 +177,7 @@ header{
 }
 
 #toggle.active{
-    background: #f5ae5700;
+    background: #0f0f11;
 }
 
 #navbar{
@@ -311,7 +317,7 @@ width: 400px;
     font-size: 3em;
     line-height: 78px;
     letter-spacing: 0.225em;
-    color: #000000;
+    color: #0f0f11;
     -webkit-text-stroke-width: 0.03em;
     -webkit-text-stroke-color: #F5AF57;
     transition: 0.7s;
@@ -380,6 +386,7 @@ width: 400px;
     .footer{
         background-color: #ffffff00;
         padding-top: 100px;
+        padding-bottom: 50px;
         border-top: 2px solid #F5AF57;
     }
     .footer .footer-col{
@@ -434,7 +441,7 @@ width: 400px;
         transition: all 0.5s ease;
     }
     .footer .footer-col .social-links a:hover{
-        color: #000000;
+        color: #0f0f11;
         background-color: #ffffff;
     }
     
@@ -546,7 +553,7 @@ width: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #000000;
+        background: #0f0f11;
         font-size: 50px;
     }
 
@@ -563,7 +570,7 @@ width: 400px;
     }
     #navbar ul li a{
         line-height: 135px;
-        color: #000000;
+        color: #0f0f11;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #F5AF57;
         }

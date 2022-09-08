@@ -24,6 +24,7 @@
 {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
     
 }
 body::-webkit-scrollbar {
@@ -48,6 +49,11 @@ body, html {
 /*     cursor: none; */
 
 
+}
+
+
+p{
+    color: #CFCFCF;
 }
 
 
@@ -279,7 +285,7 @@ font-weight: normal;
 font-size: 3em;
 line-height: 78px;
 letter-spacing: 0.225em;
-color: #000000;
+color: #0f0f11;
 -webkit-text-stroke-width: 0.03em;
 -webkit-text-stroke-color: #F5AF57;
 transition: 0.7s;
@@ -407,7 +413,7 @@ transition: 0.7s;
     font-size: 6vw;
     letter-spacing: 4px;
     line-height: 135px;
-    color: #000000;
+    color: #0f0f11;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #F5AF57;
    
@@ -557,7 +563,7 @@ align-items: center;
 
 .hdiv{
     font-family: 'mon1';
-    color: #000000;
+    color: #0f0f11;
     font-size: 3em;
     
     -webkit-text-stroke-width: 2px;
@@ -741,7 +747,7 @@ align-items: center;
     }
     .hdiv{
         font-family: 'mon1';
-        color: #000000;
+        color: #0f0f11;
         font-size: 3em;
         
         -webkit-text-stroke-width: 2px;
@@ -776,6 +782,9 @@ align-items: center;
 
         height: 880px;
     
+    }
+    .right{
+        margin-left: -20px;
     }
     
     
@@ -858,7 +867,7 @@ align-items: center;
 	transition: all 0.5s ease;
 }
 .footer .footer-col .social-links a:hover{
-	color: #000000;
+	color: #0f0f11;
 	background-color: #ffffff;
 }
 
@@ -952,7 +961,7 @@ align-items: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000000;
+            background: #0f0f11;
             font-size: 50px;
             flex-basis: 25%; 
         
@@ -978,7 +987,7 @@ align-items: center;
         }
         #navbar ul li a{
         line-height: 135px;
-        color: #000000;
+        color: #0f0f11;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #F5AF57;
         }
