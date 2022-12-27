@@ -596,27 +596,33 @@ align-items: center;
 }
 .container .section:nth-child(2){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/1.png);
+    background-image: url(./static/001.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
-
 .container .section:nth-child(3){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/2.png);
+    background-image: url(./static/1.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 .container .section:nth-child(4){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/3.png);
+    background-image: url(./static/2.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 .container .section:nth-child(5){
+    /* border-bottom: 2px solid #F5AF57; */
+    background-image: url(./static/3.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.container .section:nth-child(6){
     /* border-bottom: 2px solid #F5AF57; */
     background-image: url(./static/4.png);
     /* background-color: rgb(199, 79, 89); */
@@ -733,18 +739,18 @@ align-items: center;
         
     }
     .aimg{
-        background-image: url(./static/pa/mockup_1.png);
+        background-image: url(./static/smarthelmet/1.png);
     }
     .bimg{
-        background-image: url(./static/pare/Frame\ 1.png);
+        background-image: url(./static/pa/mockup_1.png);
     }
     .cimg{
-        background-image: url(./static/paav/mpl.png);
+        background-image: url(./static/pare/Frame\ 1.png);
     }
     .dimg{
-        background-image: url(./static/pag/mpag.png);
-/*         margin-top: 12%; */
+        background-image: url(./static/paav/mpl.png);
     }
+
     .hdiv{
         font-family: 'mon1';
         color: #0f0f11;
