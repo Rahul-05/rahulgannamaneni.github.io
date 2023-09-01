@@ -417,6 +417,7 @@ transition: 0.7s;
     color: #0f0f11;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #F5AF57;
+    cursor: none;
    
 }
 
