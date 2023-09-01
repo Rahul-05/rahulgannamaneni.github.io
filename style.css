@@ -273,6 +273,7 @@ width: 400px;
     width: fit-content;
     top: 10px; 
     position: relative;
+    cursor: none;
     
     
 }
