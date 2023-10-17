@@ -610,10 +610,12 @@ width: 400px;
 
 
 img{
-    width: 60vw;
+    border-radius: 12px;
+    width: 54vw;
 }
 .wl{
-    width: 60vw;
+    border-radius: 12px;
+    width: 54vw;
 
 }
 

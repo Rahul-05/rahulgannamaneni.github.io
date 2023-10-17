@@ -532,6 +532,7 @@ margin-left: 8%;
 
 
 .about{
+    gap: 20px;
     position: relative;
     display: flex;
     margin-bottom: 5%;
