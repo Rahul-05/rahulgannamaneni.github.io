@@ -203,24 +203,24 @@ header {
 
 .nvm2 {
     position: absolute;
-    top: -2.2px;
-    left: 2.2px;
+    top: 0px;
+    left: 0px;
 
 }
 
 .nvm3 {
     position: absolute;
-    top: -4.7px;
-    left: 4.7px;
+    top: 0px;
+    left: 0px;
 }
 
 
 .case:hover .nvm2 {
-    transform: translate3d(-2.2px, -6.4px, 0px);
+    transform: translate3d(3.2px, -13.2px, 0px);
 }
 
 .case:hover .nvm3 {
-    transform: translate3d(-4.7px, -4px, 0px);
+    transform: translate3d(6.7px, -16.7px, 0px);
 }
 
 

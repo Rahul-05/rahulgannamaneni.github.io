@@ -192,33 +192,36 @@ header {
 
 }
 
-.nvm1 {
+.nvm1{
     position: absolute;
     top: 0px;
     left: 0px;
 }
 
-.nvm2 {
+.nvm2{
     position: absolute;
-    top: -3.5px;
-    left: 3.5px;
-
+    top: 0px;
+    left: 0px;
+    
 }
 
-.nvm3 {
+.nvm3{
     position: absolute;
-    top: -7px;
-    left: 7px;
+    top: 0px;
+    left: 0px;
 }
 
 
-.case:hover .nvm2 {
-    transform: translate3d(-3.5px, -6.4px, 0px);
+.case:hover .nvm2
+{   
+   transform:translate3d(3.8px,-3.8px,0px);
 }
 
-.case:hover .nvm3 {
-    transform: translate3d(-7px, -4px, 0px);
+.case:hover .nvm3
+{   
+   transform:translate3d(7.2px,-7.2px,0px);
 }
+
 
 
 
