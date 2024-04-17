@@ -46,7 +46,7 @@ body, html {
     margin: 0;
     font-family: 'Poppins';
     
-/*     cursor: none; */
+/*     /*cursor: none;*/ */
 
 
 }
@@ -273,13 +273,13 @@ width: 400px;
     width: fit-content;
     top: 10px; 
     position: relative;
-    cursor: none;
+    /*cursor: none;*/
     
     
 }
 
 .c1, .c{
-cursor: none;
+/*cursor: none;*/
 }
 
 .nvm1,.nvm2,.nvm3
@@ -421,7 +421,7 @@ transition: 0.7s;
     color: #0f0f11;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #F5AF57;
-    cursor: none;
+    /*cursor: none;*/
    
 }
 
@@ -681,7 +681,7 @@ align-items: center;
 @media screen and (min-width: 900px) {
     body, html {
     
-        cursor: none;
+        /*cursor: none;*/
     
     
     }
