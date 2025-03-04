@@ -74,12 +74,19 @@ body
     
     
 }
-
+.bgnoise{
+    background-image: url(./static/noiseatexture.png);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    pointer-events: none;
+}
 
 @media screen and (min-width: 900px) {
     body, html {
     
-        cursor: none;
+        /* cursor: none; */
     
     
     }
@@ -106,16 +113,19 @@ body::-webkit-scrollbar {
     transition-property: background, transform;
     pointer-events: none;
     mix-blend-mode: difference;
+    filter: blur(13px);
 }
 
 .link-grow1 {
     transform: scale(3);
     color: white;
+    filter: blur(2px);
 }
 
 .link-grow {
     transform: scale(8);
     color: white;
+    filter: blur(2px);
 }
 
 header{
@@ -389,6 +399,8 @@ width: 400px;
         padding-top: 100px;
         padding-bottom: 50px;
         border-top: 2px solid #F5AF57;
+        z-index: 10;
+        position: relative;
     }
     .footer .footer-col{
        width: 22%;

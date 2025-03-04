@@ -31,8 +31,7 @@
     </header>
     <div class="cursor"></div>
     <canvas id="stars"></canvas>
-
-
+    <div class="bgnoise"></div>
 
     <div class="container">
         <div class="section">
@@ -48,7 +47,7 @@
                                     <a href="#" class="case c1">
                                         <div class="nvm1">GR</div>
                                         <div class="nvm2">GR</div>
-                                        <div class="nvm3">GR</div>
+                                      
                                     </a>
                                 </div>
                                 <div class="portfolio">
@@ -108,8 +107,7 @@
                     <div class="content3">
                         <a href="https://www.linkedin.com/in/rahulraog/" target="_blank" rel="noopener noreferrer"> <i
                                 class="fab fa-linkedin-in fa-2x c1 res icon1"></i></a>
-                        <a href="https://www.instagram.com/not__rahul__/" target="_blank" rel="noopener noreferrer"> <i
-                                class="fab fa-instagram fa-2x c1 res icon2"></i></a>
+                       
                     </div>
                 </div>
             </div>
@@ -298,7 +296,7 @@
             const output = document.querySelector("#speed");
 
             // global variables
-            let screen, starsElements, starsParams = { speed: 0.5, number: 200, extinction: 2 };
+            let screen, starsElements, starsParams = { speed: 0.4, number: 400, extinction: 2 };
 
             // run stars
             setupStars();
@@ -336,10 +334,15 @@
                     y = (this.y - screen.c[1]) * (stars.width / this.z);
                     y = y + screen.c[1];
                     rad = stars.width / this.z;
-                    opacity = (rad > starsParams.extinction) ? 1.5 * (2 - rad / starsParams.extinction) : 1;
+                    opacity = (rad > starsParams.extinction) ? 0.5 * (2 - rad / starsParams.extinction) : 1;
+
+                    
 
                     starsCtx.beginPath();
                     starsCtx.fillStyle = "rgba(255, 255, 255, " + opacity + ")";
+                    // starsCtx.filter= 'blur(0.1px)';
+
+
                     starsCtx.arc(x, y, rad, 0, Math.PI * 2);
                     starsCtx.fill();
                 }
@@ -363,7 +366,7 @@
 
             // redraw the frame
             function updateStars() {
-                starsCtx.fillStyle = "#0f0f11";
+                starsCtx.fillStyle = "#111111";
                 starsCtx.fillRect(0, 0, stars.width, stars.height);
                 starsElements.forEach(function (s) {
                     s.show();

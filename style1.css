@@ -81,7 +81,6 @@ body::-webkit-scrollbar {
 
 
 
-
 .cursor{
     z-index: 10000;
     position: absolute;
@@ -94,6 +93,7 @@ body::-webkit-scrollbar {
     transition-property: background, transform;
     pointer-events: none;
     mix-blend-mode: difference;
+
 }
 
 .link-grow1 {

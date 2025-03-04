@@ -45,9 +45,16 @@ body, html {
     padding: 0;
     margin: 0;
     font-family: 'Poppins';
-    
-/*     /*cursor: none;*/ */
 
+}
+
+.bgnoise{
+    background-image: url(./static/noiseatexture.png);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    pointer-events: none;
 
 }
 
@@ -95,16 +102,22 @@ a{
     transition-property: background, transform;
     pointer-events: none;
     mix-blend-mode: difference;
+    filter: blur(13px);
+    transition: transform 300ms ease-in-out;
 }
 
 .link-grow1 {
     transform: scale(3);
+    transition: transform 300ms ease-in-out;
     color: white;
+    filter: blur(2px);
 }
 
 .link-grow {
     transform: scale(8);
+    transition: transform 300ms ease-in-out;
     color: white;
+    filter: blur(0px);
 }
 
 header{
@@ -418,7 +431,7 @@ transition: 0.7s;
     font-size: 6vw;
     letter-spacing: 4px;
     line-height: 135px;
-    color: #0f0f11;
+    color: #0f0f1100;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #F5AF57;
     /*cursor: none;*/
@@ -454,11 +467,13 @@ transition: 0.7s;
 .work:hover .work3, .resume:hover .resume3, .hobbies:hover .hobbies3, .about:hover .about3
 {   
    transform:translate3d(10px,-10px,0px);
+   color: #040404;
 }
 
 .work:hover .work2, .resume:hover .resume2, .hobbies:hover .hobbies2, .about:hover .about2
 {   
    transform:translate3d(5px,-5px,0px);
+   color: #040404;
 }
 
 
@@ -569,7 +584,7 @@ align-items: center;
 
 .hdiv{
     font-family: 'mon1';
-    color: #0f0f11;
+    color: #0f0f1100;
     font-size: 3em;
     
     -webkit-text-stroke-width: 2px;
