@@ -1,497 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/23f4f84faf.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Marketplace-Rahul</title>
+    <meta property="og:image" content="./static/main1.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./static/icon.ico" />
+    <link href="./static/icon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="./stylep2.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/23f4f84faf.js" crossorigin="anonymous"></script>
-  <title>Marketplace-Rahul</title>
-  <meta property="og:image" content="./static/main1.png" />
-  <link rel="shortcut icon" type="image/x-icon" href="./static/icon.ico" />
-  <link href="./static/icon.png" rel="icon" type="image/png" />
-  <link rel="stylesheet" href="./stylep2.css" />
-</head>
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top" >
+<svg height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#f5af57}</style><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg></button>
+    <header id="header">
+      <a href="#" class="logo"> </a>
 
-<body>
-  <button onclick="topFunction()" id="myBtn" title="Go to top">
-    <svg height="1em"
-      viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-      <style>
-        svg {
-          fill: #775eb7;
-        }
-      </style>
-      <path
-        d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-    </svg></button>
-  <header id="header">
-    <a href="#" class="logo"> </a>
+      <div id="toggle"></div>
+      <div id="navbar">
+        <ul>
+          <li><a href="./index.html">Work</a></li>
 
-    <div id="toggle"></div>
-    <div id="navbar">
-      <ul>
-        <li><a href="./index.html">Work</a></li>
+          <li><a href="./about.html">About</a></li>
 
-        <li><a href="./about.html">About</a></li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Resume</a
+            >
+          </li>
+          <li><a href="./etc.html">Etc.</a></li>
+        </ul>
+      </div>
+    </header>
+    <a href="./index.html" class="case">
+                                        <div class="nvm1">GR</div>
+                                        <div class="nvm2">GR</div>
+                                        <div class="nvm3">GR</div>
+    </a>
+    <div class="bcov"></div>
 
-        <li>
-          <a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing" target="_blank"
-            rel="noopener noreferrer">Resume</a>
-        </li>
-        <li><a href="./etc.html">Etc.</a></li>
-      </ul>
+    <div class="popup-image">
+      <span>&times;</span>
+      <img class="popupimg" src="./static/pa/pro_1.png" alt="" />
     </div>
-  </header>
-  <a href="./index.html" class="case">
-    <div class="nvm1">GR</div>
-    <div class="nvm2">GR</div>
-    <div class="nvm3">GR</div>
-  </a>
-  <div class="bcov"></div>
-
-  <div class="popup-image">
-    <span>&times;</span>
-    <img class="popupimg" src="./static/pa/pro_1.png" alt="" />
-  </div>
-  <div class="imageheader">
-    <h1 class="lmund title"></h1>
-    <div style="background-image: url(./static/keka/Thumbnail.png)" class="img"></div>
-  </div>
-  <div class="container">
-
-    <div class=" padline">
-      <div class="bgnoise"></div>
-      <div class="mund">
-        <h1 class="lmund title">Keka Marketplace: Transforming Integrations from Complexity to Clarity</h1>
-        
-        <div class="flex">
-          <p class="highlight"> "It all began with one simple question: How do we introduce our Azure AD integration?"
-          </p>
-        </div>
-        <div class="rmund">
-
-          <div class="tp ch">
-            <div class="atp">
-              <h2 class="atop"> <i class="fa-solid fa-people-group"></i>Team</h2>
-              <p class="abottom">• 1 UX Designer<br />• 1 Product Manager <br /> • Collaboration with the product
-                analytics,<br /> tech, business, marketing, operations etc.</p>
-            </div>
-            <div class="btp">
-              <h2 class="atop"><i class="fa-solid fa-hammer"></i> Tools Used</h2>
-              <p class="abottom">
-                • Figma<br />• Miro <br /> • UX Design, UI Design
-
-                </p>
-            </div>
-            </div>
-            <div class="ctp">
+    <div class="container">
+      <div
+        style="background-image: url(./static/keka/Thumbnail.png)"
+        class="img"
+      ></div>
+      <div class="pad">
+        <div class="mund">
+          <h1 class="lmund">Overview</h1>
+          <div class="rmund">
+            <p class="info">
+              Keka HR is a prominent HRMS software provider in India. During my
+              tenure as a User Experience Design Intern at Keka, I worked on a
+              project that introduced a new way to visualize, control, and
+              manage company-wise integrations within the product.
+            </p>
+            <div class="tp ch">
+              <div class="atp">
+                <h2 class="atop">Roles & Responsibilities</h2>
+                <p class="abottom">• User Research<br />• UX Design</p>
+              </div>
               <div class="btp">
-                <h2 class="atop"> <i class="fa-solid fa-dumbbell"></i>Contribution</h2>
+                <h2 class="atop">Project Context</h2>
                 <p class="abottom">
-                  I was the sole designer on this project, owning the entire process from initial research to the final interactive prototype.
-                </p>
-                <p class="abottom">
-                  I worked closely with product managers, security experts, and HR stakeholders. Their insights helped refine every aspect of the design.
+                  • Internship <br />• Apr - June 2023
                 </p>
               </div>
-              
+              <div class="ctp">
+                <h2 class="atop">Tools Used</h2>
+                <p class="abottom">• Figma<br />• Miro</p>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- <img class="perimg" src="./static/paav/mo1.png" alt=""> -->
+        <div class="mund">
+          <h1 class="lmund">Problems</h1>
+          <p class="rmund">
+            The product team conducted extensive research and identified the
+            need for automation within the Azure AD space from the HR Portal.
+            While attempting to implement this, the following issues were
+            uncovered:
+            <br />
+            <br />
+            <span style="color: #5acfff">1. Customization Complexity:</span>
+            Unlike previous integrations (e.g., Google Calendar and Microsoft
+            Teams), Azure AD integration requires more customization. This added
+            complexity provides companies with greater flexibility but also
+            presents challenges in configuration.
+            <br />
+            <br />
+            <span style="color: #5acfff">2. Security Management:</span> While
+            previous integrations posed no security concerns, setting up Azure
+            AD integration requires robust security measures to control and
+            restrict employee access effectively.
+            <br />
+            <br />
+            <span style="color: #5acfff"> 3. Connectivity Issues:</span>
+            Users often faced problems with previous integrations disconnecting
+            on the backend, leaving them unaware of integration status.
+          </p>
+        </div>
+
+        <div class="mund">
+          <h1 class="lmund">Solution</h1>
+          <p class="undbottom">
+            The solution involves providing users with more customization
+            options during integration setup, enhancing integration status
+            monitoring, enabling on-demand activation or deactivation of
+            integrations, and introducing a process that adds a level of
+            complexity when a new employee joins. This complexity helps the HR
+            department make more informed decisions.
+          </p>
+        </div>
       </div>
+      <img class="proimg rmund" src="./static/keka/solution.png" alt="" />
+      <div class="pad">
+        <div class="mund">
+          <h1 class="undtop lmund">Research</h1>
+          <div class="rmund">
+            <p class="undbottom">
+              As I delved deeper into the specifics of the task, We noticed a
+              disconnect in the current mental model of the Shortlists Enable
+              and Disable feature for integration.
+              <br />
+              <br />
+              For example, an employee in Sector A could be using different
+              tools for the same operation and may also switch between different
+              software as required. So, why do I need to go through multiple
+              steps of signing out and in of tools?
+            </p>
+          </div>
+        </div>
+        <div class="mund">
+          <h1 class="undtop lmund">Competitive Research</h1>
+          <div class="rmund">
+            <h2 class="undtop">"How do others do it differently?"</h2>
+            <p class="undbottom">
+              • Other platforms such as Remote, Deel, and Asana excel in the
+              same aspects by offering customization and approval barriers to
+              control the inflow of employees.
+              <br />
+              <br />
+              • Most of them include additional dedicated steps for
+              personalization, allowing users to specify when and where to add
+              employees.
+              <br />
+              <br />
+              • Additionally, all of these platforms provide a monitoring page
+              for HRs to review their current and previous records of
+              integration usage.
+            </p>
+          </div>
+        </div>
+        <div class="mund">
+          <h1 class="lmund">Bussiness goals</h1>
+          <p class="undbottom">
+            KEKA is a fast-growing company and known for its quick updates and
+            staying on top of current trends. During the year, KEKA plans to
+            release over 20+ (in addition to the existing 5) integrations. To
+            adhere to this goal, need to consider UX issues related to a higher
+            number of integrations (i.e., how users will scroll through all the
+            integrations to find a specific one).
+          </p>
+        </div>
+      </div>
+      <img class="proimg rmund" src="./static/keka/goals.png" alt="" />
+      <div class="pad">
+        <div class="mund">
+          <h1 class="lmund">Iterations</h1>
+          <p class="undbottom">
+            Considering multiple personas and various factors, including
+            business goals, the Integration card on the apps page had to be
+            reimagined. Multiple versions were designed to test and understand
+            both good and bad scenarios. Additionally, a search and switch
+            feature was added to streamline the integration filtering process.
+          </p>
+        </div>
+      </div>
+      <img class="proimg rmund" src="./static/keka/iterations.png" alt="" />
+      <div class="pad">
+        <div class="mund">
+          <h1 class="lmund">User Testing</h1>
+          <p class="undbottom">
+            Considering multiple personas and various factors, including
+            business goals, the Integration card on the apps page had to be
+            reimagined. Multiple versions were designed to test and understand
+            both good and bad scenarios. Additionally, a search and switch
+            feature was added to streamline the integration filtering process.
+          </p>
+        </div>
+      </div>
+      <img class="proimg rmund" src="./static/keka/versions.png" alt="" />
+      <div class="pad">
       
-      <!-- <img class="perimg" src="./static/paav/mo1.png" alt=""> -->
-      <div class="case-content">
+        <div class="mund">
+          <h1 class="undtop lmund">Design Explorations</h1>
+          
+        </div>
+        <div class="cp rmund">
+          <div class="atp">
+            <div class="und ce">
+              <div class="flex">
+                <img class="perimg width" src="./static/keka/1.png" alt="" />
+              </div>
+              <div class="bund">
+                <h2 class="undtop">Status and Tags for Integrations within Cards</h2>
+                <p class="abottom">
+                  Status is used to indicate the current state of an integration, and tags are employed to identify the purpose of integrations and classify them.
+                  
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
 
-        <!-- Title & Intro Quote -->
-        <section class="case-section intro">
-
-          <!-- <div >
-            <p class="highlight">"It all began with one simple question: How do we introduce our Azure AD integration?"
-            </p>
-          </div> -->
-        </section>
+          <div class="atp">
+            <div class="und ce">
+              <div class="flex">
+                <img class="perimg width" src="./static/keka/2.png" alt="" />
+              </div>
+              <div class="bund">
+                <h2 class="undtop">Understanding and Configuring Integrations</h2>
+                <p class="abottom">
+                  Users are provided with information on integrations, product links, and help to help them make informed decisions.
+                  <br />
+              
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="atp">
+            <div class="und ce">
+              <div class="flex">
+                <img class="perimg width" src="./static/keka/3.png" alt="" />
+              </div>
+              <div class="bund">
+                <h2 class="undtop">Preferences and Security</h2>
+                <p class="abottom">
+                  If a user is not satisfied with the default security preferences, they can choose preferences that align with their company.
+                  <br />
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="atp">
+            <div class="und ce">
+              <div class="flex">
+                <img class="perimg width" src="./static/keka/4.png" alt="" />
+              </div>
+              <div class="bund">
+                <h2 class="undtop">Activity Log</h2>
+                <p class="abottom">
+                  Explore and access current and past records of integration logins and registrations.
+                  <br />
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="atp">
+            <div class="und ce">
+              <div class="flex">
+                <img class="perimg width" src="./static/keka/5.png" alt="" />
+              </div>
+              <div class="bund">
+                <h2 class="undtop">Inbox</h2>
+                <p class="abottom">
+                  Users can review employee integration requests at various times, such as during onboarding and when managing integration licenses.
+                  <br />
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="mund">
+          <h1 class="lmund">Learnings</h1>
+          <p class="undbottom">
+            1. Designing for a wide user base requires eliminating biases and utilizing data-driven decision-making.
+<br>
+          <br>
+2. Involving product and business teams is essential in the design process, and the most significant work occurs before reaching the high-fidelity stage.
+          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
 
         
-
-
-        <!-- Challenge Section -->
-        <section class="case-section challenge">
-          <h1 class="section-title">The Challenge: From a Simple Question to an Expanding Scope</h1>
-          
-          <p class="section-description">
-            When I first joined Keka HR as a User Experience Design Intern in April 2023, I was tasked with one specific
-            challenge: simplify the Azure AD integration process. Initially, the goal was narrowly defined—reduce
-            complexity in an already convoluted system. However, as I began my research, a broader story emerged.
-            <br /><br />
-            I quickly discovered that what appeared to be a simple integration problem was, in fact, a symptom of deeper
-            issues:
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>Rigid Setup:</strong> The existing process forced users into a one-size-fits-all configuration.
-              </li>
-            <li class="li"><strong>Lack of Transparency:</strong> There was no clear indication of whether integrations were active or secure.</li>
-            <li class="li"><strong>Limited Control:</strong> HR teams had no quick way to toggle integrations based on real-time needs.</li>
-          </ul>
-          <div class="section-image">
-            <!-- Replace with your legacy view screenshot -->
-            <img class="screenshot" src="./static/keka/goals.png" alt="Legacy Integration View" />
-          </div>
-        </section>
-        <section class="case-section challenge">
-          <h1 class="section-title">Problem Statements</h1>
-          <div class="flex">
-          <div class="highlight-quote">
-            <p class="highlight">
-              <!-- <em style="font-weight: 600;">Problem Statements</em> -->
-              1. How might we simplify the AD integration process while accommodating diverse user needs?</li>
-              <!-- <br /><br />2. How can we provide real-time visibility and immediate control to empower HR teams and system administrators?</li> -->
-            </p>
-
-
-          </div>
-          <div class="highlight-quote">
-            <p class="highlight">
-              <!-- <em style="font-weight: 600;">Problem Statements</em> -->
-              <!-- <br /><br />1. How might we simplify the AD integration process while accommodating diverse user needs?</li> -->
-              2. How can we provide real-time visibility and immediate control to empower HR teams and system
-              administrators?</li>
-            </p>
-
-          </div>
         </div>
 
-        </section>
-
-        <!-- Quick Look Section -->
-        <section class="case-section quick-look">
-          <h1 class="section-title">Quick Look at the Final Solution</h1>
-          <p class="section-description">
-            Our redesigned solution features a unified dashboard with real-time integration statuses, a guided
-            customization flow, and intuitive one-click toggle controls.
-            <!-- <br /><br />
-            <strong>Results at a Glance:</strong>
-            <br />– <em>Unified Dashboard:</em> Displays real-time statuses with clear, color-coded cards and dynamic
-            icons.
-            <br />– <em>Guided Customization:</em> Step-by-step process that simplifies integration setup.
-            <br />– <em>Instant Controls:</em> One-click toggles empower rapid activation or deactivation.
-            <br /><br /> -->
-
-          <div class="highlight-quote">
-            <p class="highlight_box">
-              <strong>Results at a Glance:</strong>
-              <br /><br />1. <em>Unified Dashboard:</em> Displays real-time statuses with clear, color-coded cards and
-              dynamic icons.
-              <br /><br />2. <em>Instant Controls:</em> One-click toggles empower rapid activation or deactivation.
-              <img class="screenshot" src="./static/keka/1.png" alt="Before and After Comparison" />
-              <br /><br />3. <em>Guided Customization:</em> Step-by-step process that simplifies integration setup.
-              <img class="screenshot" src="./static/keka/3.png" alt="Before and After Comparison" />
-
-              <img class="screenshot" src="./static/keka/2.png" alt="Before and After Comparison" />
-
-            </p>
-          </div>
-          <strong>Impact:</strong> 40% increase in user satisfaction, 25% reduction in management time, and 85% of
-          users now feel more secure.
-          </p>
-
-        </section>
-
-
-
-        <!-- Research Section -->
-        <section class="case-section research">
-          <h1 class="section-title">Diving Into Research</h1>
-          <p class="section-description">
-            I began with direct interviews and rapid in-house usability tests with HR professionals and system
-            administrators. Key findings included:
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>Customization Overload:</strong> Users were forced into a one-size-fits-all setup.
-            </li>
-            <li class="li"><strong>Opacity in Status:</strong> There was no clear indication of whether an integration
-              was active
-              or secure.</li>
-            <li class="li"><strong>Limited Control:</strong> HR teams lacked immediate ways to toggle integrations as
-              needed.</li>
-          </ul>
-          <div class="highlight-quote">
-            <p class="highlight">User Quote: <br /><br />"I often end up chasing updates instead of managing our integrations proactively,"
-              noted one system admin during testing.</p>
-          </div>
-          <div class="section-image">
-            <!-- Replace with a collage of research snapshots -->
-            <img class="screenshot" src="./static/keka/ResearchSnapshot.png" alt="Research Snapshot" />
-          </div>
-          <p class="section-description">
-            Secondary research from industry articles and academic papers reinforced these findings, emphasizing
-            centralized dashboards and intuitive controls.
-            <br /><br />
-            <em>"User-centric interfaces drive efficiency and enhance trust,"</em> as noted in a leading UX research
-            journal.
-          </p>
-        </section>
-
-        <section class="case-section research">
-          <h1 class="section-title">Feature Analysis: Learning from the Competition</h1>
-          <p class="section-description">
-            I also performed a detailed feature analysis of comparable enterprise systems. This review highlighted what our competitors were doing right:
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>Centralized Dashboards: </strong> Offering real-time status updates.
-            </li>
-            <li class="li"><strong>Guided Onboarding Flows:</strong> Reducing cognitive load by breaking complex processes into manageable steps.</li>
-            <li class="li"><strong>Instant Control Features:</strong> Such as one-click toggles for quick action.</li>
-          </ul>
-        
-          <div class="section-image">
-            <!-- Replace with a collage of research snapshots -->
-            <img class="screenshot" src="./static/keka/ResearchSnapshot.png" alt="Research Snapshot" />
-          </div>
-          
-        </section>
-
-        <section class="case-section research">
-          <h1 class="section-title">Transforming Insights into Design:<br /><br /> Mapping the Journey & Ideation</h1>
-          <p class="section-description">
-            I began by charting the existing user journey, identifying key friction points from initial setup to daily management. This exercise illuminated exactly where users were getting stuck.
-          </p>
-        
-          
-          <div class="highlight-quote">
-            <p class="highlight">"Every friction point in the journey was a clue, each one drove us to a more intuitive design."</p>
-          </div>
-          <div class="section-image">
-            <!-- Replace with a collage of research snapshots -->
-            <img class="screenshot" src="./static/keka/ResearchSnapshot.png" alt="Research Snapshot" />
-          </div>
-        </section>
-
-        <!-- Design Process Section -->
-        <section class="case-section design-process">
-          <h1 class="section-title">Design:  Sketching, Wireframing, & Iteration</h1>
-          <p class="section-description">
-            Armed with insights, I translated my ideas into low-fidelity sketches and wireframes. The early prototypes focused on three main components:
-
-
-          </p>
-          <div class="section-image">
-            <!-- Replace with your user journey map image -->
-            <img class="screenshot" src="./static/keka/UserJourneyMap.png" alt="User Journey Map" />
-          </div>
-          
-          <ol class="section-list">
-            <li class="li">
-              <strong>Centralized Dashboard:</strong> A unified view displaying real-time statuses with color-coded
-              cards and dynamic icons.
-              <br /><em>Design Note: </em> Introduced color-coded cards and dynamic icons for clarity. "Status Card – Green: Active, Red: Error."
-              <div class="section-image">
-                <!-- Replace with wireframe image for dashboard -->
-                <img class="screenshot" src="./static/keka/Wireframe.png" alt="Initial Dashboard Wireframe" />
-              </div>
-            </li>
-            <li class="li">
-              <strong>Guided Customization Flow:</strong> A step-by-step process that simplifies the integration setup.
-              <br /><em>Design Note:</em> "Simplified language and progressive disclosure were used to reduce cognitive overload."
-              <div class="section-image">
-                <!-- Replace with before vs. after flow comparison image -->
-                <img class="screenshot" src="./static/keka/FlowComparison.png" alt="Before vs. After Flow Comparison" />
-              </div>
-            </li>
-            <li class="li">
-              <strong>Quick Toggle Controls:</strong> Intuitive one-click toggles for rapid activation or deactivation.
-              <br /><em>Design Note:</em> "These controls were designed to be prominent yet seamlessly integrated within the dashboard."
-              <div class="section-image">
-                <!-- Replace with toggle control detail image -->
-                <img class="screenshot" src="./static/keka/ToggleDetail.png" alt="Toggle Control Detail" />
-              </div>
-            </li>
-          </ol>
-        </section>
-
-        <!-- Iterative Testing Section -->
-        <section class="case-section iteration-testing">
-          <h1 class="section-title">Rapid Prototyping & User Testing</h1>
-          <p class="section-description">
-            I advanced from paper sketches to interactive prototypes. Despite resource constraints, rapid usability
-            testing sessions with our in-house HR team provided invaluable feedback:
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>Dashboard Clarity:</strong> Users immediately grasped the value of a consolidated
-              view.</li>
-            <li class="li"><strong>Guided Flow Efficiency:</strong> The step-by-step approach dramatically reduced
-              configuration
-              errors.</li>
-            <li class="li"><strong>Toggle Usability:</strong> The intuitive toggle controls were well received.</li>
-          </ul>
-          <div class="highlight-quote">
-            <p class="highlight">"The new dashboard cuts through the clutter—it’s so much easier to see what needs
-              attention."</p>
-          </div>
-          <div class="section-image">
-            <!-- Replace with usability testing snapshot image -->
-            <img class="screenshot" src="./static/keka/UsabilityTesting.png" alt="Usability Testing Snapshot" />
-          </div>
-        </section>
-
-        <!-- Final Design Section -->
-        <section class="case-section final-design">
-          <h1 class="section-title">The Final Design: A Visual & Measurable Transformation</h1>
-          <p class="section-description">
-            The final design reflects a balanced blend of functionality and simplicity:
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>Unified Dashboard:</strong> Presents real-time integration statuses in a clean,
-              intuitive
-              layout.</li>
-            <li class="li"><strong>Guided Setup Flow:</strong> Walks users through each configuration step, making
-              complex tasks
-              manageable.</li>
-            <li class="li"><strong>Instant Toggle Controls:</strong> Empowers users with immediate, on-demand management
-              of
-              integrations.</li>
-          </ul>
-          <div class="section-image">
-            <!-- Replace with final design overview image -->
-            <img class="screenshot" src="./static/keka/1.png" alt="Before and After Comparison" />
-          </div>
-          <p class="section-description">
-            <strong>Measurable Outcomes:</strong><br />
-            – User Satisfaction: Increased by 40% in follow-up surveys.<br />
-            – Time Efficiency: 25% reduction in time managing integrations.<br />
-            – Security Confidence: 85% of users now feel more secure.
-          </p>
-        </section>
-
-        <!-- Reflections Section -->
-        <section class="case-section reflections">
-          <h1 class="section-title">Reflections & Future Directions</h1>
-          <div class="highlight-quote">
-            <p class="highlight">"Every design decision was a step toward building a more intuitive, secure, and
-              user-friendly experience."</p>
-          </div>
-          <p class="section-description">
-            This project evolved from a single question to a comprehensive redesign that redefined the integration
-            experience at Keka HR.
-            Through direct user feedback, extensive primary and secondary research, and rapid iterative testing, we
-            transformed a rigid, opaque process into an intuitive solution that meets real-world needs.
-          </p>
-          <ul class="section-list">
-            <li class="li"><strong>User-Centered Insights:</strong> Direct feedback and secondary research guided every
-              decision.
-            </li>
-            <li class="li"><strong>Iterative Design:</strong> Rapid prototyping and continuous testing drove significant
-              improvements despite resource limitations.</li>
-            <li class="li"><strong>Visual Storytelling:</strong> Annotated images and clear comparisons communicated our
-              design
-              evolution effectively.</li>
-          </ul>
-          
-          <div class="section-image">
-            <!-- Replace with reflection & roadmap collage image -->
-            <img class="screenshot" src="./static/keka/Roadmap.png" alt="Reflection & Roadmap" />
-          </div>
-        </section>
-
-      </div>
-      <!-- End Case Study Content -->
-    </div>
-    <!-- End Main Case Study Container -->
-
-
-    <div class="inu">
-      <div class="lfinu"></div>
-      <div style="margin-bottom: 50px" class="rfinu"></div>
-    </div>
-  </div>
-  <footer id="fifth" class="footer">
-    <div class="contain">
-      <div class="row">
-        <div class="footer-col">
-          <h4>Hi!</h4>
-
-          <ul>
-            <li>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=rao.gannamaneni123@gmail.com"
-                target="_blank">Let's Talk</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Pages</h4>
-          <ul>
-            <li><a href="./index.html">Work</a></li>
-
-            <li><a href="./about.html">About</a></li>
-            <li>
-              <a href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing"
-                target="_blank" rel="noopener noreferrer">Resume</a>
-            </li>
-
-            <li><a href="./etc.html">Etc</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Works</h4>
-          <ul>
-            <li><a href="./marketplace.html">Keka Marketplace</a></li>
-            <li><a href="./smart-helmet.html">Apoyo Smart Helmet</a></li>
-            <li><a href="./pa1.html">ADHD Space App</a></li>
-            <li><a href="./pa2.html">Pearl Restaurant APP</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contact me</h4>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/rahulraog/" target="_blank" rel="noopener noreferrer"><i
-                class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/not__rahul__/" target="_blank" rel="noopener noreferrer"><i
-                class="fab fa-instagram"></i></a>
-            <a href="https://github.com/Rahul-05" target="_blank" rel="noopener noreferrer"><i
-                class="fa-brands fa-github"></i></a>
-            <a href="https://twitter.com/Rahul47064809" target="_blank" rel="noopener noreferrer"><i
-                class="fab fa-twitter"></i></a>
-          </div>
+        <div class="inu">
+          <div class="lfinu"></div>
+          <div style="margin-bottom: 50px" class="rfinu"></div>
         </div>
       </div>
+      <footer id="fifth" class="footer">
+        <div class="contain">
+          <div class="row">
+            <div class="footer-col">
+              <h4>Hi!</h4>
+
+              <ul>
+                <li>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=rao.gannamaneni123@gmail.com"
+                    target="_blank"
+                    >Let's Talk</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Pages</h4>
+              <ul>
+                <li><a href="./index.html">Work</a></li>
+
+                <li><a href="./about.html">About</a></li>
+                <li>
+                  <a
+                    href="https://drive.google.com/file/d/1fCwjays6YzgqOfht_VDGBJ7UseL7kDtN/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Resume</a
+                  >
+                </li>
+
+                <li><a href="./etc.html">Etc</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Works</h4>
+              <ul>
+                                                    <li><a href="./marketplace.html">Keka Marketplace</a></li>
+                                    <li><a href="./smart-helmet.html">Apoyo Smart Helmet</a></li>
+                                    <li><a href="./pa1.html">ADHD Space App</a></li>
+                                    <li><a href="./pa2.html">Pearl Restaurant APP</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4>Contact me</h4>
+              <div class="social-links">
+                <a
+                  href="https://www.linkedin.com/in/rahulraog/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/not__rahul__/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://github.com/Rahul-05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+                <a
+                  href="https://twitter.com/Rahul47064809"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </footer>
-  </div>
-  <script src="./top.js"></script>
-  <script>
-    const header = document.getElementById("header");
-    const toggle = document.getElementById("toggle");
-    const navbar = document.getElementById("navbar");
-    document.onclick = function (e) {
-      if (
-        e.target.id !== "header" &&
-        e.target.id !== "toggle" &&
-        e.target.id !== "navbar"
-      ) {
-        toggle.classList.remove("active");
-        navbar.classList.remove("active");
-      }
-    };
-    toggle.onclick = function () {
-      toggle.classList.toggle("active");
-      navbar.classList.toggle("active");
-    };
-  </script>
-  <script>
-    document.querySelectorAll(".container img").forEach((image) => {
-      image.onclick = () => {
-        document.querySelector(".popup-image").style.display = "block";
-        document.querySelector(".popup-image img").src =
-          image.getAttribute("src");
+    <script src="./top.js"></script>
+    <script>
+      const header = document.getElementById("header");
+      const toggle = document.getElementById("toggle");
+      const navbar = document.getElementById("navbar");
+      document.onclick = function (e) {
+        if (
+          e.target.id !== "header" &&
+          e.target.id !== "toggle" &&
+          e.target.id !== "navbar"
+        ) {
+          toggle.classList.remove("active");
+          navbar.classList.remove("active");
+        }
       };
-    });
-    document.querySelector(".popup-image span").onclick = () => {
-      document.querySelector(".popup-image").style.display = "none";
-    };
+      toggle.onclick = function () {
+        toggle.classList.toggle("active");
+        navbar.classList.toggle("active");
+      };
+    </script>
+    <script>
+      document.querySelectorAll(".container img").forEach((image) => {
+        image.onclick = () => {
+          document.querySelector(".popup-image").style.display = "block";
+          document.querySelector(".popup-image img").src =
+            image.getAttribute("src");
+        };
+      });
+      document.querySelector(".popup-image span").onclick = () => {
+        document.querySelector(".popup-image").style.display = "none";
+      };
 
 
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
