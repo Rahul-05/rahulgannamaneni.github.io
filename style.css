@@ -617,28 +617,28 @@ align-items: center;
 }
 .container .section:nth-child(2){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/01.png);
+    background-image: url(./static/11.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 .container .section:nth-child(3){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/001.png);
+    background-image: url(./static/01.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 .container .section:nth-child(4){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/1.png);
+    background-image: url(./static/001.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 .container .section:nth-child(5){
     /* border-bottom: 2px solid #F5AF57; */
-    background-image: url(./static/2.png);
+    background-image: url(./static/1.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -760,16 +760,21 @@ align-items: center;
         
     }
     .aimg{
-        background-image: url(./static/smarthelmet/1.png);
+  
+        background-image: url(./static/keka/Thumbnail.png);
     }
     .bimg{
-        background-image: url(./static/pa/mockup_1.png);
+        background-image: url(./static/keka/Thumbnail.png);
+
+
     }
     .cimg{
-        background-image: url(./static/pare/Frame\ 1.png);
+        background-image: url(./static/smarthelmet/1.png);
+    
+  
     }
     .dimg{
-        background-image: url(./static/keka/Thumbnail.png);
+        background-image: url(./static/pa/mockup_1.png);
     }
 
     .hdiv{
@@ -828,9 +833,10 @@ align-items: center;
 	width: 92vw;
 	
 }
- .contain .row{
-	display: flex;
-	flex-wrap: wrap;
+.contain .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .contain ul{
 	list-style: none;
@@ -843,7 +849,7 @@ align-items: center;
     
 }
 .footer .footer-col{
-   width: 22%;
+   width: auto;
    padding: 20px 15px;
 }
 .footer .footer-col h4{
