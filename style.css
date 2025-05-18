@@ -25,6 +25,10 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    --background-color: rgb(0, 0, 0);
+    --text-color: rgb(129, 129, 129);
+    --subtext-color: rgb(192, 192, 192);
     
 }
 body::-webkit-scrollbar {
@@ -838,19 +842,20 @@ align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.contain ul{
-	list-style: none;
+
+.contain ul {
+    list-style: none;
 }
-.footer{
-	background-color: #ffffff00;
+
+.footer {
+    background-color: var(--background-color);
     padding: 100px 0;
-    border-top: 2px solid #F5AF57;
-    width: 95vw;
-    
+    border-top: 2px solid rgb(129, 129, 129);
 }
-.footer .footer-col{
-   width: auto;
-   padding: 20px 15px;
+
+.footer .footer-col {
+    width: auto;
+    padding: 20px 0px;
 }
 .footer .footer-col h4{
 	font-size: 18px;
