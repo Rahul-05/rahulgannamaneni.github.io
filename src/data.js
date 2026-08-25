@@ -55,7 +55,7 @@ export const TESTIMONIALS = [
     name: 'Shri Hulisandra',
     role: 'Principal Engineer',
     place: 'CPP Investments',
-    logo: '/work/_shared/cpp-investments.webp',
+    logo: '/work/shared/cpp-investments.webp',
     logoInvert: true,
   },
   {
@@ -64,7 +64,7 @@ export const TESTIMONIALS = [
     name: 'Melanie Killen',
     role: 'Founder, DIY Teachers · Distinguished University Professor',
     place: 'University of Maryland',
-    logo: '/work/_shared/university-of-maryland.webp',
+    logo: '/work/shared/university-of-maryland.webp',
   },
   {
     quote:
@@ -114,7 +114,7 @@ export const PROJECTS = [
     kicker: 'Platform, Discovery',
     year: '2026',
     company: 'CPP Investments',
-    logo: '/work/_shared/cpp-investments.webp',
+    logo: '/work/shared/cpp-investments.webp',
     // a flat navy wordmark, so it inverts cleanly; the colourful
     // marks on the other cards must not be touched
     logoInvert: true,
@@ -142,7 +142,7 @@ export const PROJECTS = [
     kicker: 'Enterprise, Pipelines',
     year: '2026',
     company: 'CPP Investments',
-    logo: '/work/_shared/cpp-investments.webp',
+    logo: '/work/shared/cpp-investments.webp',
     // a flat navy wordmark, so it inverts cleanly; the colourful
     // marks on the other cards must not be touched
     logoInvert: true,
@@ -170,7 +170,7 @@ export const PROJECTS = [
     kicker: 'Analytics, Governance',
     year: '2026',
     company: 'CPP Investments',
-    logo: '/work/_shared/cpp-investments.webp',
+    logo: '/work/shared/cpp-investments.webp',
     // a flat navy wordmark, so it inverts cleanly; the colourful
     // marks on the other cards must not be touched
     logoInvert: true,
@@ -198,7 +198,7 @@ export const PROJECTS = [
     kicker: 'Taxonomy, Tooling',
     year: '2026',
     company: 'CPP Investments',
-    logo: '/work/_shared/cpp-investments.webp',
+    logo: '/work/shared/cpp-investments.webp',
     // a flat navy wordmark, so it inverts cleanly; the colourful
     // marks on the other cards must not be touched
     logoInvert: true,

@@ -320,7 +320,7 @@ const Hero = forwardRef(function Hero(_, ref) {
         <span className="mask-line">
           <span className="mask-inner">
             UX Designer Engineer II at
-            <img src="/work/_shared/cpp-investments.webp" alt="CPP Investments" />
+            <img src="/work/shared/cpp-investments.webp" alt="CPP Investments" />
           </span>
         </span>
       </p>
