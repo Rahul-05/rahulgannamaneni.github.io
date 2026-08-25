@@ -550,6 +550,10 @@
 /* media grids */
 .cs-gallery {
   display: grid;
+  /* start, not stretch. Side by side images rarely share an aspect ratio, and
+     a stretched grid item pads the shorter one out to its neighbour's height
+     -- which looks like the image failed to fill its own frame. */
+  align-items: start;
   gap: clamp(12px, 1.6vw, 24px);
 }
 
@@ -591,35 +595,13 @@
 }
 
 /* real imagery in a case study slot */
-.cs-media,
-.pp-cover .cs-media {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--off-black);
-}
-
-.cs-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 /* ══════════ case study imagery ══════════ */
 /* Letterboxed, never cropped: these are flow diagrams and screen sheets
    where a trimmed edge removes real content. The dark mat matches the page
    so the padding reads as intentional rather than as a gap. */
-.cs-media,
-/* The hero cover is cropped to a band rather than shown whole. Covers are
-   near-square with the subject centred in a lot of empty ground, so at full
-   width one filled most of a screen before the case study had said anything.
-   Content images further down are still never cropped -- this is the one
-   place where framing beats completeness. */
-.pp-cover .cs-media {
+.cs-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
   overflow: hidden;
   border-radius: 12px;
   background: var(--off-black);
@@ -627,17 +609,25 @@
   line-height: 0; /* no descender gap under the image */
 }
 
-.pp-cover .cs-media img {
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* height follows the artwork, so nothing is letterboxed or cropped */
+/* height follows the artwork, so the box never has empty space under it */
 .cs-media img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* The hero cover is the one exception: cropped to a band rather than shown
+   whole. Covers are near-square with the subject centred in a lot of empty
+   ground, so at full width one filled most of a screen before the case study
+   had said anything. Content images above are still never cropped. */
+.pp-cover .cs-media {
+  aspect-ratio: 16 / 7;
+}
+
+.pp-cover .cs-media img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* expand affordance */

@@ -267,27 +267,42 @@
   }
 
   .hero-tagline {
-    bottom: 96px; /* clears the role line and the floating contact pill */
+    bottom: 104px; /* clears the role line and the floating contact pill */
     font-size: clamp(15px, 4.4vw, 22px);
     max-width: 78%;
+  }
+
+  /* At 22px the tagline wraps to two lines, so the arrow ends up trailing
+     the second one at 0.8em -- about 13px -- where it reads as a stray mark
+     rather than an arrow. It is set in absolute units here and given room to
+     breathe from the line it belongs to. */
+  .hero-arrow {
+    width: 19px;
+    margin-left: 9px;
+    vertical-align: -0.22em;
   }
 
   /* the contact pill owns the bottom right down here, so the role line is
      capped short of it rather than being allowed to run underneath */
   .hero-role {
-    bottom: 66px;
-    max-width: 62vw;
-    font-size: 11.5px;
+    bottom: 62px;
+    max-width: 60vw;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .hero-role .mask-inner {
+    gap: 7px;
   }
 
   .hero-role img {
-    height: 11px;
+    height: 12px;
   }
 }
 
 @media (max-width: 520px) {
   .hero-tagline {
     max-width: 90%;
-    bottom: 90px;
+    bottom: 98px;
   }
 }

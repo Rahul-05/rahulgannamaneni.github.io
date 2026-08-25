@@ -64,7 +64,9 @@ export const TESTIMONIALS = [
     name: 'Melanie Killen',
     role: 'Founder, DIY Teachers · Distinguished University Professor',
     place: 'University of Maryland',
-    logo: '/work/shared/university-of-maryland.webp',
+    // the square globe rather than the full lockup: the wordmark beside it
+    // is illegible at the 27px these cards give a mark
+    logo: '/work/shared/university-of-maryland-mark.webp',
   },
   {
     quote:
@@ -287,7 +289,7 @@ export const PROJECTS = [
     stack: ['figma'],
     year: '2022',
     outcome: 'Projection concept validated with riders',
-    cover: '/work/apoyo-smart-helmet/cover.webp',
+    cover: '/work/apoyo-smart-helmet/product.webp',
     sections: 'helmet',
     href: '#',
   },
