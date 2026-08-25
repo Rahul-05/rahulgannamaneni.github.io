@@ -1,0 +1,162 @@
+/* above the nav (50) and the floating contact chip (60); below the
+   preloader (100) and the case-study overlay (80 / 120). */
+.labmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+}
+
+.labmodal-scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(14, 16, 15, 0.62);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+  animation: labmodal-fade 0.25s ease both;
+}
+
+.labmodal-panel {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(18px, 2.6vw, 40px);
+  border-radius: 20px;
+  background: var(--cream);
+  color: var(--black);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  animation: labmodal-rise 0.4s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.labmodal-panel:focus-visible {
+  outline: none;
+}
+
+@keyframes labmodal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes labmodal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+}
+
+.labmodal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: clamp(12px, 1.6vw, 20px);
+}
+
+.labmodal-title {
+  font-size: clamp(20px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.labmodal-note {
+  max-width: 62ch;
+  margin-top: 6px;
+  font-size: clamp(12.5px, 1.05vw, 15.5px);
+  line-height: 1.5;
+  color: rgba(14, 16, 15, 0.7);
+}
+
+.labmodal-close {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(14, 16, 15, 0.28);
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.labmodal-close:hover {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--cream);
+}
+
+/* the piece is the hero, so it takes the largest single block in the panel */
+.labmodal-hero {
+  /* the frames fill their container absolutely, so this has to be the
+     positioned ancestor -- without it they size against the whole panel */
+  position: relative;
+  container-type: inline-size;
+  /* generous, because the pieces are device frames -- a popup that showed
+     them smaller than the card behind it would be pointless */
+  height: min(68vh, 720px);
+  border-radius: 16px;
+  border: 1px solid rgba(14, 16, 15, 0.18);
+  background: rgba(14, 16, 15, 0.04);
+  overflow: hidden;
+}
+
+.labmodal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: clamp(12px, 1.6vw, 18px) 0 0;
+}
+
+.labmodal-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: clamp(14px, 2vw, 30px);
+  margin-top: clamp(16px, 2.2vw, 28px);
+  padding-top: clamp(16px, 2.2vw, 26px);
+  border-top: 1px solid rgba(14, 16, 15, 0.16);
+}
+
+.labmodal-section h3 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(14, 16, 15, 0.5);
+  margin-bottom: 8px;
+}
+
+.labmodal-section p {
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.62;
+}
+
+/* ══════════ phone ══════════ */
+@media (max-width: 720px) {
+  .labmodal-panel {
+    width: 92vw;
+    height: 90vh;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .labmodal-hero {
+    height: 62vh;
+  }
+
+  .labmodal-close {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+}

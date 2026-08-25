@@ -1,0 +1,234 @@
+.turn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42px 40px;
+  background: #f6f4ef;
+  overflow: hidden;
+}
+
+.turn-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 22px;
+}
+
+.turn-crumb {
+  font-size: 13.5px;
+  color: rgba(14, 16, 15, 0.5);
+}
+
+.turn-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(224, 93, 45, 0.14);
+  color: #b8431c;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.turn-pill.is-done {
+  background: rgba(31, 138, 92, 0.16);
+  color: #167048;
+}
+
+/* ── the card ── */
+.turn-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+  padding: 30px 32px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.07),
+    0 0 0 1px rgba(14, 16, 15, 0.08);
+  transition:
+    transform 0.7s cubic-bezier(0.25, 1.4, 0.35, 1),
+    box-shadow 0.7s ease;
+}
+
+/* the lift is what makes the window feel like it reacted, not the button */
+.turn--playing .turn-card,
+.turn--done .turn-card {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.16),
+    0 0 0 1px rgba(31, 138, 92, 0.35);
+}
+
+.turn-card h4 {
+  font-size: 27px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.turn-meta {
+  margin: 7px 0 22px;
+  font-size: 13.5px;
+  color: rgba(14, 16, 15, 0.48);
+}
+
+.turn-files {
+  list-style: none;
+  border-top: 1px solid rgba(14, 16, 15, 0.09);
+}
+
+.turn-files li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(14, 16, 15, 0.09);
+  font-size: 15px;
+}
+
+.turn-doc {
+  width: 15px;
+  height: 19px;
+  border-radius: 2px 5px 2px 2px;
+  background: rgba(0, 89, 188, 0.18);
+  box-shadow: inset 0 0 0 1.5px rgba(0, 89, 188, 0.45);
+}
+
+.turn-name {
+  flex: 1;
+}
+
+.turn-size {
+  font-size: 13px;
+  color: rgba(14, 16, 15, 0.42);
+}
+
+.turn-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.turn-go {
+  padding: 13px 32px;
+  border: 0;
+  border-radius: 11px;
+  background: #0059bc;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.turn-go:active {
+  transform: scale(0.97);
+}
+
+.turn-go:disabled {
+  background: rgba(14, 16, 15, 0.28);
+  cursor: default;
+}
+
+.turn-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #167048;
+}
+
+.turn-stamp svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 22;
+  animation: turn-draw 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes turn-draw {
+  from {
+    stroke-dashoffset: 22;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.turn-undo {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: rgba(14, 16, 15, 0.5);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ── celebration ── */
+.turn-party {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.turn-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 50% 60%, rgba(31, 138, 92, 0.16), transparent 70%);
+  animation: turn-wash 1.5s ease-out both;
+}
+
+@keyframes turn-wash {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.turn-ribbon {
+  position: absolute;
+  bottom: -24px;
+  width: 7px;
+  border-radius: 2px;
+  animation: turn-fly 1.6s cubic-bezier(0.15, 0.7, 0.35, 1) both;
+}
+
+/* up fast, then over and down -- streamers, not a fountain of dots */
+@keyframes turn-fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(calc(var(--drift) * 0.6), var(--rise)) rotate(var(--spin));
+  }
+  100% {
+    transform: translate(var(--drift), calc(var(--rise) * 0.35)) rotate(calc(var(--spin) * 1.8));
+    opacity: 0;
+  }
+}

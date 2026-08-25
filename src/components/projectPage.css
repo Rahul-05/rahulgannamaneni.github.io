@@ -1,0 +1,1055 @@
+/* ── section tag (our answer to gsap's curly braces) ── */
+.stag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, var(--green));
+}
+
+.stag-mark {
+  width: 9px;
+  height: 9px;
+  background: currentColor;
+  flex: 0 0 9px;
+}
+
+.stag-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.stag-rule {
+  width: clamp(40px, 8vw, 120px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+/* ── the overlay ── */
+.pp {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: var(--black);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.pp-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--pad);
+  border-bottom: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+.pp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--cream);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.pp-back-arrow {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.pp-back:hover .pp-back-arrow {
+  transform: translateX(-4px);
+}
+
+.pp-count {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.pp-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 var(--pad) 8vh;
+}
+
+/* ── hero ── */
+.pp-hero {
+  padding: 8vh 0 6vh;
+}
+
+.pp-title {
+  margin-top: 3vh;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 88%;
+  font-size: clamp(48px, 8.6vw, 148px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+.pp-title-line {
+  display: block;
+  position: relative;
+}
+
+.pp-title-line--alt {
+  color: var(--surface-50);
+  padding-left: clamp(40px, 12vw, 220px);
+}
+
+.pp-art {
+  position: absolute;
+  top: -18%;
+  right: 4%;
+  width: clamp(80px, 11vw, 190px);
+  height: clamp(80px, 11vw, 190px);
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.pp-hero-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) auto;
+  align-items: end;
+  gap: clamp(24px, 5vw, 80px);
+  margin-top: 7vh;
+  padding-top: 3vh;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+.pp-lede {
+  font-size: clamp(15px, 1.35vw, 20px);
+  line-height: 1.5;
+  max-width: 56ch;
+  color: var(--surface-75);
+}
+
+.pp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent, var(--green));
+  color: var(--accent, var(--green));
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background 0.28s ease,
+    color 0.28s ease;
+}
+
+.pp-cta:hover {
+  background: var(--accent, var(--green));
+  color: var(--black);
+}
+
+/* ── cover + gallery images ── */
+.pp-cover {
+  margin-bottom: 10vh;
+}
+
+.pp-cover .temp-img,
+.pp-grid .temp-img {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ── statement ── */
+.pp-statement {
+  padding: 2vh 0 10vh;
+}
+
+.pp-statement-body {
+  margin-top: 3vh;
+  font-size: clamp(24px, 3.4vw, 58px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  max-width: 22ch;
+}
+
+/* ── details ── */
+.pp-details {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 50px);
+  padding: 4vh 0 10vh;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+  border-bottom: 1px solid rgba(255, 252, 225, 0.16);
+  margin-bottom: 10vh;
+}
+
+.pp-detail-k {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--surface-50);
+  margin-bottom: 10px;
+}
+
+.pp-detail-v {
+  font-size: clamp(14px, 1.2vw, 18px);
+  font-weight: 600;
+}
+
+.pp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 252, 225, 0.28);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── gallery ── */
+.pp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 26px);
+  margin-top: 3vh;
+}
+
+.pp-grid-wide {
+  grid-column: 1 / -1;
+}
+
+/* ── next project ── */
+.pp-next {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 5vh 0;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+  color: var(--cream);
+  text-align: left;
+}
+
+.pp-next-k {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--surface-50);
+}
+
+.pp-next-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 88%;
+  font-size: clamp(30px, 4.6vw, 78px);
+  letter-spacing: -0.02em;
+  transition: color 0.28s ease;
+}
+
+.pp-next:hover .pp-next-title {
+  color: var(--accent, var(--green));
+}
+
+.pp-next-arrow {
+  font-size: clamp(22px, 2.4vw, 38px);
+  transition: transform 0.28s ease;
+}
+
+.pp-next:hover .pp-next-arrow {
+  transform: translateX(10px);
+}
+
+@media (max-width: 900px) {
+  .pp-hero-foot,
+  .pp-details,
+  .pp-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pp-title-line--alt {
+    padding-left: 0;
+  }
+}
+
+/* ══════════ case study body: content left, sticky index right ══════════ */
+.pp-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(190px, 18vw, 250px);
+  gap: clamp(28px, 5vw, 90px);
+  align-items: start;
+  padding-top: 6vh;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+/* ── sticky directory ── */
+.pp-index {
+  position: sticky;
+  top: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pp-index-k {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--surface-50);
+}
+
+.pp-index nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-left: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+.pp-index-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  color: var(--surface-50);
+  font-size: 12.5px;
+  font-weight: 500;
+  text-align: left;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.pp-index-item::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent, var(--green));
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.pp-index-item:hover {
+  color: var(--cream);
+}
+
+.pp-index-item.is-on {
+  color: var(--accent, var(--green));
+  background: color-mix(in srgb, var(--accent, #0ae448) 9%, transparent);
+}
+
+.pp-index-item.is-on::before {
+  transform: scaleY(1);
+}
+
+.case-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.pp-index-arrow {
+  display: none;
+}
+
+.pp-index-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+/* ── content column ── */
+.cs-section {
+  padding: 0 0 12vh;
+  scroll-margin-top: 24px;
+}
+
+.cs-section > * + * {
+  margin-top: 3vh;
+}
+
+.cs-lead {
+  font-size: clamp(20px, 2.2vw, 34px);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+}
+
+.cs-body {
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.55;
+  color: var(--surface-75);
+  max-width: 62ch;
+}
+
+.cs-prose > * + * {
+  margin-top: 2vh;
+}
+
+.cs-h4 {
+  font-size: clamp(16px, 1.5vw, 23px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2vh;
+}
+
+/* split media + text */
+.cs-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 50px);
+  align-items: center;
+}
+
+.cs-split--flip .cs-split-media {
+  order: 2;
+}
+
+.cs-split .temp-img {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* findings list */
+.cs-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4vh;
+}
+
+.cs-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.5;
+  color: var(--surface-75);
+  max-width: 62ch;
+}
+
+.cs-bullet {
+  width: 7px;
+  height: 7px;
+  margin-top: 0.55em;
+  background: var(--accent, var(--green));
+  flex: 0 0 7px;
+}
+
+/* stat grid */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: clamp(14px, 2vw, 34px);
+  padding: 3vh 0;
+  border-top: 1px solid rgba(255, 252, 225, 0.16);
+  border-bottom: 1px solid rgba(255, 252, 225, 0.16);
+}
+
+.cs-stats dt {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--surface-50);
+  margin-bottom: 7px;
+}
+
+.cs-stats dd {
+  font-size: clamp(18px, 1.9vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* pull quote */
+.cs-quote {
+  border-left: 2px solid var(--accent, var(--green));
+  padding: 1vh 0 1vh clamp(16px, 2vw, 30px);
+}
+
+.cs-quote blockquote {
+  font-size: clamp(17px, 1.8vw, 27px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+}
+
+.cs-quote figcaption {
+  margin-top: 1.4vh;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--surface-50);
+}
+
+/* numbered process */
+.cs-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 0.6fr) minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 30px);
+  align-items: baseline;
+  padding: 1.8vh 0;
+  border-bottom: 1px solid rgba(255, 252, 225, 0.12);
+}
+
+.cs-step-n {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent, var(--green));
+}
+
+.cs-step-k {
+  font-size: clamp(14px, 1.3vw, 19px);
+  font-weight: 600;
+}
+
+.cs-step-v {
+  font-size: clamp(13px, 1.1vw, 16px);
+  color: var(--surface-75);
+}
+
+/* media grids */
+.cs-gallery {
+  display: grid;
+  gap: clamp(12px, 1.6vw, 24px);
+}
+
+.cs-gallery--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+.cs-gallery--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cs-gallery--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cs-gallery .temp-img {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+  .pp-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pp-index {
+    position: static;
+    order: -1;
+  }
+  .pp-index nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-left: 0;
+  }
+  .cs-split,
+  .cs-gallery--3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cs-split--flip .cs-split-media {
+    order: 0;
+  }
+}
+
+/* real imagery in a case study slot */
+.cs-media,
+.pp-cover .cs-media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--off-black);
+}
+
+.cs-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ══════════ case study imagery ══════════ */
+/* Letterboxed, never cropped: these are flow diagrams and screen sheets
+   where a trimmed edge removes real content. The dark mat matches the page
+   so the padding reads as intentional rather than as a gap. */
+.cs-media,
+/* The hero cover is cropped to a band rather than shown whole. Covers are
+   near-square with the subject centred in a lot of empty ground, so at full
+   width one filled most of a screen before the case study had said anything.
+   Content images further down are still never cropped -- this is the one
+   place where framing beats completeness. */
+.pp-cover .cs-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--off-black);
+  border: 1px solid rgba(255, 252, 225, 0.1);
+  line-height: 0; /* no descender gap under the image */
+}
+
+.pp-cover .cs-media img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* height follows the artwork, so nothing is letterboxed or cropped */
+.cs-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* expand affordance */
+.cs-expand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: rgba(14, 16, 15, 0.82);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 252, 225, 0.28);
+  color: var(--cream);
+  font-size: 11.5px;
+  font-weight: 600;
+  opacity: 1; /* always offered, not hidden behind a hover */
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.cs-expand svg {
+  width: 13px;
+  height: 13px;
+}
+
+.cs-expand:hover {
+  background: var(--accent, var(--green));
+  border-color: var(--accent, var(--green));
+  color: var(--black);
+}
+
+.cs-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(14, 16, 15, 0.78);
+  backdrop-filter: blur(6px);
+  color: var(--surface-75);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cs-media:hover .cs-caption,
+.cs-media:focus-within .cs-caption {
+  opacity: 1;
+}
+
+/* ══════════ lightbox ══════════ */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(6, 7, 6, 0.94);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 4vw, 60px);
+  animation: lb-in 0.22s ease-out;
+}
+
+@keyframes lb-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lb-figure {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.lb-figure img {
+  max-width: 100%;
+  /* leaves room for the caption underneath */
+  max-height: calc(100vh - clamp(90px, 12vw, 150px));
+  object-fit: contain;
+  border-radius: 10px;
+  background: var(--off-black);
+}
+
+.lb-figure figcaption {
+  color: var(--surface-75);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lb-close {
+  position: fixed;
+  top: clamp(14px, 2vw, 26px);
+  right: clamp(14px, 2vw, 26px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 252, 225, 0.3);
+  background: rgba(14, 16, 15, 0.7);
+  color: var(--cream);
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.lb-close:hover {
+  background: var(--accent, var(--green));
+  border-color: var(--accent, var(--green));
+  color: var(--black);
+}
+
+/* ══════════ feature: wide image, commentary alongside ══════════ */
+.cs-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(210px, 0.42fr);
+  gap: clamp(18px, 3vw, 46px);
+  align-items: start;
+}
+
+.cs-feature-note {
+  position: sticky;
+  top: 3vh;
+  padding-left: clamp(14px, 1.6vw, 24px);
+  border-left: 2px solid var(--accent, var(--green));
+}
+
+.cs-feature-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1vh;
+  margin-top: 1.8vh;
+}
+
+.cs-feature-points li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  font-size: clamp(12.5px, 1.05vw, 15px);
+  line-height: 1.45;
+  color: var(--surface-75);
+}
+
+/* ══════════ highlight: a deliberate break in the rhythm ══════════ */
+.cs-highlight {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 38px);
+  align-items: center;
+  padding: clamp(22px, 3.2vw, 46px);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent, #0ae448) 12%, var(--black));
+  border: 1px solid color-mix(in srgb, var(--accent, #0ae448) 34%, transparent);
+}
+
+.cs-figure {
+  width: clamp(58px, 6vw, 96px);
+  height: auto;
+  color: var(--accent, var(--green));
+  opacity: 0.9;
+}
+
+.cs-highlight-k {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, var(--green));
+  margin-bottom: 1.2vh;
+}
+
+.cs-highlight-text {
+  font-size: clamp(17px, 1.85vw, 29px);
+  font-weight: 600;
+  line-height: 1.26;
+  letter-spacing: -0.015em;
+  max-width: 30ch;
+}
+
+@media (max-width: 900px) {
+  .cs-feature {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cs-feature-note {
+    position: static;
+  }
+  .cs-highlight {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ══════════ case study: phone ══════════ */
+@media (max-width: 720px) {
+  .pp-bar {
+    padding: 12px var(--pad);
+  }
+  .pp-scroll {
+    padding: 0 var(--pad) 6vh;
+  }
+
+  .pp-hero {
+    padding: 4vh 0 3vh;
+  }
+  .pp-title {
+    font-size: 12vw;
+    margin-top: 2vh;
+  }
+  .pp-title-line--alt {
+    padding-left: 0;
+  }
+  .pp-art {
+    width: 68px;
+    height: 68px;
+    top: -12%;
+    right: 0;
+  }
+
+  .pp-hero-foot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 3vh;
+  }
+
+  .pp-lede {
+    font-size: 14px;
+  }
+  .pp-cta {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+
+  .pp-cover {
+    margin-bottom: 5vh;
+  }
+  .pp-cover .cs-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .pp-body {
+    padding-top: 3vh;
+    gap: 20px;
+  }
+
+  /* the directory becomes a scrollable strip pinned under the bar, so it
+     stays reachable without eating a third of a phone screen */
+  .pp-index {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    order: -1;
+    gap: 8px;
+    padding: 10px 0;
+    background: var(--black);
+  }
+
+  .pp-index-k,
+  .pp-index-meta {
+    display: none;
+  }
+
+  /* arrows flank the strip so it reads as swipeable rather than clipped */
+  .pp-index {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'prev nav next';
+    align-items: center;
+  }
+
+  .pp-index-arrow {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 252, 225, 0.24);
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--cream);
+    font-size: 13px;
+  }
+
+  .pp-index-arrow--prev {
+    grid-area: prev;
+  }
+  .pp-index-arrow--next {
+    grid-area: next;
+  }
+  .pp-index nav {
+    grid-area: nav;
+  }
+
+  .pp-index nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    border-left: 0;
+    scrollbar-width: none;
+  }
+
+  .pp-index nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pp-index-item {
+    flex: 0 0 auto;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 252, 225, 0.18);
+    border-radius: 999px;
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  /* the label is what makes a chip meaningful, so it stays */
+  .pp-index-label {
+    display: inline;
+  }
+
+  .pp-index-item::before {
+    display: none;
+  }
+
+  .pp-index-item.is-on {
+    border-color: var(--accent, var(--green));
+  }
+
+  .cs-section {
+    padding-bottom: 6vh;
+  }
+  .cs-section > * + * {
+    margin-top: 2.2vh;
+  }
+
+  .cs-lead {
+    font-size: 18px;
+    max-width: none;
+  }
+  .cs-body {
+    font-size: 13.5px;
+    max-width: none;
+  }
+  .cs-h4 {
+    font-size: 15px;
+  }
+
+  .cs-stats {
+    gap: 14px;
+    padding: 2vh 0;
+  }
+  .cs-stats dd {
+    font-size: 17px;
+  }
+
+  .cs-quote blockquote {
+    font-size: 16px;
+  }
+  .cs-highlight-text {
+    font-size: 16px;
+    max-width: none;
+  }
+  .cs-figure {
+    width: 46px;
+  }
+
+  .cs-steps li {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 12px;
+  }
+  .cs-step-v {
+    grid-column: 2;
+  }
+
+  .cs-gallery--2,
+  .cs-gallery--3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cs-expand {
+    padding: 6px 10px;
+    font-size: 10.5px;
+  }
+
+  .pp-next {
+    padding: 3.4vh 0;
+    gap: 10px;
+    grid-template-columns: 1fr auto;
+  }
+  .pp-next-k {
+    grid-column: 1 / -1;
+  }
+  .pp-next-title {
+    font-size: 28px;
+  }
+}

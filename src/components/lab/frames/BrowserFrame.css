@@ -1,0 +1,96 @@
+.web-fit {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.web {
+  width: 1180px;
+  height: 778px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f4f2ee;
+  box-shadow:
+    0 0 0 1px rgba(14, 16, 15, 0.16),
+    0 24px 60px rgba(0, 0, 0, 0.28);
+  /* centred on its own midpoint rather than by the parent: the layout box
+     is full device size and overflows a small card, and both grid and flex
+     fall back to start alignment when an item overflows. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  font-family: -apple-system, 'Archivo Variable', system-ui, sans-serif;
+  color: #0e100f;
+  -webkit-font-smoothing: antialiased;
+}
+
+.web-chrome {
+  height: 38px;
+  display: grid;
+  grid-template-columns: 78px minmax(0, auto) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  background: #e8e5df;
+  border-bottom: 1px solid rgba(14, 16, 15, 0.12);
+}
+
+.web-lights {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.web-lights i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d6d2cb;
+}
+
+.web-lights i:nth-child(1) {
+  background: #ff5f57;
+}
+.web-lights i:nth-child(2) {
+  background: #febc2e;
+}
+.web-lights i:nth-child(3) {
+  background: #28c840;
+}
+
+.web-tab {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5px 14px;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.web-url {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(14, 16, 15, 0.07);
+  font-size: 12px;
+  color: rgba(14, 16, 15, 0.62);
+}
+
+.web-url svg {
+  width: 10px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.web-viewport {
+  position: relative;
+  width: 100%;
+  height: 740px;
+  overflow: hidden;
+}

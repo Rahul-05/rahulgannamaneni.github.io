@@ -1,0 +1,225 @@
+.tl {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #1a1c1f;
+  color: #e8e6e0;
+  overflow: hidden;
+}
+
+/* ── monitor + inspector ── */
+.tl-stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tl-monitor {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #0d0e10;
+}
+
+.tl-frame {
+  width: 62%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  background: radial-gradient(90% 120% at 30% 20%, #3c4a63 0%, #1d2431 55%, #0f1217 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.tl-tc {
+  position: absolute;
+  bottom: 16px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.09);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.tl-inspector {
+  padding: 18px;
+  background: #202329;
+}
+
+.tl-insp-k {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.tl-inspector h5 {
+  margin: 6px 0 16px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.tl-inspector dl div {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13.5px;
+}
+
+.tl-inspector dt {
+  opacity: 0.55;
+}
+
+.tl-inspector dd {
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-insp-note {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.45;
+}
+
+/* ── timeline ── */
+.tl-timeline {
+  flex: 0 0 auto;
+  height: 292px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #16181b;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  touch-action: none;
+}
+
+.tl-ruler {
+  position: relative;
+  height: 26px;
+  cursor: ew-resize;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.tl-ruler span {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding-left: 4px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 10px;
+  line-height: 26px;
+  color: rgba(232, 230, 224, 0.4);
+}
+
+.tl-ruler span.is-major {
+  border-left-color: rgba(255, 255, 255, 0.26);
+}
+
+.tl-tracks {
+  position: relative;
+  padding: 8px 0;
+}
+
+.tl-track {
+  position: relative;
+  height: 74px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.tl-track-label {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  z-index: 1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(232, 230, 224, 0.3);
+  pointer-events: none;
+}
+
+.tl-clip {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 5px;
+  padding: 6px 9px;
+  overflow: hidden;
+  cursor: grab;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  /* no transition: a clip must sit exactly where the pointer says, and the
+     snap has to land instantly or it reads as lag rather than as a magnet */
+}
+
+.tl-clip.is-dragging {
+  cursor: grabbing;
+  z-index: 5;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.tl-clip.is-selected {
+  box-shadow: inset 0 0 0 2px #fffce1;
+}
+
+.tl-clip-name {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 30px;
+  width: 100%;
+}
+
+.tl-wave path {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 0.9;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+/* what the clip locked to */
+.tl-guide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #6ee787;
+  box-shadow: 0 0 7px #6ee787;
+  pointer-events: none;
+}
+
+.tl-playhead {
+  position: absolute;
+  top: -26px;
+  bottom: 0;
+  width: 1px;
+  background: #ff5f57;
+  pointer-events: none;
+}
+
+.tl-playhead i {
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 13px;
+  height: 11px;
+  border-radius: 2px 2px 5px 5px;
+  background: #ff5f57;
+}

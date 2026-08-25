@@ -1,0 +1,245 @@
+.wai {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 14px 14px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* three slow blurred lobes rather than a gradient: on OLED the black stays
+   true black and only the lit part of the screen moves */
+.wai-field {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(28% 24% at 30% 32%, rgba(66, 133, 244, 0.85), transparent 68%),
+    radial-gradient(26% 24% at 68% 38%, rgba(155, 114, 203, 0.8), transparent 70%),
+    radial-gradient(30% 26% at 48% 72%, rgba(217, 101, 112, 0.7), transparent 70%);
+  filter: blur(26px);
+  opacity: 0.5;
+  animation: wai-swim 11s ease-in-out infinite alternate;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.wai--answer .wai-field {
+  opacity: 0.32;
+}
+
+@keyframes wai-swim {
+  50% {
+    transform: translate3d(6%, -5%, 0) rotate(18deg) scale(1.14);
+  }
+  100% {
+    transform: translate3d(-5%, 6%, 0) rotate(-14deg) scale(1.06);
+  }
+}
+
+.wai > *:not(.wai-field) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── idle ── */
+.wai-raise {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.wai-orb {
+  position: relative;
+  width: 74px;
+  height: 74px;
+}
+
+/* the mark is three overlapping lobes that counter-rotate, so it never
+   looks like a spinner */
+.wai-orb i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(7px);
+  mix-blend-mode: screen;
+  animation: wai-orb 4.6s ease-in-out infinite;
+}
+
+.wai-orb i:nth-child(1) {
+  background: #4285f4;
+}
+.wai-orb i:nth-child(2) {
+  background: #9b72cb;
+  animation-delay: -1.5s;
+}
+.wai-orb i:nth-child(3) {
+  background: #d96570;
+  animation-delay: -3s;
+}
+
+@keyframes wai-orb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(0.86);
+  }
+  33% {
+    transform: translate(14%, -10%) scale(1.06);
+  }
+  66% {
+    transform: translate(-11%, 12%) scale(0.94);
+  }
+}
+
+.wai-raise em {
+  font-style: normal;
+  font-size: 13px;
+  opacity: 0.62;
+}
+
+/* ── listening ── */
+.wai-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 32px;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.wai-wave i {
+  width: 3.5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8ab4ff, #c79cff);
+  transition: height 0.08s linear;
+}
+
+.wai-heard {
+  margin-top: 11px;
+  font-size: 17px;
+  line-height: 1.24;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.wai-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: #fff;
+  animation: wai-blink 0.9s ease-in-out infinite;
+}
+
+@keyframes wai-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.wai-think {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  margin-bottom: 14px;
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+.wai-tri {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.6px solid rgba(255, 255, 255, 0.28);
+  border-top-color: #fff;
+  animation: wai-rot 0.75s linear infinite;
+}
+
+@keyframes wai-rot {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── answer: nothing fades, everything springs and lands ── */
+.wai-answer {
+  margin-top: auto;
+  width: 100%;
+}
+
+.wai-answer strong {
+  display: block;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  background: linear-gradient(96deg, #8ab4ff, #c79cff 46%, #ff9d9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: wai-land 0.62s cubic-bezier(0.24, 1.6, 0.32, 1) both;
+}
+
+/* overshoot and settle: on a small screen a fade reads as a rendering delay,
+   a spring reads as a response */
+@keyframes wai-land {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.72);
+  }
+}
+
+.wai-answer strong em {
+  font-style: normal;
+  font-size: 18px;
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+
+.wai-answer p {
+  margin: 7px 0 12px;
+  font-size: 13px;
+  opacity: 0.72;
+  animation: wai-land 0.55s 0.09s cubic-bezier(0.24, 1.5, 0.32, 1) both;
+}
+
+.wai-acts {
+  display: flex;
+  gap: 5px;
+}
+
+.wai-acts button {
+  flex: 1;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  animation: wai-land 0.5s cubic-bezier(0.24, 1.5, 0.32, 1) both;
+}
+
+/* they land one after the other, not together */
+.wai-acts button:nth-child(1) {
+  animation-delay: 0.17s;
+}
+.wai-acts button:nth-child(2) {
+  animation-delay: 0.23s;
+}

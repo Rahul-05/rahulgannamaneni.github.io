@@ -1,0 +1,326 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+.nav--dark {
+  color: var(--black);
+}
+
+.nav-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 24px;
+  padding: 16px var(--pad) 12px;
+}
+
+.nav-row > * {
+  pointer-events: auto;
+}
+
+/* ── brand ── */
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: inherit;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.nav-brand-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.nav-brand-sub {
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: 0.62;
+}
+
+/* ── centre links ── */
+.nav-links {
+  display: flex;
+  gap: clamp(14px, 2vw, 30px);
+  padding-top: 2px;
+}
+
+.nav-link {
+  color: inherit;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding-bottom: 3px;
+  opacity: 0.72;
+  transition: opacity 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.is-current {
+  opacity: 1;
+}
+
+.nav-link-num {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.is-current::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ── right side ── */
+.nav-side {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.6vw, 24px);
+  padding-top: 2px;
+}
+
+.nav-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.nav-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: nav-pulse 2.2s ease-out infinite;
+}
+
+@keyframes nav-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 228, 72, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(10, 228, 72, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(10, 228, 72, 0);
+  }
+}
+
+/* resume is the one action in the bar, so it is packaged as a chip */
+.nav-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 15px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.nav-resume .tech-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+.nav-resume:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--black);
+}
+
+/* ── hamburger (phones only) ── */
+.nav-burger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid currentColor;
+  border-radius: 10px;
+  color: inherit;
+  padding: 0;
+  place-items: center;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.nav-burger span {
+  display: block;
+  width: 15px;
+  height: 1.6px;
+  background: currentColor;
+  transition: transform 0.28s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav--open .nav-burger span:first-child {
+  transform: translateY(3.3px) rotate(45deg);
+}
+
+.nav--open .nav-burger span:last-child {
+  transform: translateY(-3.3px) rotate(-45deg);
+}
+
+/* ── phone panel ── */
+.nav-panel {
+  display: none;
+}
+
+/* ── progress rule ── */
+.nav-rule {
+  position: relative;
+  height: 1px;
+  margin: 0 var(--pad);
+  background: currentColor;
+  opacity: 0.22;
+}
+
+.nav-rule-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  transform-origin: left center;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ══════════ tablet ══════════ */
+@media (max-width: 1040px) {
+  .nav-status {
+    display: none;
+  }
+  .nav-links {
+    gap: 14px;
+  }
+  .nav-brand-sub {
+    display: none;
+  }
+}
+
+/* ══════════ phone ══════════ */
+/* Section links move into a panel behind the hamburger. A row of bare
+   numbers told the visitor nothing, so the labels come back in full here. */
+@media (max-width: 720px) {
+  .nav-row {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 12px var(--pad);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-side .nav-resume {
+    display: none;
+  }
+
+  .nav-burger {
+    display: flex;
+  }
+
+  .nav-brand-title {
+    font-size: 13px;
+  }
+
+  .nav-panel {
+    display: block;
+    padding: 6px var(--pad) 18px;
+    background: inherit;
+  }
+
+  .nav-panel[hidden] {
+    display: none;
+  }
+
+  /* the bar owns a solid ground once the panel is down, so the page
+     underneath cannot show through the links */
+  .nav--open {
+    background: var(--black);
+  }
+
+  .nav--open.nav--dark {
+    background: var(--cream);
+  }
+
+  .nav-panel-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-panel-link {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 14px 0;
+    color: inherit;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-align: left;
+    border-bottom: 1px solid currentColor;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-panel-link.is-current {
+    opacity: 1;
+  }
+
+  .nav-panel-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .nav-panel-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .nav-panel-foot .nav-status {
+    display: inline-flex;
+  }
+
+  .nav-panel-foot .nav-resume {
+    display: inline-flex;
+  }
+}

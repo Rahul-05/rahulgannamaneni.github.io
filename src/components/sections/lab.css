@@ -1,0 +1,368 @@
+.lab {
+  background: var(--orange);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-h) + 1.5vh) var(--pad) 0;
+}
+
+.lab-kicker {
+  text-align: center;
+  font-size: clamp(13px, 1.35vw, 19px);
+  font-weight: 600;
+  margin-bottom: 1vh;
+}
+
+.lab-headline {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.lab-word {
+  font-size: 14vh;
+  color: var(--black);
+}
+
+.lab-script {
+  position: absolute;
+  right: 1%;
+  bottom: 0.4vh;
+  font-family: var(--font-marker);
+  font-size: 5vh;
+  color: var(--cream);
+  transform: rotate(-6deg);
+  text-transform: none;
+  pointer-events: none;
+}
+
+/* ── filters ── */
+.lab-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 2vh 0 1.6vh;
+  border-bottom: 1.5px solid rgba(14, 16, 15, 0.3);
+}
+
+.lab-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border: 1.5px solid rgba(14, 16, 15, 0.3);
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--black);
+  transition:
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.lab-filter:hover {
+  border-color: var(--black);
+}
+
+.lab-filter.is-on {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--orange);
+}
+
+.lab-filter-n {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+/* ── grid ── */
+.lab-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.lab-track {
+  will-change: transform;
+}
+
+/* Four across, so the whole collection reads at once. At this size every
+   piece is a preview of itself -- the popup is where you actually use one --
+   so the cards are uniform and the stage keeps a fixed ratio rather than
+   letting portrait and landscape pieces set different row heights. */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.1vw, 18px);
+  padding-top: 2.4vh;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 252, 225, 0.62);
+  border: 1px solid rgba(14, 16, 15, 0.22);
+  border-radius: 16px;
+  overflow: hidden;
+  min-width: 0;
+  transition:
+    transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    background 0.3s ease;
+}
+
+.lab-card:hover {
+  transform: translateY(-3px);
+  background: var(--cream);
+}
+
+/* The stage runs the real piece. container-type is what lets each piece size
+   its own type and shapes off the card it lands in, so the same component
+   works in a small grid cell and in the popup without a variant. */
+.lab-stage {
+  position: relative;
+  container-type: inline-size;
+  flex: 1;
+  /* one ratio for all of them: a device frame scales to fit whatever it
+     lands in, so the cards can be uniform without cropping anything */
+  aspect-ratio: 4 / 3;
+  flex: 0 0 auto;
+  /* a device sitting on a flat fill looks pasted on; the light source gives
+     the frame's own shadow something to fall onto */
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 252, 225, 0.5), transparent 70%),
+    rgba(14, 16, 15, 0.09);
+  border-bottom: 1px solid rgba(14, 16, 15, 0.16);
+  overflow: hidden;
+}
+
+/* only a coarse pointer gets this; see Lab.jsx */
+.lab-stage-tap {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+/* Filled into the bottom-right corner of the stage rather than floating over
+   it, so it reads as part of the card's frame. The angled arrow is the whole
+   point: at this size the piece looks like a picture, and the arrow is what
+   says there is something behind it. */
+/* on the chip row, pushed to its end */
+/* Stretched over the card body, not the whole card: the stage above is a
+   running interface and swallowing its clicks would defeat the piece. */
+.lab-view {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--cream);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease;
+}
+
+.lab-view::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.lab-view svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+
+.lab-card:hover .lab-view {
+  background: var(--green);
+  color: var(--black);
+}
+
+/* the arrow leaves along its own diagonal */
+.lab-card:hover .lab-view svg {
+  transform: translate(2px, -2px);
+}
+
+/* positioned so the View button's hit area can stretch across it */
+.lab-card-body {
+  position: relative;
+  padding: 12px 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lab-card-title {
+  font-size: clamp(14px, 1.05vw, 17px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+/* two lines at this size: the card is an index entry, the popup carries the
+   writing */
+.lab-card-note {
+  font-size: clamp(11.5px, 0.82vw, 13px);
+  line-height: 1.4;
+  color: rgba(14, 16, 15, 0.72);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Chips wrap inside their own box; the action lives outside it. Left as one
+   flex row they competed for the same wrap, so the button landed on line one
+   or line two depending on how long the chip labels happened to be. */
+.lab-chips {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.lab-chip-set {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  /* one line: the count carries whatever does not fit */
+  max-height: 23px;
+  overflow: hidden;
+}
+
+.lab-chip {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(14, 16, 15, 0.1);
+}
+
+/* tools read as outlines so they are distinct from the category chips */
+.lab-chip--tool {
+  background: transparent;
+  border: 1px solid rgba(14, 16, 15, 0.3);
+}
+
+.lab-chip--more {
+  background: none;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: rgba(14, 16, 15, 0.45);
+}
+
+.lab-tail {
+  height: 16vh;
+}
+
+/* ══════════ tablet ══════════ */
+@media (max-width: 1360px) {
+  .lab-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .lab-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ══════════ phone ══════════ */
+@media (max-width: 720px) {
+  .lab {
+    padding: calc(var(--nav-h) + 1vh) var(--pad) 0;
+  }
+
+  .lab-kicker {
+    font-size: 11.5px;
+  }
+  .lab-word {
+    font-size: 8.6vh;
+  }
+
+  /* one line of wordmark leaves no room beside it, so the script drops to
+     its own right-aligned line rather than sitting across the letters */
+  .lab-script {
+    position: static;
+    display: block;
+    font-size: 3.4vh;
+    text-align: right;
+    transform: rotate(-3deg);
+    margin: -0.6vh 2% 0 0;
+  }
+
+  .lab-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 1.4vh 0 1.2vh;
+  }
+
+  .lab-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lab-filter {
+    flex: 0 0 auto;
+    padding: 7px 13px;
+    font-size: 11.5px;
+  }
+
+  .lab-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  /* one column, and the stage goes taller than 4:3 because there is width
+     to spare and the phone pieces earn it */
+  .lab-stage {
+    aspect-ratio: 1 / 1;
+  }
+
+  .lab-stage-tap {
+    display: block;
+  }
+
+  /* no hover on a phone, so the button is always at full strength */
+  .lab-view {
+    opacity: 1;
+    right: 8px;
+    bottom: 8px;
+    padding: 6px 12px;
+    font-size: 10.5px;
+  }
+
+  .lab-card-title {
+    font-size: 15px;
+  }
+  .lab-card-note {
+    font-size: 12.5px;
+  }
+  .lab-tail {
+    height: 12vh;
+  }
+}

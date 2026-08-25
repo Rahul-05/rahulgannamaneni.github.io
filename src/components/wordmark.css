@@ -1,0 +1,21 @@
+.wm {
+  width: 100%;
+  overflow: visible; /* letters scale up past the line box */
+  user-select: none;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.8;
+}
+
+.wm-fit {
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: left bottom;
+}
+
+.wm-ch {
+  display: inline-block;
+  /* transform-origin is measured per letter in baseline.js */
+  will-change: transform;
+}

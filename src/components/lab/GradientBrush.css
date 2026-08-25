@@ -1,0 +1,110 @@
+.brush {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: radial-gradient(90% 70% at 50% 8%, #f7f4ec, #efece4 70%);
+  text-align: center;
+  touch-action: none;
+}
+
+.brush-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(14, 16, 15, 0.4);
+}
+
+.brush-title {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.brush-sub {
+  max-width: 460px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(14, 16, 15, 0.6);
+}
+
+.brush-btn {
+  position: relative;
+  width: 520px;
+  height: 108px;
+  margin-top: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px rgba(14, 16, 15, 0.16);
+  cursor: crosshair;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.4s cubic-bezier(0.3, 1.4, 0.4, 1);
+}
+
+.brush-btn.is-done {
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow:
+    inset 0 0 0 2px transparent,
+    0 14px 34px rgba(0, 0, 0, 0.2);
+}
+
+.brush-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* mix-blend keeps the label readable over whatever hue lands under it */
+.brush-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0e100f;
+  mix-blend-mode: difference;
+  filter: invert(1);
+  pointer-events: none;
+}
+
+/* progress, so the threshold is not a secret */
+.brush-meter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #0e100f;
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.brush-btn.is-done .brush-meter {
+  background: #0ae448;
+}
+
+.brush-note {
+  min-height: 22px;
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: rgba(14, 16, 15, 0.5);
+}
+
+.brush-again {
+  border: 0;
+  background: none;
+  font: inherit;
+  color: #0e100f;
+  text-decoration: underline;
+  cursor: pointer;
+}

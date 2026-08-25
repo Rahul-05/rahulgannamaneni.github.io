@@ -1,0 +1,85 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* white loader screen — lifts away at the end */
+.pre-screen {
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* the giant name behind the panel */
+.pre-name {
+  position: absolute;
+  top: 50%;
+  left: var(--pad);
+  right: var(--pad);
+  transform: translateY(-56%);
+  color: var(--cream);
+  user-select: none;
+}
+
+/* each line justifies to the full column width — different letters end up
+   different widths, which is the follow.art look */
+.pre-name-line {
+  font-size: 22vh;
+  line-height: 1.5; /* headroom above the baseline for the tallest letters */
+}
+
+.pre-ch {
+  display: inline-block;
+  /* transform-origin is measured per letter in baseline.js */
+  will-change: transform;
+}
+
+/* the heavy cover panel — shoved off to the right */
+.pre-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--off-black);
+  will-change: transform;
+}
+
+.pre-panel-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--green);
+}
+
+/* the character sprite rides the panel edge */
+.pre-char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.pre-sprite {
+  position: absolute;
+  top: calc(96vh - 43.4vh);
+  height: 43.4vh; /* 70% of the original 62vh */
+  width: calc(43.4vh * var(--sprite-ratio, 0.755));
+}
+
+/* ══════════ loader: phone ══════════ */
+@media (max-width: 720px) {
+  .pre-name-line {
+    font-size: 13vh;
+  }
+
+  /* the character shrinks so the panel edge and the name both stay visible */
+  .pre-sprite {
+    top: calc(96vh - 40vh);
+    height: 40vh;
+    width: calc(40vh * var(--sprite-ratio, 0.755));
+  }
+}

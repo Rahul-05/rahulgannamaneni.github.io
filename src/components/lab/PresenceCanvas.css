@@ -1,0 +1,134 @@
+.pres {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f4f2ee;
+  overflow: hidden;
+}
+
+.pres-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  background: #fff;
+  border-bottom: 1px solid rgba(14, 16, 15, 0.1);
+}
+
+.pres-tool {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  font-size: 14px;
+  color: rgba(14, 16, 15, 0.55);
+}
+
+.pres-tool.is-on {
+  background: #0e100f;
+  color: #fffce1;
+}
+
+.pres-spacer {
+  flex: 1;
+}
+
+.pres-faces {
+  display: inline-flex;
+}
+
+.pres-faces i {
+  width: 27px;
+  height: 27px;
+  margin-left: -7px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pres-me {
+  background: #0e100f;
+  font-size: 9.5px !important;
+}
+
+/* ── the board ── */
+.pres-surface {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  cursor: crosshair;
+  touch-action: none;
+  background-image: radial-gradient(circle, rgba(14, 16, 15, 0.13) 1.2px, transparent 1.3px);
+  background-size: 26px 26px;
+}
+
+.pres-shape {
+  position: absolute;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  cursor: grab;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.pres-shape:active {
+  cursor: grabbing;
+}
+
+.pres-shape.is-mine {
+  outline-color: #0e100f;
+}
+
+/* a shape someone else is holding gets their colour, not yours */
+.pres-shape.is-remote {
+  outline-width: 2.5px;
+}
+
+.pres-owner {
+  position: absolute;
+  left: -3px;
+  top: -25px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pres-cursor {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  /* peers are interpolated in JS; only their label needs smoothing */
+  will-change: left, top;
+}
+
+.pres-cursor svg {
+  width: 15px;
+  height: 19px;
+  display: block;
+}
+
+.pres-cursor em {
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pres-cursor--me em {
+  background: #0e100f;
+}

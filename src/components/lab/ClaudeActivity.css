@@ -1,0 +1,364 @@
+.cla {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-feature-settings: 'tnum';
+}
+
+/* ── wallpaper ────────────────────────────────────────────────────────────
+   Two blurred lobes in Claude clay over true black. On OLED the unlit part
+   of the panel stays actually black, so a dark wallpaper wants light placed
+   into it rather than a grey fill lightened everywhere. */
+.cla-paper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* keeps the corners black so the rounded display edge stays crisp */
+/* iOS dims the wallpaper behind lock screen content -- it is the only
+   reason white type survives on a bright photograph */
+.cla-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.44) 0%, rgba(0, 0, 0, 0.12) 26%, transparent 46%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.64) 0%, transparent 42%);
+}
+
+/* ── lock screen type ──────────────────────────────────────────────────── */
+/* The clock gets out of the way when the activity opens, on the same curve
+   as the island itself -- iOS pushes lock screen content down rather than
+   letting a Live Activity cover it, and matching the curve is what makes the
+   two read as one movement instead of two things animating at once. */
+.cla-lock {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: transform 0.58s cubic-bezier(0.32, 1.4, 0.36, 1);
+}
+
+.cla.is-open .cla-lock {
+  transform: translateY(122px);
+}
+
+.cla-date {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.004em;
+  opacity: 0.92;
+}
+
+/* the clock is the one piece of type on the screen with real weight, and it
+   is very light and very tight -- getting those two right is most of what
+   makes a lock screen look like a lock screen */
+.cla-time {
+  margin-top: 2px;
+  font-size: 82px;
+  font-weight: 250;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  /* a photograph underneath means the type needs its own separation */
+  text-shadow: 0 1px 22px rgba(0, 0, 0, 0.4);
+}
+
+/* ── the Live Activity ─────────────────────────────────────────────────── */
+.cla-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 40;
+  width: 122px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transform: translateX(-50%);
+  /* the overshoot is what sells one shape resizing rather than two shapes
+     swapping; the radius rides the same curve or the silhouette breaks */
+  transition:
+    width 0.58s cubic-bezier(0.32, 1.4, 0.36, 1),
+    height 0.58s cubic-bezier(0.32, 1.4, 0.36, 1),
+    border-radius 0.58s cubic-bezier(0.32, 1.4, 0.36, 1);
+}
+
+.cla-island.is-big {
+  width: 352px;
+  height: 178px;
+  border-radius: 40px;
+}
+
+.cla-island > * {
+  position: absolute;
+  transition: all 0.44s cubic-bezier(0.3, 1.08, 0.35, 1);
+}
+
+.cla-mark {
+  top: 8px;
+  left: 11px;
+  display: grid;
+  place-items: center;
+}
+
+.cla-island.is-big .cla-mark {
+  top: 20px;
+  left: 22px;
+}
+
+.cla-compact {
+  top: 0;
+  right: 14px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.cla-island.is-big .cla-compact {
+  opacity: 0;
+  transform: translateX(8px);
+}
+
+.cla-title {
+  top: 21px;
+  left: 58px;
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.cla-sub {
+  top: 42px;
+  left: 58px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.cla-island.is-big .cla-title,
+.cla-island.is-big .cla-sub {
+  opacity: 1;
+}
+
+.cla-track {
+  left: 22px;
+  right: 22px;
+  top: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.cla-island.is-big .cla-track {
+  opacity: 1;
+}
+
+.cla-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #e0916e, #d97757);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.3, 1, 0.3, 1);
+}
+
+/* ── the log ── */
+.cla-log {
+  left: 22px;
+  right: 22px;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+}
+
+.cla-island.is-big .cla-log {
+  opacity: 1;
+}
+
+.cla-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  letter-spacing: -0.006em;
+  white-space: nowrap;
+  animation: cla-push 0.44s cubic-bezier(0.2, 1.1, 0.3, 1) both;
+}
+
+/* older lines recede rather than disappearing, so the run reads as a stack
+   of things that happened and not as a label being rewritten */
+.cla-line[data-age='1'] {
+  opacity: 0.38;
+}
+
+@keyframes cla-push {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.cla-dot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.cla-line.is-warn .cla-dot {
+  background: #e0a53d;
+  box-shadow: 0 0 8px rgba(224, 165, 61, 0.7);
+}
+
+.cla-line.is-final .cla-dot {
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+}
+
+.cla-line.is-final {
+  font-weight: 600;
+}
+
+.cla-line.is-live .cla-dot {
+  width: 12px;
+  height: 12px;
+  background: none;
+  margin: 0 -3px;
+}
+
+.cla-spin {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.6px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #d97757;
+  animation: cla-rot 0.78s linear infinite;
+}
+
+@keyframes cla-rot {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── run picker, in the notification style ─────────────────────────────── */
+.cla-picker {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 78px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* iOS vibrancy: a translucent white fill over a blur, with a hairline that
+   is lighter than the fill. A flat grey card is the usual mistake. */
+.cla-picker button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  border: 0.5px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(24px) saturate(160%);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.26s ease,
+    border-color 0.26s ease,
+    transform 0.26s ease;
+}
+
+.cla-picker button:active {
+  transform: scale(0.985);
+}
+
+.cla-picker button.is-on {
+  background: rgba(217, 119, 87, 0.22);
+  border-color: rgba(217, 119, 87, 0.5);
+}
+
+.cla-picker span {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cla-picker strong {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.cla-picker em {
+  font-style: normal;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cla-picker b {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+/* ── lock-screen controls ── */
+.cla-quick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.cla-quick span {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px) saturate(140%);
+  color: #fff;
+}
+
+.cla-quick svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+}
+
+/* the lens is punched out of the body rather than drawn over it */
+.cla-lens {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}

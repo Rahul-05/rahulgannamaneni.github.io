@@ -1,0 +1,110 @@
+.phone-fit {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.phone {
+  /* 390x844 plus bezel, then scaled to whatever the card gives us */
+  width: 412px;
+  height: 866px;
+  flex: 0 0 auto;
+  padding: 11px;
+  border-radius: 55px;
+  background: linear-gradient(150deg, #2c2f33, #101215 40%, #26292d);
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.14) inset,
+    0 26px 60px rgba(0, 0, 0, 0.34);
+  /* centred on its own midpoint rather than by the parent: the layout box
+     is full device size and overflows a small card, and both grid and flex
+     fall back to start alignment when an item overflows. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+}
+
+.phone--light {
+  background: linear-gradient(150deg, #e6e3dd, #cfcbc3 40%, #ded9d1);
+}
+
+.phone-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  border-radius: 44px;
+  overflow: hidden;
+  color: #0e100f;
+  font-family: -apple-system, 'SF Pro Text', 'Archivo Variable', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── status bar ── */
+.phone-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 30px 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.phone-status-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-ico {
+  height: 11px;
+  width: auto;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.phone-ico--batt {
+  height: 12px;
+}
+
+.phone-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 31;
+  width: 122px;
+  height: 35px;
+  margin-left: -61px;
+  border-radius: 999px;
+  background: #000;
+  pointer-events: none;
+}
+
+/* the app's own surface: full bleed, the frame draws nothing over it except
+   the status bar, island and home indicator */
+.phone-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.phone-home {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  z-index: 30;
+  width: 140px;
+  height: 5px;
+  margin-left: -70px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.3;
+  pointer-events: none;
+}

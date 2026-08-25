@@ -1,0 +1,101 @@
+.sstack {
+  position: absolute;
+  inset: 0;
+  background: #0e100f;
+  touch-action: none;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.sstack:active {
+  cursor: grabbing;
+}
+
+.sstack-top {
+  position: absolute;
+  top: 58px;
+  left: 24px;
+  color: #fffce1;
+  pointer-events: none;
+}
+
+.sstack-top p {
+  font-size: 15px;
+  opacity: 0.55;
+}
+
+.sstack-top h4 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sstack-card {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  border-radius: 22px;
+  padding: 18px 20px;
+  overflow: hidden;
+  box-shadow: 0 -8px 26px rgba(0, 0, 0, 0.36);
+  transform-origin: top center;
+  will-change: top, height;
+}
+
+.sstack-card.is-parked {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.sstack-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sstack-head h5 {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sstack-n {
+  min-width: 26px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sstack-body {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sstack-body p {
+  font-size: 16px;
+  line-height: 1.35;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sstack-body p:last-child {
+  border-bottom: 0;
+}
+
+.sstack-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 225, 0.5);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}

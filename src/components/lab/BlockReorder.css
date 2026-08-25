@@ -1,0 +1,150 @@
+.blocks {
+  position: absolute;
+  inset: 0;
+  background: #fbfaf7;
+  overflow: hidden;
+}
+
+.blocks-doc {
+  position: absolute;
+  inset: 0;
+  padding: 46px 0 0 190px;
+  max-width: 900px;
+  touch-action: none;
+}
+
+.blocks-eyebrow {
+  font-size: 13px;
+  color: rgba(14, 16, 15, 0.42);
+}
+
+.blocks-title {
+  margin: 6px 0 26px;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.blk {
+  position: relative;
+  padding: 7px 40px 7px 0;
+  /* the shift is the whole illusion, so it eases -- but the dragged block
+     itself must not, or it lags behind the cursor */
+  transition: transform 0.24s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+.blk.is-dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+.blk.is-dragging::after {
+  content: '';
+  position: absolute;
+  inset: -2px -12px;
+  z-index: -1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.16),
+    0 0 0 1px rgba(14, 16, 15, 0.09);
+}
+
+.blk-grip {
+  position: absolute;
+  left: -28px;
+  top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 3px);
+  gap: 3px;
+  padding: 6px 4px;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  cursor: grab;
+  opacity: 0;
+  transition:
+    opacity 0.16s ease,
+    background 0.16s ease;
+}
+
+.blk:hover .blk-grip,
+.blk.is-dragging .blk-grip {
+  opacity: 1;
+}
+
+.blk-grip:hover {
+  background: rgba(14, 16, 15, 0.08);
+}
+
+.blk-grip span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(14, 16, 15, 0.42);
+}
+
+.blk h4 {
+  font-size: 25px;
+  font-weight: 650;
+  letter-spacing: -0.018em;
+}
+
+.blk p {
+  font-size: 16.5px;
+  line-height: 1.62;
+  color: rgba(14, 16, 15, 0.82);
+}
+
+.blk blockquote {
+  padding-left: 16px;
+  border-left: 3px solid #0059bc;
+  font-size: 17.5px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.blk-li {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+}
+
+.blk-li i {
+  flex: 0 0 auto;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(14, 16, 15, 0.55);
+}
+
+.blk figure {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.blk-img {
+  width: 168px;
+  height: 84px;
+  border-radius: 8px;
+  background: linear-gradient(125deg, #0059bc 0%, #6a4bd0 48%, #e05d2d 100%);
+}
+
+.blk figcaption {
+  font-size: 13px;
+  color: rgba(14, 16, 15, 0.45);
+}
+
+.blocks-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(14, 16, 15, 0.32);
+  pointer-events: none;
+}

@@ -1,0 +1,373 @@
+.fig {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  color: #e8e6e2;
+  overflow: hidden;
+}
+
+/* ── toolbar ── */
+.fig-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  background: #2c2c2c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.fig-tool {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  color: rgba(232, 230, 226, 0.6);
+}
+
+.fig-tool.is-on {
+  background: #0d99ff;
+  color: #fff;
+}
+
+.fig-gap {
+  flex: 1;
+}
+
+.fig-zoom {
+  margin-right: 12px;
+  font-size: 12px;
+  color: rgba(232, 230, 226, 0.5);
+}
+
+.fig-faces {
+  display: inline-flex;
+}
+
+.fig-faces i {
+  width: 26px;
+  height: 26px;
+  margin-left: -6px;
+  border-radius: 50%;
+  border: 2px solid #2c2c2c;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.fig-me {
+  background: #0d99ff;
+}
+.fig-ai {
+  background: linear-gradient(140deg, #a259ff, #ff7262);
+}
+
+/* ── layout ── */
+.fig-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr);
+}
+
+.fig-layers {
+  padding: 14px 10px;
+  background: #2c2c2c;
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.fig-layers p {
+  padding: 0 8px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 226, 0.35);
+}
+
+.fig-layer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 8px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  color: rgba(232, 230, 226, 0.75);
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.fig-layer i {
+  font-style: normal;
+  opacity: 0.5;
+}
+
+/* selection is mirrored in the panel, so it is obvious who holds what */
+.fig-layer.is-mine {
+  background: rgba(13, 153, 255, 0.22);
+  color: #fff;
+}
+
+.fig-layer.is-ai {
+  background: rgba(162, 89, 255, 0.26);
+  color: #fff;
+}
+
+/* ── the board ── */
+.fig-surface {
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+  touch-action: none;
+  background-color: #1a1a1a;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.fig-wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.fig-wire {
+  fill: none;
+  stroke: #a259ff;
+  stroke-width: 2;
+  stroke-dasharray: 400;
+  animation: fig-draw 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fig-draw {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fig-node {
+  position: absolute;
+  border-radius: 6px;
+  background: #f5f3ef;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition:
+    outline-color 0.18s ease,
+    box-shadow 0.25s ease;
+}
+
+.fig-node--image {
+  background: linear-gradient(140deg, #6084ff, #a259ff 55%, #ff7262);
+}
+
+.fig-node.is-mine {
+  outline-color: #0d99ff;
+}
+
+/* the assistant holding a frame looks exactly like you holding one, in its
+   own colour -- the whole point is that it is doing things you could do */
+.fig-node.is-ai {
+  outline-color: #a259ff;
+  box-shadow: 0 10px 28px rgba(162, 89, 255, 0.4);
+}
+
+.fig-node-name {
+  position: absolute;
+  top: -17px;
+  left: 1px;
+  font-size: 10.5px;
+  color: rgba(232, 230, 226, 0.55);
+  white-space: nowrap;
+}
+
+.fig-node.is-mine .fig-node-name {
+  color: #6cc1ff;
+}
+.fig-node.is-ai .fig-node-name {
+  color: #c79cff;
+}
+
+/* a suggestion of UI inside each frame */
+.fig-wire-ui {
+  position: absolute;
+  inset: 12px;
+  border-radius: 3px;
+  background:
+    linear-gradient(rgba(14, 16, 15, 0.16) 5px, transparent 5px) 0 0 / 100% 15px,
+    linear-gradient(90deg, rgba(14, 16, 15, 0.1) 60%, transparent 60%) 0 0 / 100% 100%;
+}
+
+.fig-thumb {
+  position: absolute;
+  inset: 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+}
+
+.fig-tag {
+  position: absolute;
+  right: -4px;
+  top: -19px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #a259ff;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── cursors ── */
+.fig-cursor {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.fig-cursor svg {
+  width: 15px;
+  height: 19px;
+  display: block;
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.fig-cursor em {
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.fig-cursor--me svg {
+  fill: #0d99ff;
+}
+.fig-cursor--me em {
+  background: #0d99ff;
+}
+
+.fig-cursor--ai {
+  opacity: 0.35;
+}
+
+.fig-cursor--ai svg {
+  fill: #a259ff;
+}
+.fig-cursor--ai em {
+  background: #a259ff;
+}
+
+.fig-cursor--ai.is-live {
+  opacity: 1;
+}
+
+/* a soft halo while it is working, so your eye can follow it */
+.fig-cursor--ai.is-live::before {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: -13px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(162, 89, 255, 0.45), transparent 68%);
+  animation: fig-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes fig-pulse {
+  50% {
+    transform: scale(1.28);
+    opacity: 0.55;
+  }
+}
+
+/* ── the ask bar ── */
+.fig-ask {
+  padding: 2px;
+  margin: 12px 16px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.fig-ask.is-running {
+  background: conic-gradient(from var(--fa, 0deg), #0d99ff, #a259ff, #ff7262, #ffcd29, #0d99ff);
+  animation: fig-turn 3s linear infinite;
+}
+
+@property --fa {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes fig-turn {
+  to {
+    --fa: 360deg;
+  }
+}
+
+.fig-ask-in {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: #2c2c2c;
+}
+
+.fig-spark {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #0d99ff, #a259ff, #ff7262, #ffcd29, #0d99ff);
+}
+
+.fig-ask-in p {
+  flex: 1;
+  font-size: 14px;
+  color: rgba(232, 230, 226, 0.8);
+}
+
+.fig-ask-in button {
+  padding: 8px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fig-ask-in button.is-go {
+  border-color: transparent;
+  background: linear-gradient(140deg, #0d99ff, #a259ff);
+  color: #fff;
+}

@@ -1,0 +1,250 @@
+/* ============ tokens ============ */
+:root {
+  /* palette lifted from gsap.com's design tokens */
+  --green: #0ae448; /* shockingly green */
+  --green-lt: #abff84;
+  --black: #0e100f; /* just black */
+  --off-black: #191919;
+  --cream: #fffce1; /* surface white */
+  --pink: #fec5fb;
+  --hot-pink: #f100cb;
+  --orange: #ff8709;
+  --lilac: #9d95ff;
+  --blue: #00bae2;
+  --white: #fffce1;
+  --surface-75: #bbbaa6;
+  --surface-50: #7c7c6f;
+  --surface-25: #42433d;
+
+  /* section grounds */
+  --sage: #9d95ff; /* about  */
+  --mauve: #fec5fb; /* work   */
+
+  --font-display: 'Anybody Variable', 'Arial Narrow', sans-serif;
+  --font-body: 'Archivo Variable', Helvetica, Arial, sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+
+  --nav-h: 74px; /* row + progress rule — content clears this */
+  --pad: clamp(16px, 2.5vw, 40px);
+}
+
+/* ============ reset ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--black);
+  overflow: hidden; /* virtual scroll — the app drives everything */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============ shared ============ */
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.section {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  will-change: transform;
+}
+
+.section.is-active {
+  visibility: visible;
+}
+
+/* giant condensed display type — variable width/weight axes let each
+   headline pick its own proportions, like the reference's HeadingNow */
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 50%;
+  font-variation-settings:
+    'wdth' 50,
+    'wght' 900;
+  text-transform: uppercase;
+  line-height: 0.84;
+  letter-spacing: 0;
+}
+
+/* wider cut for mid-size statements */
+.display--mid {
+  font-stretch: 72%;
+  font-variation-settings:
+    'wdth' 72,
+    'wght' 900;
+}
+
+.display--stretch {
+  transform: scaleY(1.18);
+  transform-origin: top left;
+}
+
+/* char-split reveal masks */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+.mask-line > .mask-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* small ui text */
+.ui-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* the persistent black cta bottom right */
+/* The label and the mark sit on one line. They were on opposite corners of
+   a tall block -- the arrow pinned top-right, the word sitting bottom-left --
+   which read as two elements that happened to share a box rather than as one
+   button. */
+.cta-join {
+  position: fixed;
+  right: 0;
+  bottom: 42px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 62px;
+  padding: 0 22px;
+  background: var(--green);
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 500;
+  transition: padding 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.cta-join:hover {
+  padding: 0 30px;
+}
+
+.cta-join .cta-arrow {
+  position: static;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--black);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  transition: transform 0.3s cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+
+.cta-join:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ── edge-to-edge justified headline (follow.art treatment) ── */
+.fit {
+  width: 100%;
+  /* must stay visible — letters scale up past the line box and would
+     otherwise be cropped along the top edge */
+  overflow: visible;
+}
+
+.fit-inner {
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: left top;
+  will-change: transform;
+}
+
+/* ══════════════════ responsive ══════════════════ */
+/* The nav gains a second row on phones, so content has to clear more. */
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 104px;
+    --pad: 16px;
+  }
+}
+
+/* The floating contact button was overlapping the hero tagline, so on
+   phones it becomes a compact pill tucked into the corner. */
+@media (max-width: 720px) {
+  .cta-join {
+    width: auto;
+    height: auto;
+    bottom: 14px;
+    right: 14px;
+    border-radius: 999px;
+    padding: 11px 18px;
+    font-size: 14px;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cta-join:hover {
+    width: auto;
+  }
+
+  .cta-join .cta-arrow {
+    position: static;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+}
+
+/* Grid and flex children default to a min-content floor, which lets one
+   wide image push a whole column past the viewport. These keep tracks
+   shrinkable and images inside them. */
+img {
+  max-width: 100%;
+}
+
+.cs-section,
+.cs-prose,
+.pp-content,
+.cs-feature-media,
+.cs-split-media {
+  min-width: 0;
+}

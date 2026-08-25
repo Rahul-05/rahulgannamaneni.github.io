@@ -1,0 +1,150 @@
+.sheets {
+  position: absolute;
+  inset: 0;
+  background: #0e100f;
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* the page underneath: it scales back as the first sheet arrives, which is
+   what makes a modal read as in front of something rather than replacing it */
+.sheets-base {
+  position: absolute;
+  inset: 0;
+  padding: 92px 26px;
+  background: #17191c;
+  color: #fffce1;
+  border-radius: 40px;
+  transform-origin: center 18%;
+  transition: transform 0.42s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.sheets-eyebrow {
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.sheets-base h4 {
+  margin-top: 4px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sheets-meta {
+  margin-top: 8px;
+  font-size: 15px;
+  opacity: 0.55;
+}
+
+.sheets-hint {
+  margin-top: 20px;
+  font-size: 13px;
+  opacity: 0.38;
+  max-width: 230px;
+  line-height: 1.4;
+}
+
+.sheets-open {
+  margin-top: 26px;
+  padding: 13px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: #fffce1;
+  color: #0e100f;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sheets-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: #000;
+  transition: opacity 0.3s ease;
+}
+
+.sheets-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 22px 26px;
+  border-radius: 26px 26px 0 0;
+  background: #f7f5ef;
+  color: #0e100f;
+  box-shadow: 0 -14px 40px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  transform-origin: center bottom;
+  transition:
+    transform 0.42s cubic-bezier(0.25, 1, 0.3, 1),
+    filter 0.42s ease;
+  will-change: transform;
+}
+
+/* while a finger is down the sheet has to track it exactly, not ease toward it */
+.sheets-sheet:active {
+  cursor: grabbing;
+  transition: none;
+}
+
+.sheets-grab {
+  display: block;
+  width: 38px;
+  height: 5px;
+  margin: 0 auto 16px;
+  border-radius: 999px;
+  background: rgba(14, 16, 15, 0.22);
+  transition: width 0.3s ease;
+}
+
+/* a wider grip on sheets that have a half stop -- the detent is otherwise
+   something you can only find by accident */
+.sheets-grab.has-stop {
+  width: 56px;
+  background: rgba(14, 16, 15, 0.3);
+}
+
+.sheets-sheet h5 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.sheets-sheet ul {
+  list-style: none;
+}
+
+.sheets-sheet li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 15px 0;
+  font-size: 17px;
+  border-bottom: 1px solid rgba(14, 16, 15, 0.1);
+}
+
+.sheets-sheet li em {
+  font-style: normal;
+  font-size: 15px;
+  color: rgba(14, 16, 15, 0.5);
+}
+
+.sheets-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 15px;
+  background: #0059bc;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

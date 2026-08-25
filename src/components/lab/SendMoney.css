@@ -1,0 +1,224 @@
+.pay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 74px 22px 40px;
+  background: radial-gradient(120% 70% at 50% 0%, #1c2028, #0e100f 68%);
+  color: #fffce1;
+  touch-action: none;
+}
+
+.pay-to {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 8px 8px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pay-avatar {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e05d2d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pay-to div {
+  padding-right: 14px;
+  font-size: 15px;
+}
+
+.pay-to em {
+  font-style: normal;
+  opacity: 0.45;
+}
+
+.pay-amount {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 34px;
+  font-size: 74px;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  transition:
+    transform 0.6s cubic-bezier(0.5, 0, 0.2, 1),
+    opacity 0.5s ease;
+}
+
+.pay-cur {
+  margin-top: 9px;
+  font-size: 32px;
+  opacity: 0.55;
+}
+
+/* the amount is what moves: it flies up into the recipient chip */
+.pay--sending .pay-amount {
+  transform: translateY(-118px) scale(0.34);
+  opacity: 0;
+}
+
+.pay--sent .pay-amount,
+.pay--undone .pay-amount {
+  transform: translateY(-14px) scale(0.6);
+  opacity: 0.5;
+}
+
+.pay-memo {
+  margin-top: 10px;
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+/* ── keypad ── */
+.pay-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.pay-pad button {
+  height: 62px;
+  border: 0;
+  border-radius: 16px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 27px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.14s ease;
+}
+
+.pay-pad button:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── hold to send ── */
+.pay-hold {
+  position: relative;
+  width: 100%;
+  height: 58px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pay-hold-fill {
+  position: absolute;
+  inset: 0;
+  background: #0ae448;
+  transform-origin: left center;
+  /* no transition: the fill IS the elapsed time, and easing it would lie
+     about how much longer the finger has to stay down */
+}
+
+.pay-hold-label {
+  position: relative;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0e100f;
+  mix-blend-mode: difference;
+  filter: invert(1);
+}
+
+.pay-status {
+  margin-top: auto;
+  margin-bottom: 40px;
+  font-size: 15px;
+  opacity: 0.55;
+}
+
+/* ── sent ── */
+.pay-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  margin-bottom: 22px;
+}
+
+.pay-check {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #0ae448;
+  animation: pay-pop 0.5s cubic-bezier(0.3, 1.6, 0.4, 1) both;
+}
+
+@keyframes pay-pop {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+.pay-check svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: #0e100f;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 34;
+  stroke-dashoffset: 34;
+  animation: pay-draw 0.42s 0.16s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pay-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pay-done p {
+  font-size: 17px;
+}
+
+.pay-undo,
+.pay-again {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 20px;
+  border: 1.5px solid rgba(255, 252, 225, 0.4);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pay-undo em {
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.55;
+}
+
+.pay-ring {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: conic-gradient(#fffce1 calc(var(--p) * 360deg), rgba(255, 252, 225, 0.22) 0);
+  transition: background 0.9s linear;
+}

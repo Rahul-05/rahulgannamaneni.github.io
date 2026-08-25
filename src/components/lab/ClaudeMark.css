@@ -1,0 +1,52 @@
+/* Blink. Slow, irregular-feeling, and never while it is idle in a list --
+   a character that blinks on a metronome is more unsettling than one that
+   does not blink at all. */
+.cmark-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cmark-blink 6.4s steps(1, end) infinite;
+}
+
+@keyframes cmark-blink {
+  0%,
+  92%,
+  96%,
+  100% {
+    transform: scaleY(1);
+  }
+  93%,
+  95% {
+    transform: scaleY(0.16);
+  }
+}
+
+/* Working: the whole character bobs, and the legs alternate underneath it.
+   Two cheap transforms, and it reads as walking rather than as a spinner. */
+.cmark.is-busy .cmark-body {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: cmark-bob 0.62s ease-in-out infinite;
+}
+
+@keyframes cmark-bob {
+  50% {
+    transform: translateY(-3.5%);
+  }
+}
+
+.cmark.is-busy .cmark-leg {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: cmark-step 0.62s ease-in-out infinite;
+}
+
+.cmark.is-busy .cmark-leg--1,
+.cmark.is-busy .cmark-leg--2 {
+  animation-delay: 0.31s;
+}
+
+@keyframes cmark-step {
+  50% {
+    transform: scaleY(0.55);
+  }
+}

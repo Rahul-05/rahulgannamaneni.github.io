@@ -1,0 +1,293 @@
+.hero {
+  background: var(--black);
+}
+
+/* ── 3d scene: wordmark plane + card ring share one 3D context ── */
+.ring-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* nothing inside the draggable scene should ever highlight */
+.ring-scene * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ring-scene.is-dragging {
+  cursor: grabbing;
+}
+
+/* the wordmark is a plane at z=0 — front cards (translateZ > 0) render
+   over it, back cards behind it */
+/* The letters grow UP from a shared baseline, so the block is anchored by
+   its bottom edge and given headroom above for the tallest stretch. */
+.hero-title {
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  height: 37vh;
+  display: flex;
+  align-items: flex-end;
+  font-size: clamp(84px, 17vw, 290px);
+  line-height: 0.8;
+  color: var(--cream);
+  transform: translateZ(0);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* scaled by JS to exactly span the viewport; letters keep their own widths
+   so wide glyphs stay wide — the justified look from the reference */
+.hero-title-fit {
+  display: inline-block;
+  transform-origin: left bottom;
+  white-space: nowrap;
+}
+
+.hero-title .mask-line {
+  display: inline-block;
+  overflow: visible;
+  vertical-align: bottom;
+}
+
+.hero-title .mask-inner {
+  display: inline-block;
+  /* transform-origin is measured per letter in baseline.js */
+  will-change: transform;
+}
+
+.hero-tick {
+  font-style: normal;
+  font-size: 0.5em;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.ring-tilt {
+  position: relative;
+  transform: rotate(-9deg);
+  transform-style: preserve-3d;
+  margin-top: 16vh;
+}
+
+.ring {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-9deg);
+}
+
+/* radius ≈ (10 cards × width × 1.04) / 2π ≈ 1.655 × card width */
+.ring-card {
+  position: absolute;
+  width: clamp(122px, 11.9vw, 180px);
+  height: clamp(172px, 16.6vw, 252px);
+  top: calc(clamp(172px, 16.6vw, 252px) / -2);
+  left: calc(clamp(122px, 11.9vw, 180px) / -2);
+  transform: rotateY(var(--ry)) translateZ(clamp(202px, 19.7vw, 298px));
+  transform-style: preserve-3d;
+}
+
+.ring-card-float {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.ring-card-face {
+  position: absolute;
+  inset: 0;
+  background: var(--off-black);
+  border: 1px solid rgba(255, 252, 225, 0.14);
+  border-radius: 13px;
+  color: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scoped to the ring card. Unscoped, this was setting a black ground and a
+   54% height on every CardArt on the site -- including the generated covers
+   in Work, which sit on a light card. */
+.ring-card .card-art {
+  width: 100%;
+  height: 54%;
+  display: block;
+  padding: 8px;
+  background: var(--black);
+  border-bottom: 1px solid rgba(255, 252, 225, 0.1);
+}
+
+.ring-card-body {
+  padding: 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ring-card-kind {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.ring-card-note {
+  font-size: 8.5px;
+  line-height: 1.35;
+  color: var(--surface-75);
+}
+
+/* dark card back — the far side of the band reads as unlit panels */
+.ring-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background: linear-gradient(160deg, #1c1c1c, #0e100f);
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.ring-card-name {
+  font-size: clamp(11.5px, 1.05vw, 15px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+/* soft shadow band behind the ring — sits between back cards and title */
+.ring-shadow {
+  position: absolute;
+  width: 46vw;
+  height: 18vw;
+  background: radial-gradient(ellipse at center, rgba(10, 228, 72, 0.22), transparent 65%);
+  filter: blur(30px);
+  transform: rotate(-9deg) translateY(9vh) translateZ(-140px);
+}
+
+/* ── tagline ────────────────────────────────────── */
+.hero-tagline {
+  position: absolute;
+  left: var(--pad);
+  bottom: 62px;
+  z-index: 3;
+  color: var(--cream);
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* the role, under the claim */
+.hero-role {
+  position: absolute;
+  left: var(--pad);
+  bottom: 34px;
+  z-index: 3;
+  color: var(--cream);
+  font-size: clamp(12px, 1.05vw, 15px);
+  font-weight: 500;
+  opacity: 0.68;
+}
+
+.hero-role .mask-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* boxed by height: the CPP mark is 5.7:1 and a square would crush it */
+.hero-role img {
+  height: 13px;
+  width: auto;
+  display: block;
+  /* the mark is navy on a black ground, so it is lifted to the cream */
+  filter: brightness(0) invert(1);
+}
+
+.hero-arrow {
+  display: inline-block;
+  width: 0.8em;
+  vertical-align: -0.15em;
+  margin-left: 6px;
+}
+
+/* ══════════ hero: phone ══════════ */
+@media (max-width: 900px) {
+  /* the ring is the hero's whole idea, so it is scaled rather than dropped */
+  .ring-card {
+    width: clamp(96px, 27vw, 150px);
+    height: clamp(136px, 38vw, 210px);
+    top: calc(clamp(136px, 38vw, 210px) / -2);
+    left: calc(clamp(96px, 27vw, 150px) / -2);
+    transform: rotateY(var(--ry)) translateZ(clamp(160px, 45vw, 248px));
+  }
+
+  .ring-tilt {
+    margin-top: 10vh;
+  }
+
+  .ring-card .card-art {
+    height: 50%;
+    padding: 6px;
+  }
+
+  .ring-card-body {
+    padding: 7px 8px;
+    gap: 3px;
+  }
+
+  .ring-card-kind {
+    font-size: 7px;
+  }
+  .ring-card-name {
+    font-size: 11px;
+  }
+  .ring-card-note {
+    display: none;
+  }
+
+  .hero-title {
+    height: 26vh;
+  }
+
+  .hero-tagline {
+    bottom: 96px; /* clears the role line and the floating contact pill */
+    font-size: clamp(15px, 4.4vw, 22px);
+    max-width: 78%;
+  }
+
+  /* the contact pill owns the bottom right down here, so the role line is
+     capped short of it rather than being allowed to run underneath */
+  .hero-role {
+    bottom: 66px;
+    max-width: 62vw;
+    font-size: 11.5px;
+  }
+
+  .hero-role img {
+    height: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-tagline {
+    max-width: 90%;
+    bottom: 90px;
+  }
+}

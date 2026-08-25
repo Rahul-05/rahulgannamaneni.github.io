@@ -1,0 +1,134 @@
+.matic {
+  position: absolute;
+  inset: 0;
+  background: #f2f2f7;
+  touch-action: none;
+}
+
+.matic-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: default;
+}
+
+/* placement: rewritten every frame from the interpolation, so no transition */
+.matic-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* press feedback: its own layer so it can spring without fighting placement */
+.matic-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.matic-card.is-held {
+  transform: scale(0.92);
+}
+
+.matic-card.is-held::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.matic-grab {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 36px;
+  height: 5px;
+  margin-left: -18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+/* ── the two content layers, cross-faded ── */
+.matic-collapsed,
+.matic-expanded {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.matic-collapsed h4 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.matic-collapsed p {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.matic-expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+.matic-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.matic-head h4 {
+  max-width: 184px;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.matic-when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.matic-rule {
+  height: 1px;
+  margin: 24px 0;
+}
+
+.matic-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.matic-body h5 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.matic-body p {
+  font-size: 16px;
+  line-height: 1.5;
+}

@@ -1,0 +1,138 @@
+/* Bottom left. Centred it sat in the middle of whatever the section had at
+   its foot -- a card ring, a row of cards, a testimonial rail -- and it is a
+   hint, not a control, so it belongs in the corner nothing else wants. */
+.cue {
+  position: fixed;
+  left: var(--pad);
+  bottom: 16px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 0;
+  border: 0;
+  background: none;
+  color: var(--cream);
+  cursor: pointer;
+  isolation: isolate;
+  animation: cue-in 0.5s cubic-bezier(0.2, 1, 0.3, 1) both;
+}
+
+.cue--dark {
+  color: var(--black);
+}
+
+/* It floats over whatever the section has at its foot -- cards, a card ring,
+   a testimonial rail -- so it needs its own separation. A blur rather than a
+   solid chip, because a pill down here would read as a third button next to
+   the contact CTA and the home indicator. */
+.cue::before {
+  content: '';
+  position: absolute;
+  inset: -7px -16px;
+  z-index: -1;
+  border-radius: 999px;
+  background: rgba(255, 252, 225, 0.12);
+  backdrop-filter: blur(7px);
+  -webkit-mask-image: radial-gradient(70% 80% at 50% 50%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(70% 80% at 50% 50%, #000 35%, transparent 100%);
+}
+
+.cue--dark::before {
+  background: rgba(14, 16, 15, 0.07);
+}
+
+@keyframes cue-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.cue-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  text-align: left;
+  white-space: nowrap;
+  opacity: 0.74;
+  transition: opacity 0.24s ease;
+}
+
+.cue:hover .cue-label {
+  opacity: 1;
+}
+
+.cue-label em {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+/* The breathing arrow. It travels down and eases back rather than bouncing
+   on a symmetric curve -- a bounce reads as a toy, a slow fall and a quicker
+   recovery reads as a hint being repeated. */
+/* Thicker and shorter -- at this size a long thin arrow reads as a stray
+   rule, and the head is the part carrying the meaning. */
+.cue-arrow svg {
+  width: 18px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: cue-fall 2s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+
+@keyframes cue-fall {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  45% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cue,
+  .cue-arrow svg {
+    animation: none;
+  }
+}
+
+/* ══════════ phone ══════════ */
+@media (max-width: 720px) {
+  .cue {
+    bottom: 10px;
+    gap: 8px;
+  }
+
+  .cue-label {
+    font-size: 11px;
+  }
+
+  .cue-label em {
+    font-size: 8.5px;
+  }
+
+  .cue-arrow svg {
+    width: 16px;
+    height: 13px;
+    stroke-width: 3;
+  }
+}

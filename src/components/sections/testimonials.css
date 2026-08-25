@@ -1,0 +1,214 @@
+.testi {
+  background: var(--blue);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-h) + 1.5vh) 0 3vh;
+}
+
+.testi-kicker {
+  text-align: center;
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-weight: 600;
+  margin-bottom: 1vh;
+  padding: 0 var(--pad);
+}
+
+.testi-word {
+  font-size: 15vh;
+  color: var(--black);
+  padding: 0 var(--pad);
+}
+
+/* ── the sliding rail ── */
+.testi-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-left: var(--pad);
+  margin-top: 2vh;
+}
+
+.testi-rail {
+  display: flex;
+  gap: clamp(16px, 2vw, 32px);
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+}
+
+.testi-rail.is-dragging {
+  cursor: grabbing;
+}
+
+.testi-card {
+  flex: 0 0 auto;
+  width: clamp(280px, 30vw, 440px);
+  background: var(--cream);
+  padding: clamp(18px, 2vw, 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(210px, 26vh, 300px);
+  box-shadow: 0 24px 50px rgba(0, 0, 30, 0.16);
+  opacity: 0.45;
+  transform-origin: center left;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* the one being read sits forward, the rest recede */
+.testi-card.is-current {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.testi-quote {
+  font-size: clamp(13.5px, 1.15vw, 17px);
+  line-height: 1.5;
+}
+
+.testi-person {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2.4vh;
+  padding-top: 1.6vh;
+  border-top: 1px solid rgba(14, 16, 15, 0.18);
+}
+
+.testi-person-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12.5px;
+}
+
+.testi-person-meta strong {
+  font-weight: 600;
+}
+
+.testi-person-meta span {
+  opacity: 0.6;
+}
+
+/* Marks come at very different aspect ratios, so they are boxed to one
+   height and keep their own width -- CPP is 5.7:1, Keka is near square. */
+.testi-logo {
+  flex: 0 0 auto;
+  /* wide lockups need the height to stay legible; UMD is 3:1 and its
+     wordmark disappears much below this */
+  height: 27px;
+  width: auto;
+  max-width: 132px;
+  object-fit: contain;
+  display: block;
+  /* a couple of these ship with a white ground baked in, and the card is
+     cream -- the radius keeps that edge from looking like a crop */
+  border-radius: 3px;
+}
+
+/* fallback for anyone whose mark we do not have */
+.testi-mark {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
+
+/* ── controls ── */
+.testi-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 2.2vh var(--pad) 0;
+}
+
+.testi-btn {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--black);
+  border-radius: 50%;
+  color: var(--black);
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.testi-btn:hover:not(:disabled) {
+  background: var(--black);
+  color: var(--blue);
+}
+
+.testi-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.testi-count {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  min-width: 74px;
+  text-align: center;
+}
+
+/* ══════════ testimonials: phone ══════════ */
+@media (max-width: 720px) {
+  .testi {
+    padding: calc(var(--nav-h) + 1vh) 0 2vh;
+  }
+  .testi-kicker {
+    font-size: 12px;
+    padding: 0 var(--pad);
+  }
+  .testi-word {
+    font-size: 9vh;
+  }
+
+  .testi-stage {
+    margin-top: 1.4vh;
+  }
+
+  /* one card fills the reading width, the next one peeks in */
+  .testi-card {
+    width: min(78vw, 340px);
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .testi-quote {
+    font-size: 13px;
+  }
+  .testi-person {
+    margin-top: 1.6vh;
+    padding-top: 1.2vh;
+  }
+
+  /* the scroll cue sits bottom-left on this width, so the rail's controls
+     lift clear of it rather than sharing the line */
+  .testi-controls {
+    gap: 14px;
+    padding: 1.6vh var(--pad) 46px;
+  }
+  .testi-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
