@@ -8,7 +8,1162 @@
 // /public/work/<slug>/; without one the slot renders as a labelled
 // placeholder.
 
+// image path prefixes, so a folder rename is one edit rather than sixty
+const W = '/work/data-product-marketplace';
+const A = '/work/ai-agent-usage-dashboard';
+const I = '/work/data-ingestion-flow';
+const C = '/work/ai-keyword-domain-model';
+
 export const CASE_CONTENT = {
+  // ─────────────────────────────────────────────────────────────────────────
+  // 4 · Conceptual domain model
+  // Built with the people who hold the vocabulary rather than for them.
+  cdm: [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: 'grid',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Getting a firm to agree what its own words mean',
+          body: [
+            'A conceptual domain model records the concepts a department works with, the terms that express them, and how those relate to one another and to the data products underneath. It is the layer that lets someone ask a question in business language and have the platform know what they meant.',
+          ],
+        },
+        {
+          type: 'stats',
+          items: [
+            { k: 'Context', v: 'Enterprise platform' },
+            { k: 'My role', v: 'Product design, systems' },
+            { k: 'Surface', v: 'CDM library and model editor' },
+            { k: 'Built with', v: 'Domain stewards, per department' },
+          ],
+        },
+        {
+          type: 'feature',
+          src: C + '/relationships.webp',
+          media: 'Typed relationships between concepts and terms',
+          chrome: true,
+          url: 'dataportal / admin / cdm / active-equities',
+          title: 'The model is the relationships',
+          body: 'Concepts and terms are the easy half. What makes the model useful is the typed links between them, and the cardinality on each one, because that is what turns a glossary into something a machine can reason over.',
+        },
+      ],
+    },
+    {
+      id: 'problem',
+      label: 'The problem',
+      icon: 'alert',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Everyone was right, and the numbers still disagreed',
+          body: [
+            'Two departments reporting different figures for the same question, both correct within their own definition, is the most expensive kind of disagreement because there is nothing to fix. The vocabulary lived in people\u2019s heads and in slide decks, and it diverged quietly for years.',
+          ],
+        },
+        {
+          type: 'list',
+          title: 'What that cost',
+          items: [
+            'Reconciliation meetings that were really vocabulary meetings.',
+            'Search that could not connect a business question to the data product that answered it.',
+            'New joiners learning definitions by asking, which spreads the divergence further.',
+            'No way to say which definition is the authoritative one, so nobody could be wrong.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'collaboration',
+      label: 'Built with stewards',
+      icon: 'lightbulb',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'The theory was built with the people who own the words',
+          body: [
+            'This could not be designed and handed over. The structure came out of working sessions with domain stewards, per department, asking how they actually think about their own concepts, what a term means to them, and where they know their vocabulary collides with another team\u2019s.',
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'orbit',
+          k: 'The shape came from them, the constraints came from the platform',
+          text: 'Stewards defined what a relationship between two concepts should be able to say. The platform defined what it could enforce. The model is where those met, and the editor is a straight expression of it.',
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: C + '/library.webp',
+              label: 'The CDM library, one model per department',
+              url: 'dataportal / admin / cdm',
+            },
+            {
+              src: C + '/create-model.webp',
+              label: 'Creating a model, scoped to a department',
+              url: 'dataportal / admin / cdm',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'concepts',
+      label: 'Concepts and terms',
+      icon: 'layers',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Two levels, deliberately separated',
+          body: [
+            'A concept is the idea, Capital Allocation. A term is how a particular department says it, with its own definition and calculation. Keeping them apart is what lets two teams keep their language and still agree on the underlying thing.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: C + '/concepts.webp',
+              label: 'Concepts, with definitions and their owning department',
+              url: 'dataportal / admin / cdm / concepts',
+            },
+            {
+              src: C + '/terms.webp',
+              label: 'A term, with its definition and calculation',
+              url: 'dataportal / admin / cdm / terms',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'relationships',
+      label: 'Relationships',
+      icon: 'flow',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Typed links, with cardinality, that validate themselves',
+          body: [
+            'Every link says what kind of thing it is, and how many of one relates to how many of the other. That constraint is what makes the model checkable, which is why the editor can tell you all 58 relationships look good rather than leaving you to audit them.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: C + '/relationship-patterns.webp',
+              label: 'Choosing the relationship pattern',
+              url: 'dataportal / admin / cdm / relationships',
+            },
+            {
+              src: C + '/define-relationship.webp',
+              label: 'Defining one link and its cardinality',
+              url: 'dataportal / admin / cdm / relationships',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: C + '/relationship-list.webp',
+          media: 'Every relationship in the model, filtered by type',
+          chrome: true,
+          url: 'dataportal / admin / cdm / relationships',
+          flip: true,
+          title: 'Filtered by the kind of link',
+          body: 'Concept to concept, concept to term, term to term, concept to data product. The counts alongside each type make the shape of the model readable before any single row is.',
+        },
+      ],
+    },
+    {
+      id: 'context',
+      label: 'Business context',
+      icon: 'book',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Where the model meets how people speak',
+          body: [
+            'The context step captures the questions each concept is expected to answer and the language people use when they ask. This is the layer search reads, and it is why a question phrased in department vocabulary can find a data product named in engineering vocabulary.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: C + '/business-context.webp',
+              label: 'Business context per concept',
+              url: 'dataportal / admin / cdm / context',
+            },
+            {
+              src: C + '/context-grid.webp',
+              label: 'The questions each concept is expected to answer',
+              url: 'dataportal / admin / cdm / context',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: C + '/review-save.webp',
+          media: 'Review and save, with every change marked',
+          chrome: true,
+          url: 'dataportal / admin / cdm / review',
+          title: 'Changes reviewed before they are published',
+          body: 'A model that anyone can quietly edit is worth nothing. Every change is marked against the approved version and reviewed as a delta before it becomes the authority.',
+        },
+      ],
+    },
+    {
+      id: 'outcome',
+      label: 'Outcome',
+      icon: 'trend',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What changed',
+          body: [
+            'The firm got a written, owned, checkable vocabulary per department, and a way to say which definition is authoritative. That is unglamorous and it is the foundation everything else in the platform stands on.',
+          ],
+        },
+        {
+          type: 'list',
+          title: 'What it moved',
+          items: [
+            'Definition disagreements became a change request against a model rather than an argument in a meeting.',
+            'Search could connect a business question to the data product that answers it.',
+            'Every concept got an owner, so a question about a word had somewhere to go.',
+            'The agent had a vocabulary to reason over, which is what made its answers land in the language people asked in.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'learnings',
+      label: 'Learnings',
+      icon: 'book',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What I took from it',
+          body: ['This one was as much facilitation as design.'],
+        },
+        {
+          type: 'list',
+          items: [
+            'Nobody will adopt a vocabulary they were handed. Building the structure in sessions with the stewards who own the words is slower and it is the only version that survives.',
+            'Separating the concept from the term let two departments keep their own language without either of them losing the argument, which is what made agreement possible at all.',
+          ],
+        },
+      ],
+    },
+  ],
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 3 · Data product ingestion
+  // The spreadsheet problem, solved at the point of entry rather than cleaned
+  // up afterwards.
+  ingestion: [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: 'grid',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Replacing the spreadsheet with a form that knows things',
+          body: [
+            'Registering a data product used to mean filling in a workbook and emailing it. This is the form that replaced it: you give it a view name, it reaches into the catalogue and fills in the underlying tables, every column and every type, and then it validates all of it before a human is asked to approve anything.',
+          ],
+        },
+        {
+          type: 'stats',
+          items: [
+            { k: 'Context', v: 'Enterprise platform' },
+            { k: 'My role', v: 'Product design, UX engineering' },
+            { k: 'Surface', v: 'Onboarding and management' },
+            { k: 'Replaces', v: 'Templated spreadsheets' },
+          ],
+        },
+        {
+          type: 'feature',
+          src: I + '/onboarding-list.webp',
+          media: 'Data product onboarding and management',
+          chrome: true,
+          url: 'dataportal / admin / onboarding',
+          title: 'Everything in flight, in one list',
+          body: 'Draft, in review, approved and rejected in a single queue, with the state of each request visible without opening it.',
+        },
+      ],
+    },
+    {
+      id: 'problem',
+      label: 'The problem',
+      icon: 'alert',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Templates do not survive contact with people',
+          body: [
+            'The org needed data described consistently across every department, so it issued spreadsheet templates. They were good templates. It made almost no difference. Normalisation was done by hand, validation happened after the fact if at all, and every submission arrived a little different from the last one.',
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'steps',
+          k: 'And the cost landed somewhere nobody was looking',
+          text: 'Inconsistent metadata fed straight into everything downstream. Answers degraded, search ranked the wrong things, and tracing any of it back to the workbook cell that caused it was a week of work nobody had.',
+        },
+        {
+          type: 'list',
+          title: 'What went wrong, repeatedly',
+          items: [
+            'The same column described four ways by four teams.',
+            'Types entered as free text, so validation was impossible.',
+            'Errors found weeks later by whoever consumed the data, not by the person who entered it.',
+            'No version history, so nobody could see what a submission used to say.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'autofill',
+      label: 'Auto-fill',
+      icon: 'code',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Ask for the one thing only a person knows',
+          body: [
+            'The insight that made the form work: almost everything in that spreadsheet already existed in the catalogue. The person only needs to supply the view name. Everything structural is derived, and what remains for a human is the part that requires judgement rather than transcription.',
+          ],
+        },
+        {
+          type: 'feature',
+          src: I + '/core-metadata.webp',
+          media: 'Core metadata, with identity, location, ownership and timing',
+          chrome: true,
+          url: 'dataportal / onboarding / core-metadata',
+          title: 'Derived structure, authored meaning',
+          body: 'Tables, columns and types are pulled in and locked. Names, descriptions, ownership and classification are the human contribution, and the form is explicit about which is which.',
+          points: [
+            'The step rail carries completion state, so progress is legible from any step.',
+            'Each group reports its own completeness rather than a single count at the end.',
+          ],
+        },
+        {
+          type: 'split',
+          src: I + '/attributes.webp',
+          media: 'Bulk attribute entry across every column',
+          chrome: true,
+          url: 'dataportal / onboarding / attributes',
+          title: 'Bulk entry, because the alternative is abandonment',
+          body: 'Describing a hundred columns one modal at a time is how a form gets left half finished. Attributes are edited in place, in a grid, with the technical metadata already filled in beside each row.',
+        },
+      ],
+    },
+    {
+      id: 'validation',
+      label: 'Validation',
+      icon: 'alert',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Fail at the point of entry, not at the point of use',
+          body: [
+            'The whole argument for this form is that a mistake caught here costs a minute, and the same mistake caught downstream costs a week. So validation runs against the live catalogue while the person is still in the room.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: I + '/validation.webp',
+              label: 'Four items needing attention, each naming the exact object',
+              url: 'dataportal / onboarding / validate',
+            },
+            {
+              src: I + '/errors.webp',
+              label: 'Errors resolved against the catalogue in place',
+              url: 'dataportal / onboarding / validate',
+            },
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'arc',
+          k: 'An error that names the object beats one that names the rule',
+          text: 'View not found in Glue catalog, and then the exact view name, is actionable. Invalid input is not. Every message points at the thing it is complaining about and, where it can, at the fix.',
+        },
+      ],
+    },
+    {
+      id: 'dsl',
+      label: 'Flow expression',
+      icon: 'flow',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Describing how the data moves',
+          body: [
+            'A product is not just its columns, it is the transformation that produced them. The flow step captures that as an expression, and draws it, so the person writing it can see whether the shape matches what they meant.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: I + '/dsl-editor.webp',
+              label: 'The flow expression alongside its generated diagram',
+              url: 'dataportal / onboarding / data-flow',
+            },
+            {
+              src: I + '/dsl-visual.webp',
+              label: 'The same flow as a node graph',
+              url: 'dataportal / onboarding / data-flow',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: I + '/use-cases.webp',
+          media: 'Use cases and the questions this product answers',
+          chrome: true,
+          url: 'dataportal / onboarding / use-cases',
+          flip: true,
+          title: 'And what it is for',
+          body: 'The use case step asks what questions this product is meant to answer. It is the field that later makes search work, because it is written in the language people search in.',
+        },
+      ],
+    },
+    {
+      id: 'approval',
+      label: 'Approval',
+      icon: 'shield',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Governance that shows its working',
+          body: [
+            'A submission goes to an approver who did not write it and may not know the domain. Everything that person needs to judge it has to be on one screen, including what changed since the last approved version.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: I + '/approval.webp',
+              label: 'Review and approval readiness',
+              url: 'dataportal / onboarding / approval',
+            },
+            {
+              src: I + '/diff.webp',
+              label: 'Changes from the original record, field by field',
+              url: 'dataportal / onboarding / approval',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: I + '/version-history.webp',
+          media: 'Governed version history',
+          chrome: true,
+          url: 'dataportal / onboarding / history',
+          title: 'Every version kept',
+          body: 'A field level diff against the previously approved record, so an approver reviews the delta rather than re-reading the whole submission.',
+        },
+      ],
+    },
+    {
+      id: 'outcome',
+      label: 'Outcome',
+      icon: 'trend',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What changed',
+          body: [
+            'Registering a product went from a workbook and a wait to a guided form that fails fast. More importantly, what comes out the other end is uniform, which is the thing everything downstream was missing.',
+          ],
+        },
+        {
+          type: 'list',
+          title: 'What it moved',
+          items: [
+            'Structural metadata stopped being typed by hand, so it stopped being wrong.',
+            'Errors surfaced during entry rather than weeks later in someone else\u2019s pipeline.',
+            'Approvers reviewed a diff instead of a document.',
+            'Downstream answers improved without anyone touching the model, because the descriptions underneath them finally agreed.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'learnings',
+      label: 'Learnings',
+      icon: 'book',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What I took from it',
+          body: ['Mostly about where to put the effort.'],
+        },
+        {
+          type: 'list',
+          items: [
+            'The best fix for a data quality problem was a form, not a cleanup job. Everything upstream of the mistake is cheaper than everything downstream of it.',
+            'People will fill in a long form if it is obviously doing work for them. The moment it asks for something it could have looked up, they stop believing in it.',
+          ],
+        },
+      ],
+    },
+  ],
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 2 · AI agent and usage dashboard
+  // Two halves of one argument: an agent that asks before it answers, and a
+  // dashboard that made the firm's own usage legible to the people running it.
+  agent: [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: 'grid',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'An agent that asks first, and a dashboard that watches it',
+          body: [
+            'The agent answers questions about a data product in words. The dashboard answers a different question, for a different person: where is this being used across the firm, what is it being asked, and which parts of it are quietly failing.',
+          ],
+        },
+        {
+          type: 'stats',
+          items: [
+            { k: 'Context', v: 'Enterprise platform' },
+            { k: 'My role', v: 'Product design, UX engineering' },
+            { k: 'Surfaces', v: 'In-product agent, usage dashboard' },
+            { k: 'Audience', v: 'Analysts, and the people who own the platform' },
+          ],
+        },
+        {
+          type: 'feature',
+          src: A + '/dashboard.webp',
+          media: 'The agent usage dashboard',
+          chrome: true,
+          url: 'dataportal / admin / agent-usage',
+          title: 'The half that got attention',
+          body: 'Building the agent was the expected work. The dashboard was the thing leadership asked for a second time, because it answered a question nobody could previously answer about their own product.',
+        },
+      ],
+    },
+    {
+      id: 'asking',
+      label: 'Asking well',
+      icon: 'lightbulb',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'The design problem was the question, not the answer',
+          body: [
+            'A question like what happened to risk exposure has half a dozen readings, and answering the wrong one confidently is worse than not answering. The agent is built to narrow before it commits: it asks what kind of information you are after, then what shape you want it in.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: A + '/agent-open.webp',
+              label: 'The opening turn, offering directions rather than a blank box',
+              url: 'dataportal / recourse-leverage',
+            },
+            {
+              src: A + '/agent-clarify.webp',
+              label: 'Narrowing what the person actually means',
+              url: 'dataportal / recourse-leverage',
+            },
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'orbit',
+          k: 'Clarifying questions are UI, not conversation filler',
+          text: 'Each clarifying turn is a small set of concrete choices, not an open prompt. People answer a choice in a second and abandon an open question, and the choice is also what keeps the agent inside what the data can actually support.',
+        },
+        {
+          type: 'split',
+          src: A + '/agent-mode.webp',
+          media: 'Choosing between a normal answer and a detailed one',
+          chrome: true,
+          url: 'dataportal / recourse-leverage',
+          title: 'Depth is the person\u2019s decision',
+          body: 'Normal mode answers. Debug mode shows the SQL, the metadata it leaned on and the assumptions it made. The same question, two audiences, one control.',
+        },
+      ],
+    },
+    {
+      id: 'answering',
+      label: 'Answering',
+      icon: 'flow',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'And the answer has a shape you chose',
+          body: [
+            'Some answers want prose. Some want a diagram. Rather than guessing, the agent asks what output would help, then produces that: a structured summary, a lineage graph, a table, an image it can hand over.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: A + '/agent-format.webp',
+              label: 'Picking the output format before generating it',
+              url: 'dataportal / recourse-leverage',
+            },
+            {
+              src: A + '/agent-answer.webp',
+              label: 'A structured answer with identifiers, classification and instrument detail',
+              url: 'dataportal / recourse-leverage',
+            },
+          ],
+        },
+        {
+          type: 'feature',
+          src: A + '/agent-graph.webp',
+          media: 'A lineage graph generated inside the conversation',
+          chrome: true,
+          url: 'dataportal / recourse-leverage',
+          title: 'A graph generated from a sentence',
+          body: 'Asked for a visual representation of lineage, the agent draws the dependency map for that product inside the thread, and then explains what it drew.',
+        },
+        {
+          type: 'split',
+          src: A + '/lineage-map.webp',
+          media: 'The data product lineage and dependency map',
+          flip: true,
+          title: 'The picture people forwarded',
+          body: 'Source systems, the product, its downstream consumers and the reports that sit on top of them. This diagram left the tool and ended up in decks, which is the clearest signal that it was doing work.',
+        },
+      ],
+    },
+    {
+      id: 'story-one',
+      label: 'Where it is used',
+      icon: 'chart',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Story one: which parts of the firm actually use this',
+          body: [
+            'The first thing the dashboard settles is the argument about adoption. Not a total, but the shape: which departments, which products, and how concentrated the usage is on a small number of teams.',
+          ],
+        },
+        {
+          type: 'feature',
+          src: A + '/usage-overview.webp',
+          media: 'Usage across the organisation',
+          chrome: true,
+          url: 'dataportal / admin / agent-usage',
+          title: 'Totals, then the breakdown that makes them mean something',
+          body: 'Four counts across the top for the glance, and underneath them the split by department and by product, because the total on its own has never answered a question anyone had.',
+          points: [
+            'Top product share is the number that ends the where should we invest conversation.',
+            'Unique users against total questions separates broad adoption from one enthusiastic team.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: A + '/usage-charts.webp',
+              label: 'Questions by department and by data product',
+              url: 'dataportal / admin / agent-usage',
+            },
+            {
+              src: A + '/usage-department.webp',
+              label: 'The same view scoped to one department',
+              url: 'dataportal / admin / agent-usage',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'story-two',
+      label: 'What is asked',
+      icon: 'search',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Story two: what people are actually asking',
+          body: [
+            'The second story is the one nobody had before. Every conversation is a person telling you, in their own words, what they could not find on their own. Read in bulk, that is the most direct product feedback the platform has ever had.',
+          ],
+        },
+        {
+          type: 'split',
+          src: A + '/conversations.webp',
+          media: 'Every conversation, filterable by product, department and date',
+          chrome: true,
+          url: 'dataportal / admin / agent-usage / conversations',
+          title: 'The log is the research',
+          body: 'Filterable by product, department and period, so a product owner can read a fortnight of real questions about their own data product in one sitting.',
+        },
+        {
+          type: 'split',
+          src: A + '/thread-summary.webp',
+          media: 'A full conversation with its generated summary',
+          chrome: true,
+          url: 'dataportal / admin / agent-usage / conversations',
+          flip: true,
+          title: 'And each thread opens whole',
+          body: 'The question, the clarifying turns, what the agent answered and what it generated. Reading the failures matters more than reading the successes.',
+        },
+      ],
+    },
+    {
+      id: 'story-three',
+      label: 'What is failing',
+      icon: 'alert',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Story three: where the product is quietly wrong',
+          body: [
+            'This is the one that paid for the whole thing. A question the agent answers badly is almost never an agent problem. It is a missing description, an undocumented column, a definition two departments disagree about. The dashboard turned that into a queue.',
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'spark',
+          k: 'It found the firm\u2019s own gaps',
+          text: 'Clusters of poor answers pointed straight at the metadata behind them. Fixing the description fixed every future answer that would have leaned on it, which made the dashboard a data quality instrument rather than an analytics page.',
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: A + '/generated-sql.webp',
+              label: 'The SQL the agent generated, open for inspection',
+              url: 'dataportal / admin / agent-usage',
+            },
+            {
+              src: A + '/ecosystem.webp',
+              label: 'The ecosystem view built from what people asked',
+              url: 'dataportal / admin / agent-usage',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'outcome',
+      label: 'Outcome',
+      icon: 'trend',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What changed',
+          body: [
+            'The agent lowered the cost of asking a question about a data product from a support ticket to a sentence. The dashboard did something less expected: it made the platform team the best informed people in the building about their own product.',
+          ],
+        },
+        {
+          type: 'list',
+          title: 'What it moved',
+          items: [
+            'Product owners started reading real questions about their own data products instead of guessing at them.',
+            'Poor answers became a metadata backlog with an owner, rather than an anecdote in a meeting.',
+            'Adoption arguments got settled with the department split rather than with opinion.',
+            'The usage view became the thing other internal teams asked for once they saw it, which is how the platform spread.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'learnings',
+      label: 'Learnings',
+      icon: 'book',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What I took from it',
+          body: ['Both lessons are about restraint.'],
+        },
+        {
+          type: 'list',
+          items: [
+            'An agent that asks two short questions before answering is trusted more than one that answers immediately, even when the immediate answer would have been right. The asking is what makes the answer legible.',
+            'Instrumenting the assistant turned out to be worth more than the assistant. Watching what people ask is the cheapest research the platform has, and it runs whether or not anyone is looking.',
+          ],
+        },
+      ],
+    },
+  ],
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 1 · Data portal and data factory
+  // Written around the argument rather than the screens: the org had data
+  // everywhere and no way to trust any of it, and every downstream AI answer
+  // inherited that.
+  portal: [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: 'grid',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'One place to find data, and a reason to trust it',
+          body: [
+            'Teams across the firm needed data from outside their own department, and there was no single place to go and no way to tell whether what they found was current, governed or safe to use. The portal is the front door. The data factory behind it is what makes anything in the portal worth believing.',
+          ],
+        },
+        {
+          type: 'stats',
+          items: [
+            { k: 'Context', v: 'Enterprise platform' },
+            { k: 'My role', v: 'Product design, UX engineering' },
+            { k: 'Surfaces', v: 'Portal, product pages, factory' },
+            { k: 'Users', v: 'Risk, Finance, Investment, Tech' },
+          ],
+        },
+        {
+          type: 'feature',
+          src: W + '/browse.webp',
+          media: 'Browsing data products by department',
+          chrome: true,
+          url: 'dataportal / departments / risk',
+          title: 'Search first, browse second',
+          body: 'Most people arrive knowing what they need in business language, not in table names. Search leads, department browsing is the fallback for people who want to see the shape of a domain before they commit to a query.',
+        },
+      ],
+    },
+    {
+      id: 'problem',
+      label: 'The problem',
+      icon: 'alert',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'The data was fine. Everything around it was not.',
+          body: [
+            'Teams needed data across the whole organisation, so they collected it in spreadsheets. Even with the best templates, normalisation and validation happened by hand and inconsistently, and every workbook diverged a little further from the last. That was survivable while people read the numbers themselves. It stopped being survivable the moment anything automated tried to.',
+          ],
+        },
+        {
+          type: 'highlight',
+          figure: 'spark',
+          k: 'Bad structure is not a data problem, it is a model problem',
+          text: 'Feeding those spreadsheets into anything downstream degraded the results, and it degraded them quietly. The answers looked plausible. Tracing a wrong answer back through an undocumented workbook to the column that caused it took days, and usually nobody bothered.',
+        },
+        {
+          type: 'list',
+          title: 'What people actually hit',
+          items: [
+            'No way to find out whether a data product already existed, so several teams built the same one.',
+            'No shared definition of a field, so two departments reported different numbers for the same question and both were right.',
+            'No visible ownership, so a question about a column had no obvious person to ask.',
+            'No lineage, so nobody could answer what breaks if this changes.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'navigation',
+      label: 'Navigation',
+      icon: 'search',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'A catalogue people can enter from any direction',
+          body: [
+            'The hardest navigation problem here was that there is no single right hierarchy. A risk analyst thinks in departments, an engineer thinks in source systems, and somebody new thinks in plain questions. The portal supports all three rather than picking one and making the other two wrong.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: W + '/landing.webp',
+              label: 'The landing view, with the catalogue sized up front',
+              url: 'dataportal',
+            },
+            {
+              src: W + '/departments.webp',
+              label: 'Browsing by department',
+              url: 'dataportal / departments',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: W + '/search-results.webp',
+          media: 'Search results with the assistant alongside',
+          chrome: true,
+          url: 'dataportal / search',
+          title: 'Results, then help reading them',
+          body: 'A search returns products, and beside them an assistant that explains why these results and what the differences between them are. Someone who does not yet know the vocabulary gets a way in that is not a support ticket.',
+        },
+      ],
+    },
+    {
+      id: 'product',
+      label: 'Product page',
+      icon: 'layers',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Everything a person needs before they commit',
+          body: [
+            'The product page carries a great deal: what this is, who owns it, how fresh it is, what the columns mean, how good the data is, who already has access and where it came from. The design problem was density. Every tab is a question somebody asked before they were willing to use the thing.',
+          ],
+        },
+        {
+          type: 'feature',
+          src: W + '/product-overview.webp',
+          media: 'A data product overview',
+          chrome: true,
+          url: 'dataportal / active-risk',
+          title: 'Overview answers the first question',
+          body: 'What it is, in a sentence a non-specialist can read, then the metadata that decides whether it is fit for the purpose in front of them.',
+          points: [
+            'Ownership and stewardship named, so questions have an address.',
+            'Refresh cadence and classification sit next to the description, not three clicks away.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: W + '/column-metadata.webp',
+              label: 'Column level metadata, business and technical side by side',
+              url: 'dataportal / active-risk / metadata',
+            },
+            {
+              src: W + '/quality-scorecard.webp',
+              label: 'Quality scored across dimensions',
+              url: 'dataportal / active-risk / quality',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'quality',
+      label: 'Quality',
+      icon: 'chart',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Quality had to be a number, not a promise',
+          body: [
+            'Everyone claims their data is good. The scorecard makes it specific: completeness, validity, timeliness, each measured and each traceable to the check that produced it. A low score is not a failure state, it is information you can act on before you build on top of it.',
+          ],
+        },
+        {
+          type: 'split',
+          src: W + '/quality-gauges.webp',
+          media: 'Quality dimensions with the underlying checks',
+          chrome: true,
+          url: 'dataportal / active-risk / quality',
+          flip: true,
+          title: 'Every score opens into its evidence',
+          body: 'A gauge that cannot be interrogated is decoration. Each dimension expands to the rules behind it, what they run against and when they last passed.',
+        },
+        {
+          type: 'split',
+          src: W + '/dq-agent.webp',
+          media: 'Asking the quality assistant about a recommendation',
+          chrome: true,
+          url: 'dataportal / active-risk / quality',
+          title: 'And a way to ask about it in words',
+          body: 'The quality assistant answers questions about a specific check on a specific product, which is what people actually want at the moment they are looking at a score they do not like.',
+        },
+      ],
+    },
+    {
+      id: 'governance',
+      label: 'Governance',
+      icon: 'shield',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'Access, entitlement and lineage in the open',
+          body: [
+            'Governance usually lives in a system nobody outside the governance team opens. Putting it on the product page changes who can answer a question about it, which is the whole point.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: W + '/entitlements.webp',
+              label: 'Who has access to this product, and through which role',
+              url: 'dataportal / active-risk / access',
+            },
+            {
+              src: W + '/usage-by-user.webp',
+              label: 'Who is actually using it',
+              url: 'dataportal / active-risk / usage',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'lineage',
+      label: 'Lineage',
+      icon: 'flow',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'The graph that sold the product',
+          body: [
+            'Lineage turned out to be the thing that moved people. Not because it was new, but because it was the first time anyone could see the whole chain in one picture and point at it in a meeting. What breaks if this changes stopped being a research task and became a glance.',
+          ],
+        },
+        {
+          type: 'feature',
+          src: W + '/lineage.webp',
+          media: 'Lineage across upstream sources and downstream consumers',
+          chrome: true,
+          url: 'dataportal / active-risk / lineage',
+          title: 'Upstream and downstream in one frame',
+          body: 'Sources on the left, the product in the middle, everything that depends on it to the right. Colour separates the kinds of node so the shape of the dependency is readable before any label is.',
+          points: [
+            'Expand a node to see the columns that actually carry the dependency.',
+            'The same graph is what the assistant generates when someone asks in words.',
+          ],
+        },
+        {
+          type: 'split',
+          src: W + '/lineage-detail.webp',
+          media: 'Column level lineage between two products',
+          chrome: true,
+          url: 'dataportal / lineage',
+          flip: true,
+          title: 'Down to the column',
+          body: 'Product level lineage answers whether something is connected. Column level answers whether this change affects you, which is the question people are usually really asking.',
+        },
+      ],
+    },
+    {
+      id: 'factory',
+      label: 'Data factory',
+      icon: 'code',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'The half nobody sees',
+          body: [
+            'The portal is only trustworthy if the pipelines behind it are legible. The factory is where a team registers a workspace, wires up services, and watches the jobs that keep every product in the catalogue current.',
+          ],
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: W + '/workspaces.webp',
+              label: 'Workspaces with their platform versions and update state',
+              url: 'dataportal / admin / workspaces',
+            },
+            {
+              src: W + '/services.webp',
+              label: 'Services and compute attached to a workspace',
+              url: 'dataportal / admin / services',
+            },
+          ],
+        },
+        {
+          type: 'split',
+          src: W + '/run-history.webp',
+          media: 'Run history for a pipeline',
+          chrome: true,
+          url: 'dataportal / jobs / tnc-proposals',
+          title: 'Runs read as a history, not a status light',
+          body: 'A single green tick tells you nothing about whether this pipeline is healthy. The run timeline shows the pattern, so a job that has been slowly degrading for a fortnight is visible before it fails.',
+        },
+        {
+          type: 'gallery',
+          chrome: true,
+          items: [
+            {
+              src: W + '/execution-timeline.webp',
+              label: 'The steps inside one execution',
+              url: 'dataportal / jobs / run',
+            },
+            {
+              src: W + '/run-failure.webp',
+              label: 'A failure, with the step and the error that caused it',
+              url: 'dataportal / jobs / run',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'outcome',
+      label: 'Outcome',
+      icon: 'trend',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What changed',
+          body: [
+            'The portal gave the firm a shared vocabulary for its own data, and the lineage graph gave it a way to argue about change without a week of investigation first. Both of those are worth more than the catalogue itself.',
+          ],
+        },
+        {
+          type: 'list',
+          title: 'What it moved',
+          items: [
+            'Duplicate build work fell, because teams could see a product already existed before starting one.',
+            'Definition arguments got shorter, because both parties were reading the same field description.',
+            'Impact analysis became a conversation over a graph rather than a research exercise.',
+            'The catalogue became the thing other internal teams asked to be added to, which is the only adoption signal that counts.',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'learnings',
+      label: 'Learnings',
+      icon: 'book',
+      blocks: [
+        {
+          type: 'prose',
+          lead: 'What I took from it',
+          body: ['Two things, and the second one surprised me.'],
+        },
+        {
+          type: 'list',
+          items: [
+            'Density is not the enemy on an expert tool. Hiding the metadata would have made the page calmer and less useful. The work was in ordering it, not in removing it.',
+            'The feature that sold the platform internally was not search or quality scoring, it was the picture. A graph people can point at in a meeting travels further than a page of correct information.',
+          ],
+        },
+      ],
+    },
+  ],
+
   // ══════════ Guide ══════════
   guide: [
     {

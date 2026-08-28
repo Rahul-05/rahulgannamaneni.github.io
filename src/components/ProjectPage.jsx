@@ -20,11 +20,23 @@ import './projectPage.css';
 // wide flow boards, and boxing them to a fixed ratio letterboxed most of them
 // into bands of dead space. The figure hugs the image instead, so the layout
 // follows the artwork rather than the other way round.
-function Media({ src, label, ratio = '4 / 3', tone = '#1c1c1c', onOpen }) {
+function Media({ src, label, ratio = '4 / 3', tone = '#1c1c1c', onOpen, chrome, url }) {
   if (!src) return <TempImg label={label} ratio={ratio} tone={tone} />;
   const [w, h] = IMAGE_SIZES[src] || [];
   return (
-    <figure className="cs-media">
+    <figure className={`cs-media ${chrome ? 'is-chrome' : ''}`}>
+      {/* A window bar over screenshots of an actual interface. Without it a
+          screen sitting flush in a dark page reads as a picture of a layout;
+          with it, it reads as software that was running. Off by default, so
+          photographs and diagrams are never framed as browser windows. */}
+      {chrome && (
+        <span className="cs-chrome" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <em>{url || 'dataportal'}</em>
+        </span>
+      )}
       <img src={src} alt={label} loading="lazy" width={w} height={h} />
       <button className="cs-expand" onClick={() => onOpen({ src, label })}>
         <svg
@@ -101,6 +113,8 @@ function Block({ block, onOpen }) {
               src={block.src}
               label={block.media}
               ratio={block.ratio || '4 / 3'}
+              chrome={block.chrome}
+              url={block.url}
               onOpen={onOpen}
             />
           </div>
@@ -164,7 +178,13 @@ function Block({ block, onOpen }) {
       return (
         <div className="cs-feature">
           <div className="cs-feature-media">
-            <Media src={block.src} label={block.media} onOpen={onOpen} />
+            <Media
+              src={block.src}
+              label={block.media}
+              chrome={block.chrome}
+              url={block.url}
+              onOpen={onOpen}
+            />
           </div>
           <aside className="cs-feature-note">
             <h4 className="cs-h4">{block.title}</h4>
@@ -207,6 +227,8 @@ function Block({ block, onOpen }) {
                 label={item.label}
                 ratio={item.ratio || '4 / 3'}
                 tone="#191919"
+                chrome={item.chrome ?? block.chrome}
+                url={item.url}
                 onOpen={onOpen}
               />
             );

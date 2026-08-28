@@ -110,9 +110,7 @@ export const PROJECTS = [
   {
     n: '01',
     slug: 'data-product-marketplace',
-    // no case study yet: the card renders as a short Coming soon tile
-    soon: true,
-    title: 'Data product marketplace, AI powered',
+    title: 'Data portal and data factory',
     kicker: 'Platform, Discovery',
     year: '2026',
     company: 'CPP Investments',
@@ -122,10 +120,11 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#2f7de1',
     heroShape: 'modules',
+    cover: '/work/data-product-marketplace/browse.webp',
     summary:
-      'An internal marketplace where teams find, trust and subscribe to data products, with retrieval doing the matching instead of a taxonomy nobody maintains.',
+      'One place to find data across the firm and a reason to trust it, with the pipelines that keep it current sitting behind the same door.',
     industry: 'Finance',
-    tags: ['Data Visualisation', 'Governance', 'Discovery'],
+    tags: ['Data Visualisation', 'Governance', 'Lineage'],
     roles: [
       { label: 'UX Research', icon: 'research' },
       { label: 'Design', icon: 'design' },
@@ -133,14 +132,39 @@ export const PROJECTS = [
       { label: 'Backend', icon: 'backend' },
     ],
     stack: [],
-    sections: [],
+    sections: 'portal',
   },
   {
     n: '02',
+    slug: 'ai-agent-usage-dashboard',
+    title: 'AI agent and usage dashboard',
+    kicker: 'Assistant, Observability',
+    year: '2026',
+    company: 'CPP Investments',
+    logo: '/work/shared/cpp-investments.webp',
+    // a flat navy wordmark, so it inverts cleanly; the colourful
+    // marks on the other cards must not be touched
+    logoInvert: true,
+    accent: '#5a9ee0',
+    heroShape: 'wireframe',
+    cover: '/work/ai-agent-usage-dashboard/dashboard.webp',
+    summary:
+      'An agent that asks before it answers, and the dashboard that turned what people asked it into the platform team’s best source of research.',
+    industry: 'Finance',
+    tags: ['Data Visualisation', 'Observability', 'Governance'],
+    roles: [
+      { label: 'UX Research', icon: 'research' },
+      { label: 'Design', icon: 'design' },
+      { label: 'Frontend', icon: 'frontend' },
+      { label: 'Backend', icon: 'backend' },
+    ],
+    stack: [],
+    sections: 'agent',
+  },
+  {
+    n: '03',
     slug: 'data-ingestion-flow',
-    // no case study yet: the card renders as a short Coming soon tile
-    soon: true,
-    title: 'Data ingestion flow for enterprise AI',
+    title: 'Data product ingestion',
     kicker: 'Enterprise, Pipelines',
     year: '2026',
     company: 'CPP Investments',
@@ -150,10 +174,11 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#3f8fd6',
     heroShape: 'bridge',
+    cover: '/work/data-ingestion-flow/onboarding-list.webp',
     summary:
-      'The path a source takes from connection to a governed, queryable asset, designed so the failure states are legible to whoever has to fix them.',
+      'The form that replaced the spreadsheet: give it a view name, it fills in every table, column and type, then fails loudly before a human is asked to approve anything.',
     industry: 'Finance',
-    tags: ['Secure Dataflow', 'Governance', 'Pipelines'],
+    tags: ['Secure Dataflow', 'Governance', 'Data Modelling'],
     roles: [
       { label: 'UX Research', icon: 'research' },
       { label: 'Design', icon: 'design' },
@@ -161,43 +186,13 @@ export const PROJECTS = [
       { label: 'Backend', icon: 'backend' },
     ],
     stack: [],
-    sections: [],
-  },
-  {
-    n: '03',
-    slug: 'ai-agent-usage-dashboard',
-    // no case study yet: the card renders as a short Coming soon tile
-    soon: true,
-    title: 'AI agent usage dashboard',
-    kicker: 'Analytics, Governance',
-    year: '2026',
-    company: 'CPP Investments',
-    logo: '/work/shared/cpp-investments.webp',
-    // a flat navy wordmark, so it inverts cleanly; the colourful
-    // marks on the other cards must not be touched
-    logoInvert: true,
-    accent: '#5a9ee0',
-    heroShape: 'wireframe',
-    summary:
-      'Where agents are being used across the firm, what they cost, and which ones are quietly failing, for the people who have to answer for all three.',
-    industry: 'Finance',
-    tags: ['Data Visualisation', 'Governance', 'Observability'],
-    roles: [
-      { label: 'UX Research', icon: 'research' },
-      { label: 'Design', icon: 'design' },
-      { label: 'Frontend', icon: 'frontend' },
-      { label: 'Backend', icon: 'backend' },
-    ],
-    stack: [],
-    sections: [],
+    sections: 'ingestion',
   },
   {
     n: '04',
     slug: 'ai-keyword-domain-model',
-    // no case study yet: the card renders as a short Coming soon tile
-    soon: true,
-    title: 'Controlling a complex library of AI keyword domain models',
-    kicker: 'Taxonomy, Tooling',
+    title: 'Conceptual domain model',
+    kicker: 'Taxonomy, Semantics',
     year: '2026',
     company: 'CPP Investments',
     logo: '/work/shared/cpp-investments.webp',
@@ -206,10 +201,11 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#6fb0e8',
     heroShape: 'tokens',
+    cover: '/work/ai-keyword-domain-model/relationships.webp',
     summary:
-      'Hundreds of overlapping domain models, with one place to see what each claims, where two disagree, and which one is authoritative.',
+      'Getting a firm to agree what its own words mean, built in sessions with the stewards who own the vocabulary rather than handed to them.',
     industry: 'Finance',
-    tags: ['Taxonomy', 'Governance', 'Data Modelling'],
+    tags: ['Taxonomy', 'Data Modelling', 'Governance'],
     roles: [
       { label: 'UX Research', icon: 'research' },
       { label: 'Design', icon: 'design' },
@@ -217,7 +213,7 @@ export const PROJECTS = [
       { label: 'Backend', icon: 'backend' },
     ],
     stack: [],
-    sections: [],
+    sections: 'cdm',
   },
   {
     n: '05',
