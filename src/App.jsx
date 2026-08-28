@@ -237,7 +237,7 @@ export default function App() {
   return (
     <>
       <div className="stage" ref={stageRef}>
-        <Hero ref={setHandle(0)} />
+        <Hero ref={setHandle(0)} onSeeWork={() => navigate(1)} />
         <Projects ref={setHandle(1)} onOpen={setProject} />
         <Lab ref={setHandle(2)} />
         <About ref={setHandle(3)} />

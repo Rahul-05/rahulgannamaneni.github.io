@@ -10,7 +10,7 @@ import './projects.css';
 
 const DWELL_MS = 700; // beat at each end before the section hands over
 
-// Work: a centred kicker over a giant wordmark, with the six projects as a
+// Work: a giant wordmark, with the eight projects as a
 // two-up grid of cards beneath it. Each card leads with the cover image,
 // because a list of titles and role chips asks people to imagine the work --
 // two columns is as many as the covers can take before they stop being
@@ -81,11 +81,6 @@ const Projects = forwardRef(function Projects({ onOpen }, ref) {
 
       const q = gsap.utils.selector(rootRef);
       gsap.fromTo(
-        q('.proj-kicker'),
-        { y: -18, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power3.out', delay: 0.3 },
-      );
-      gsap.fromTo(
         q('.proj-word'),
         { y: 60, autoAlpha: 0 },
         { y: 0, autoAlpha: 1, duration: 0.95, ease: 'power4.out', delay: 0.35 },
@@ -105,8 +100,6 @@ const Projects = forwardRef(function Projects({ onOpen }, ref) {
 
   return (
     <section className="section proj" ref={rootRef}>
-      <p className="proj-kicker">Selected Work &amp; Case Studies</p>
-
       <div className="proj-headline">
         <Wordmark text="PROJECTS" className="proj-word" vary={false} />
         <span className="proj-script">my</span>
@@ -126,25 +119,32 @@ const Projects = forwardRef(function Projects({ onOpen }, ref) {
                   {/* The cover leads. Intrinsic dimensions come from the
                       manifest so the grid never reflows as images arrive --
                       with eight landing at once the shift would be violent. */}
-                  <div className={`proj-cover ${p.cover ? '' : 'proj-cover--art'}`}>
-                    {p.cover ? (
-                      <img
-                        src={p.cover}
-                        alt={`${p.title} cover`}
-                        loading="lazy"
-                        width={IMAGE_SIZES[p.cover]?.[0]}
-                        height={IMAGE_SIZES[p.cover]?.[1]}
-                      />
-                    ) : (
-                      // generated art rather than a grey box, so a card with
-                      // no photograph still reads as a designed frame
-                      <span className="proj-cover-art">
-                        <CardArt shape={p.heroShape} seed={p.n} />
-                      </span>
-                    )}
+                  {/* `card` is the branded cover where a project has one; the
+                      rest fall back to whatever the case study opens with */}
+                  {(() => {
+                    const art = p.card || p.cover;
+                    return (
+                      <div className={`proj-cover ${art ? '' : 'proj-cover--art'}`}>
+                        {art ? (
+                          <img
+                            src={art}
+                            alt={`${p.title} cover`}
+                            loading="lazy"
+                            width={IMAGE_SIZES[art]?.[0]}
+                            height={IMAGE_SIZES[art]?.[1]}
+                          />
+                        ) : (
+                          // generated art rather than a grey box, so a card with
+                          // no photograph still reads as a designed frame
+                          <span className="proj-cover-art">
+                            <CardArt shape={p.heroShape} seed={p.n} />
+                          </span>
+                        )}
 
-                    <span className="proj-n">{p.n}</span>
-                  </div>
+                        <span className="proj-n">{p.n}</span>
+                      </div>
+                    );
+                  })()}
 
                   <div className="proj-meta">
                     <div className="proj-head">
@@ -178,21 +178,21 @@ const Projects = forwardRef(function Projects({ onOpen }, ref) {
                             what was done on it */}
                         <span className="proj-chip proj-chip--industry">{p.industry}</span>
 
-                        {p.roles.slice(0, p.soon ? 2 : 3).map((r) => (
+                        {p.roles.slice(0, 3).map((r) => (
                           <span className="proj-chip" key={r.label}>
                             <TechIcon name={r.icon} />
                             {r.label}
                           </span>
                         ))}
 
-                        {p.tags.slice(0, p.soon ? 1 : 3).map((t) => (
+                        {p.tags.slice(0, 3).map((t) => (
                           <span className="proj-chip proj-chip--topic" key={t}>
                             {t}
                           </span>
                         ))}
 
                         {(() => {
-                          const shown = 1 + (p.soon ? 2 : 3) + (p.soon ? 1 : 3);
+                          const shown = 7;
                           const total = 1 + p.roles.length + p.tags.length;
                           return total > shown ? (
                             <span className="proj-chip proj-chip--more">+{total - shown}</span>

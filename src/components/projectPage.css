@@ -664,18 +664,16 @@
   display: block;
 }
 
-/* The hero cover is the one exception: cropped to a band rather than shown
-   whole. Covers are near-square with the subject centred in a lot of empty
-   ground, so at full width one filled most of a screen before the case study
-   had said anything. Content images above are still never cropped. */
-.pp-cover .cs-media {
-  aspect-ratio: 16 / 7;
-}
-
+/* The hero cover is shown whole, like every other image on the page. It was
+   cropped to a band for a while to stop near-square covers filling a screen;
+   the covers are wide now, and cropping was slicing the top off the very
+   screenshot the case study opens on. Completeness wins here. */
+/* The hero is shown whole, like every other image here. It was cropped for a
+   while and that was slicing the top off the very screenshot the case study
+   opens on, header and headline included. */
 .pp-cover .cs-media img {
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: 100%;
+  height: auto;
 }
 
 /* expand affordance */
@@ -931,9 +929,6 @@
 
   .pp-cover {
     margin-bottom: 5vh;
-  }
-  .pp-cover .cs-media {
-    aspect-ratio: 16 / 9;
   }
 
   .pp-body {

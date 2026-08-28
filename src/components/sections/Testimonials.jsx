@@ -137,7 +137,6 @@ const Testimonials = forwardRef(function Testimonials(_, ref) {
 
   return (
     <section className="section testi" ref={rootRef}>
-      <p className="testi-kicker">What people say</p>
       <Wordmark text="TESTIMONIALS" className="testi-word" vary={false} />
 
       <div className="testi-stage">

@@ -14,7 +14,7 @@ const DRIFT_SPEED = 2.2; // deg/sec idle rotation
 // half of the card ring passes over the text and the back half goes behind
 // it. The ring spins only from user drag (with inertia) plus a slow idle
 // drift; the page wheel scrolls the page.
-const Hero = forwardRef(function Hero(_, ref) {
+const Hero = forwardRef(function Hero({ onSeeWork }, ref) {
   const rootRef = useRef(null);
   const ringRef = useRef(null);
   const titleRef = useRef(null);
@@ -52,6 +52,12 @@ const Hero = forwardRef(function Hero(_, ref) {
           { yPercent: 110 },
           { yPercent: 0, duration: 0.8, stagger: 0.09, ease: 'power3.out' },
           0.7,
+        )
+        .fromTo(
+          q('.hero-cta'),
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
+          0.95,
         )
         .fromTo(
           q('.hero-arrow'),
@@ -316,6 +322,17 @@ const Hero = forwardRef(function Hero(_, ref) {
 
       {/* Where he is now, under what he does. Small, because the line above
           is the claim and this is the evidence for it. */}
+      {/* The one action on the first screen. The scroll cue is deliberately
+          absent here, so without this there is nothing to press. */}
+      <button className="hero-cta" onClick={onSeeWork}>
+        See my work
+        <span className="hero-cta-arrow" aria-hidden="true">
+          <svg viewBox="0 0 16 14">
+            <path d="M2 7h11M8.4 2.2 13.2 7l-4.8 4.8" />
+          </svg>
+        </span>
+      </button>
+
       <p className="hero-role">
         <span className="mask-line">
           <span className="mask-inner">

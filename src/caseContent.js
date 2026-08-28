@@ -1347,7 +1347,15 @@ export const CASE_CONTENT = {
         },
         {
           type: 'gallery',
-          items: [{ label: 'Hi-fi screens', src: '/work/guide/hifi.webp', ratio: '16 / 10' }],
+          items: [
+            {
+              label: 'Hi-fi screens',
+              src: '/work/guide/hifi.webp',
+              chrome: true,
+              url: 'guide.app / library',
+              ratio: '16 / 10',
+            },
+          ],
         },
       ],
     },
@@ -1374,6 +1382,8 @@ export const CASE_CONTENT = {
           type: 'feature',
           media: 'Final hi-fi screens',
           src: '/work/guide/hifi.webp',
+          chrome: true,
+          url: 'guide.app / library',
           title: 'Both sides of the same product',
           body: 'Search, assignment and tracking all sit on one surface.',
           points: [
@@ -1489,6 +1499,8 @@ export const CASE_CONTENT = {
           type: 'split',
           media: 'The integrations catalogue',
           src: '/work/keka-marketplace/goals.webp',
+          chrome: true,
+          url: 'keka.com / marketplace',
           ratio: '16 / 10',
           title: 'Designing for 25, not 5',
           body: 'Keka planned to ship more than 20 further integrations on top of the existing five within the year. Anything designed for five would collapse at twenty-five, so the real question became how someone finds one specific integration in a long list.',
@@ -1547,6 +1559,8 @@ export const CASE_CONTENT = {
           type: 'feature',
           media: 'App directory',
           src: '/work/keka-marketplace/directory.webp',
+          chrome: true,
+          url: 'keka.com / marketplace',
           title: 'Status and tags on the card itself',
           body: 'So the directory stays scannable as the catalogue grows past twenty-five.',
           points: [
@@ -1559,6 +1573,8 @@ export const CASE_CONTENT = {
           type: 'feature',
           media: 'Integration detail',
           src: '/work/keka-marketplace/detail.webp',
+          chrome: true,
+          url: 'keka.com / marketplace / app',
           title: 'Understanding before configuring',
           body: 'What the integration does, how it works with Keka, product links and help, all before an admin commits to switching it on.',
         },
@@ -1566,6 +1582,8 @@ export const CASE_CONTENT = {
           type: 'feature',
           media: 'Security preferences',
           src: '/work/keka-marketplace/security.webp',
+          chrome: true,
+          url: 'keka.com / marketplace / security',
           title: 'Preferences and security',
           body: 'Azure AD was the first integration that needed real access control.',
           points: [
@@ -1579,11 +1597,15 @@ export const CASE_CONTENT = {
             {
               label: 'Activity log',
               src: '/work/keka-marketplace/activity.webp',
+              chrome: true,
+              url: 'keka.com / marketplace',
               ratio: '16 / 10',
             },
             {
               label: 'Inbox and approvals',
               src: '/work/keka-marketplace/inbox.webp',
+              chrome: true,
+              url: 'keka.com / inbox',
               ratio: '16 / 10',
             },
           ],

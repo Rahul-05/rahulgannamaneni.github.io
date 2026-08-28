@@ -51,7 +51,7 @@ export const RING_CARDS = [
 export const TESTIMONIALS = [
   {
     quote:
-      'Rahul closes the gap where most design work stalls. He sits in the shaping conversation, comes back with something running rather than a mock, and stays with it through review until the feature is live, including the parts nobody enjoys, like the error states and the migration. I have worked with very few designers who can carry a piece of work that whole distance, and fewer still who want to.',
+      'Rahul does the design and then builds it, which is rarer than it sounds and changes how fast a team can move. He would come out of a shaping session and have something running the same week, not a mock but the real thing, and it looked finished. The handover between design and engineering is where our work normally loses a fortnight. With him there was no handover.',
     name: 'Shri Hulisandra',
     role: 'Principal Engineer',
     place: 'CPP Investments',
@@ -60,7 +60,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      'Rahul designed and built the product with us, and the way he brought it to the table changed how we made decisions. Instead of slides describing a feature, he arrived with a working prototype loaded with our real data, so we spent the session reacting to the thing itself rather than to a description of it. Far more got settled in that one meeting than we would normally manage in three, and the questions we asked were sharper for it.',
+      'What struck me while working with Rahul was how much research he did before proposing anything. He spent real time with the teachers and the children, and came back with several directions rather than one, each answering a different reading of what we had told him. As a researcher I am used to that kind of divergence taking weeks and arriving as a document. He brought it as something we could try in the room.',
     name: 'Melanie Killen',
     role: 'Founder, DIY Teachers · Distinguished University Professor',
     place: 'University of Maryland',
@@ -120,6 +120,9 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#2f7de1',
     heroShape: 'modules',
+    // the card leads with the branded cover; the case study still opens
+    // on the screenshot, which is the thing worth seeing
+    card: '/work/data-product-marketplace/cover.webp',
     cover: '/work/data-product-marketplace/browse.webp',
     summary:
       'One place to find data across the firm and a reason to trust it, with the pipelines that keep it current sitting behind the same door.',
@@ -147,6 +150,9 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#5a9ee0',
     heroShape: 'wireframe',
+    // the card leads with the branded cover; the case study still opens
+    // on the screenshot, which is the thing worth seeing
+    card: '/work/ai-agent-usage-dashboard/cover.webp',
     cover: '/work/ai-agent-usage-dashboard/dashboard.webp',
     summary:
       'An agent that asks before it answers, and the dashboard that turned what people asked it into the platform team’s best source of research.',
@@ -174,6 +180,9 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#3f8fd6',
     heroShape: 'bridge',
+    // the card leads with the branded cover; the case study still opens
+    // on the screenshot, which is the thing worth seeing
+    card: '/work/data-ingestion-flow/cover.webp',
     cover: '/work/data-ingestion-flow/onboarding-list.webp',
     summary:
       'The form that replaced the spreadsheet: give it a view name, it fills in every table, column and type, then fails loudly before a human is asked to approve anything.',
@@ -201,6 +210,9 @@ export const PROJECTS = [
     logoInvert: true,
     accent: '#6fb0e8',
     heroShape: 'tokens',
+    // the card leads with the branded cover; the case study still opens
+    // on the screenshot, which is the thing worth seeing
+    card: '/work/ai-keyword-domain-model/cover.webp',
     cover: '/work/ai-keyword-domain-model/relationships.webp',
     summary:
       'Getting a firm to agree what its own words mean, built in sessions with the stewards who own the vocabulary rather than handed to them.',

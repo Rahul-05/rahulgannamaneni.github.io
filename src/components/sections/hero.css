@@ -94,8 +94,8 @@
 .ring-card {
   position: absolute;
   width: clamp(122px, 11.9vw, 180px);
-  height: clamp(172px, 16.6vw, 252px);
-  top: calc(clamp(172px, 16.6vw, 252px) / -2);
+  height: clamp(150px, 14.4vw, 218px);
+  top: calc(clamp(150px, 14.4vw, 218px) / -2);
   left: calc(clamp(122px, 11.9vw, 180px) / -2);
   transform: rotateY(var(--ry)) translateZ(clamp(202px, 19.7vw, 298px));
   transform-style: preserve-3d;
@@ -127,7 +127,7 @@
    in Work, which sit on a light card. */
 .ring-card .card-art {
   width: 100%;
-  height: 54%;
+  height: 47%;
   display: block;
   padding: 8px;
   background: var(--black);
@@ -185,7 +185,7 @@
 .hero-tagline {
   position: absolute;
   left: var(--pad);
-  bottom: 62px;
+  bottom: 128px;
   z-index: 3;
   color: var(--cream);
   font-size: clamp(22px, 2.4vw, 36px);
@@ -193,11 +193,54 @@
   line-height: 1.15;
 }
 
+/* ── the one action on the first screen ── */
+.hero-cta {
+  position: absolute;
+  left: var(--pad);
+  bottom: 32px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--black);
+  font: 600 16px/1 inherit;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition:
+    transform 0.32s cubic-bezier(0.3, 1.2, 0.4, 1),
+    background 0.24s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  background: var(--green);
+}
+
+.hero-cta-arrow svg {
+  display: block;
+  width: 17px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.28s cubic-bezier(0.3, 1.3, 0.4, 1);
+}
+
+.hero-cta:hover .hero-cta-arrow svg {
+  transform: translateX(4px);
+}
+
 /* the role, under the claim */
 .hero-role {
   position: absolute;
   left: var(--pad);
-  bottom: 34px;
+  bottom: 100px;
   z-index: 3;
   color: var(--cream);
   font-size: clamp(12px, 1.05vw, 15px);
@@ -232,8 +275,8 @@
   /* the ring is the hero's whole idea, so it is scaled rather than dropped */
   .ring-card {
     width: clamp(96px, 27vw, 150px);
-    height: clamp(136px, 38vw, 210px);
-    top: calc(clamp(136px, 38vw, 210px) / -2);
+    height: clamp(120px, 33vw, 182px);
+    top: calc(clamp(120px, 33vw, 182px) / -2);
     left: calc(clamp(96px, 27vw, 150px) / -2);
     transform: rotateY(var(--ry)) translateZ(clamp(160px, 45vw, 248px));
   }
@@ -243,7 +286,7 @@
   }
 
   .ring-card .card-art {
-    height: 50%;
+    height: 45%;
     padding: 6px;
   }
 
@@ -267,7 +310,7 @@
   }
 
   .hero-tagline {
-    bottom: 104px; /* clears the role line and the floating contact pill */
+    bottom: 148px; /* clears the role line, the action and the contact pill */
     font-size: clamp(15px, 4.4vw, 22px);
     max-width: 78%;
   }
@@ -282,10 +325,19 @@
     vertical-align: -0.22em;
   }
 
+  /* the floating contact pill owns the bottom right on a phone, so the
+     action moves above the copy rather than fighting it for the corner */
+  .hero-cta {
+    left: var(--pad);
+    bottom: 26px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
   /* the contact pill owns the bottom right down here, so the role line is
      capped short of it rather than being allowed to run underneath */
   .hero-role {
-    bottom: 62px;
+    bottom: 120px;
     max-width: 60vw;
     font-size: 12px;
     line-height: 1.3;
@@ -303,6 +355,6 @@
 @media (max-width: 520px) {
   .hero-tagline {
     max-width: 90%;
-    bottom: 98px;
+    bottom: 142px;
   }
 }

@@ -103,11 +103,6 @@ const Lab = forwardRef(function Lab(_, ref) {
 
       const q = gsap.utils.selector(rootRef);
       gsap.fromTo(
-        q('.lab-kicker'),
-        { y: -16, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.55, ease: 'power3.out', delay: 0.3 },
-      );
-      gsap.fromTo(
         q('.lab-word'),
         { y: 56, autoAlpha: 0 },
         { y: 0, autoAlpha: 1, duration: 0.9, ease: 'power4.out', delay: 0.35 },
@@ -141,10 +136,6 @@ const Lab = forwardRef(function Lab(_, ref) {
 
   return (
     <section className="section lab" ref={rootRef}>
-      <p className="lab-kicker">
-        Interaction studies, motion experiments and things I wanted to understand
-      </p>
-
       <div className="lab-headline">
         <Wordmark text="INTERACTION" className="lab-word" vary={false} />
         <span className="lab-script">&amp; animation</span>
