@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { forwardRef, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { LAB_FILTERS, LAB_ITEMS } from '../../data.js';
@@ -26,13 +26,22 @@ const Lab = forwardRef(function Lab(_, ref) {
     [filter],
   );
 
+  // Every move goes through slideTo. gsap.set on a target that already has a
+  // quickTo tween running does not stop that tween, so a hard set during a
+  // pan was being overwritten on the next tick -- which is how switching
+  // filters used to leave the track parked at the old grid's offset, with
+  // the new one panned entirely above the viewport.
+  const moveTo = (y) => {
+    pos.current.y = gsap.utils.clamp(-pos.current.max, 0, y);
+    slideTo.current?.(pos.current.y);
+  };
+
   const measure = () => {
     const track = trackRef.current;
     const view = track?.parentElement;
     if (!track || !view) return;
     pos.current.max = Math.max(0, track.scrollHeight - view.clientHeight);
-    pos.current.y = gsap.utils.clamp(-pos.current.max, 0, pos.current.y);
-    slideTo.current?.(pos.current.y);
+    moveTo(pos.current.y);
   };
 
   useGSAP(
@@ -43,32 +52,37 @@ const Lab = forwardRef(function Lab(_, ref) {
       });
       measure();
       window.addEventListener('resize', measure);
-      return () => window.removeEventListener('resize', measure);
+      // The cards run live components that size themselves after mount, so
+      // the grid's height is not final at commit. Watching it keeps the pan
+      // limit honest instead of stranding the last row.
+      const ro = new ResizeObserver(measure);
+      ro.observe(trackRef.current);
+      return () => {
+        window.removeEventListener('resize', measure);
+        ro.disconnect();
+      };
     },
     { scope: rootRef },
   );
 
-  // re-measure and animate in whenever the filter changes the grid
-  const applyFilter = (id) => {
-    setFilter(id);
-    pos.current.y = 0;
+  // The reset has to happen after React has swapped the grid in, otherwise it
+  // measures the outgoing set. useLayoutEffect runs after the commit and
+  // before paint, so the pan limit is right on the first frame.
+  const first = useRef(true);
+  useLayoutEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
     pos.current.hitAt = 0;
-    requestAnimationFrame(() => {
-      measure();
-      gsap.set(trackRef.current, { y: 0 });
-      gsap.fromTo(
-        rootRef.current.querySelectorAll('.lab-card'),
-        { y: 26, autoAlpha: 0 },
-        {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.5,
-          stagger: 0.04,
-          ease: 'power3.out',
-        },
-      );
-    });
-  };
+    measure();
+    moveTo(0);
+    gsap.fromTo(
+      rootRef.current.querySelectorAll('.lab-card'),
+      { y: 26, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.04, ease: 'power3.out' },
+    );
+  }, [filter]);
 
   useImperativeHandle(ref, () => ({
     el: () => rootRef.current,
@@ -90,8 +104,7 @@ const Lab = forwardRef(function Lab(_, ref) {
         return 'pass';
       }
       s.hitAt = 0;
-      s.y = gsap.utils.clamp(-s.max, 0, s.y - dy * 1.15);
-      slideTo.current?.(s.y);
+      moveTo(s.y - dy * 1.15);
       return 'consumed';
     },
 
@@ -99,6 +112,11 @@ const Lab = forwardRef(function Lab(_, ref) {
       measure();
       pos.current.hitAt = 0;
       pos.current.y = dir < 0 ? -pos.current.max : 0;
+      gsap.killTweensOf(trackRef.current);
+      slideTo.current = gsap.quickTo(trackRef.current, 'y', {
+        duration: 0.5,
+        ease: 'power3',
+      });
       gsap.set(trackRef.current, { y: pos.current.y });
 
       const q = gsap.utils.selector(rootRef);
@@ -153,7 +171,7 @@ const Lab = forwardRef(function Lab(_, ref) {
               role="tab"
               aria-selected={filter === f.id}
               className={`lab-filter ${filter === f.id ? 'is-on' : ''}`}
-              onClick={() => applyFilter(f.id)}
+              onClick={() => setFilter(f.id)}
             >
               {f.label}
               <span className="lab-filter-n">{count}</span>

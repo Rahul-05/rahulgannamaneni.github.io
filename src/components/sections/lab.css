@@ -77,10 +77,15 @@
 }
 
 /* ── grid ── */
+/* The collection is taller than one screen, so the last visible row is
+   always mid-card. Fading it out says "there is more here" rather than
+   letting the cards look severed by the section edge. */
 .lab-viewport {
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
 }
 
 .lab-track {
