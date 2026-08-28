@@ -378,7 +378,11 @@
   font-size: clamp(13px, 1vw, 15px);
   line-height: 1.5;
   color: rgba(255, 252, 225, 0.7);
-  /* two lines, so every card in a row ends at the same place */
+  /* Every summary is written to land inside two lines, so the box reserves
+     exactly two and each card in a row ends at the same place. The clamp is
+     a backstop for a narrow window, not the thing doing the fitting -- copy
+     that needs an ellipsis to fit is copy that should have been shorter. */
+  min-height: 3em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -485,6 +489,13 @@
 
 /* ══════════ work: phone ══════════ */
 @media (max-width: 720px) {
+  /* One column here, so nothing needs to line up with a neighbour and the
+     clamp has no alignment left to protect. It gives back the third line
+     rather than ever cutting a summary short on the narrowest screens. */
+  .proj-summary {
+    -webkit-line-clamp: 3;
+  }
+
   .proj {
     padding: calc(var(--nav-h) + 1vh) var(--pad) 0;
   }

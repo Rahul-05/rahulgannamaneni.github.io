@@ -125,7 +125,7 @@ export const PROJECTS = [
     card: '/work/data-product-marketplace/cover.webp',
     cover: '/work/data-product-marketplace/browse.webp',
     summary:
-      'One place to find data across the firm and a reason to trust it, with the pipelines that keep it current sitting behind the same door.',
+      'One place to find data across the firm, a reason to trust it, and the pipelines that keep it current.',
     industry: 'Finance',
     tags: ['Data Visualisation', 'Governance', 'Lineage'],
     roles: [
@@ -155,7 +155,7 @@ export const PROJECTS = [
     card: '/work/ai-agent-usage-dashboard/cover.webp',
     cover: '/work/ai-agent-usage-dashboard/dashboard.webp',
     summary:
-      'An agent that asks before it answers, and the dashboard that turned what people asked it into the platform team’s best source of research.',
+      'An agent that asks before it answers, and a dashboard that turned those questions into the team’s research.',
     industry: 'Finance',
     tags: ['Data Visualisation', 'Observability', 'Governance'],
     roles: [
@@ -185,7 +185,7 @@ export const PROJECTS = [
     card: '/work/data-ingestion-flow/cover.webp',
     cover: '/work/data-ingestion-flow/onboarding-list.webp',
     summary:
-      'The form that replaced the spreadsheet: give it a view name, it fills in every table, column and type, then fails loudly before a human is asked to approve anything.',
+      'The form that replaced the spreadsheet: give it a view name, it fills in every column and fails loudly first.',
     industry: 'Finance',
     tags: ['Secure Dataflow', 'Governance', 'Data Modelling'],
     roles: [
@@ -215,7 +215,7 @@ export const PROJECTS = [
     card: '/work/ai-keyword-domain-model/cover.webp',
     cover: '/work/ai-keyword-domain-model/relationships.webp',
     summary:
-      'Getting a firm to agree what its own words mean, built in sessions with the stewards who own the vocabulary rather than handed to them.',
+      'Getting a firm to agree what its own words mean, in sessions with the stewards who own the vocabulary.',
     industry: 'Finance',
     tags: ['Taxonomy', 'Data Modelling', 'Governance'],
     roles: [
@@ -238,7 +238,7 @@ export const PROJECTS = [
     kicker: 'Healthcare, Capstone',
     tagline: 'Search and tracking for therapy between sessions',
     summary:
-      'Guide began as a corporate LMS with no real search, then pivoted mid-project to mental health. I led design across sprints and drove discovery, ending with a dual interface: therapists assign and track content, patients see what to do between sessions.',
+      'An LMS that pivoted mid-project to mental health: therapists assign, patients see what comes next.',
     industry: 'Healthcare',
     tags: ['Education', 'Mental Health', 'LMS'],
     roles: [
@@ -264,7 +264,7 @@ export const PROJECTS = [
     kicker: 'HR Tech, Internship',
     tagline: 'Making integrations visible, controllable and safe',
     summary:
-      'Keka HR is one of India\u2019s larger HRMS providers. As a UX design intern I reworked how companies visualise, control and secure their integrations, built for a catalogue about to grow from 5 to more than 25.',
+      'Reworking how companies see, control and secure their integrations, for a catalogue growing from 5 to over 25.',
     industry: 'HR Tech',
     tags: ['Marketplace', 'Integrations', 'Enterprise'],
     roles: [
@@ -287,7 +287,7 @@ export const PROJECTS = [
     kicker: 'Wearable, Group Project',
     tagline: 'Navigation projected onto the visor, eyes on the road',
     summary:
-      'A smart helmet that projects navigation onto the visor, with a companion app, so delivery riders under tight delivery windows stop taking their eyes off the road to check a phone.',
+      'A helmet that projects navigation onto the visor, so riders on tight windows stop checking a phone mid-road.',
     industry: 'Mobility',
     tags: ['Wearable', 'Safety', 'Hardware'],
     roles: [
@@ -310,7 +310,7 @@ export const PROJECTS = [
     kicker: 'Accessibility, Solo Project',
     tagline: 'Helping ADHD children run their own day',
     summary:
-      'A dual-device app for children with ADHD and their parents. Children plan and complete tasks with structure and motivation; parents support without having to stand over them, so the handover to independence is gradual rather than abrupt.',
+      'A dual-device app for children with ADHD: they plan and finish tasks, parents support without standing over them.',
     industry: 'Education',
     tags: ['Accessibility', 'ADHD', 'Family'],
     roles: [
