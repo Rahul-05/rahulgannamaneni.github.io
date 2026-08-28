@@ -30,10 +30,6 @@ npx vite build
 # slugs come from the data file, so a new project cannot be forgotten here
 SLUGS=$(node -e "import('./src/data.js').then(m => console.log(m.PROJECTS.map(p => p.slug).join(' ')))")
 
-# Cache-bust the images before the per-route copies are made, so every
-# emitted index.html carries the same stamped references.
-node scripts/fingerprint-assets.mjs
-
 for slug in $SLUGS; do
   mkdir -p "dist/$slug"
   cp dist/index.html "dist/$slug/index.html"

@@ -1,9 +1,10 @@
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import stampAssets from './scripts/vite-plugin-stamp-assets.mjs';
 
 // https://vite.dev/config/
 export default defineConfig({
   // SPA fallback so /<project-slug> serves index.html
   appType: 'spa',
-  plugins: [react()],
-})
+  plugins: [react(), stampAssets()],
+});
