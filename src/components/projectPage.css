@@ -320,6 +320,24 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  /* The panel is taller than a screen once the summary is in it, and a
+     sticky element taller than the viewport strands its own bottom. Capping
+     it and letting it scroll keeps the last line reachable. */
+  max-height: 96vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 252, 225, 0.2) transparent;
+  padding-right: 4px;
+}
+
+.pp-index::-webkit-scrollbar {
+  width: 4px;
+}
+
+.pp-index::-webkit-scrollbar-thumb {
+  background: rgba(255, 252, 225, 0.2);
+  border-radius: 2px;
 }
 
 .pp-index-k {
@@ -1105,23 +1123,14 @@
    commits to reading the study. */
 .cs-context {
   margin: 6px 0 26px;
-  padding: 22px;
-  border: 1px solid rgba(255, 252, 225, 0.14);
+  padding: clamp(20px, 2.4vw, 30px);
   border-radius: 18px;
-  background:
-    radial-gradient(120% 140% at 0% 0%, rgba(255, 252, 225, 0.07), transparent 62%),
-    rgba(255, 252, 225, 0.022);
-  position: relative;
-  overflow: hidden;
-}
-
-/* a thin accent edge rather than a heavy left border */
-.cs-context::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent, #3f8fd6), rgba(255, 252, 225, 0.06) 70%);
+  /* Same panel as the pull-out highlight: a flat wash of the page accent
+     over the page black, one hairline border, nothing else. It was a
+     gradient card with its own edge treatment and it read as a different
+     component from a different site. */
+  background: color-mix(in srgb, var(--accent, #0ae448) 12%, var(--black));
+  border: 1px solid color-mix(in srgb, var(--accent, #0ae448) 34%, transparent);
 }
 
 .cs-context-k {
@@ -1129,11 +1138,11 @@
   align-items: center;
   gap: 7px;
   margin-bottom: 18px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent, #3f8fd6);
+  color: var(--accent, var(--green));
 }
 
 .cs-context-k .case-icon {
@@ -1144,33 +1153,23 @@
 .cs-context-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 10px;
+  gap: clamp(18px, 2.2vw, 34px);
   margin: 0;
 }
 
+/* No inner cards. The panel is the container; the terms are just columns
+   inside it, separated by a rule rather than by a second border. */
 .cs-context-row {
   display: grid;
-  gap: 8px;
+  gap: 9px;
   align-content: start;
-  padding: 16px 16px 17px;
-  border: 1px solid rgba(255, 252, 225, 0.1);
-  border-radius: 13px;
-  background: rgba(14, 16, 15, 0.4);
-  transition:
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-
-.cs-context-row:hover {
-  border-color: rgba(255, 252, 225, 0.2);
-  background: rgba(14, 16, 15, 0.62);
 }
 
 .cs-context-row dt {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(14px, 1.1vw, 17px);
   font-weight: 650;
   color: var(--cream, #fffce1);
 }
@@ -1178,12 +1177,12 @@
 .cs-context-icon {
   display: grid;
   place-items: center;
-  width: 27px;
-  height: 27px;
+  width: 28px;
+  height: 28px;
   flex: none;
   border-radius: 9px;
-  background: color-mix(in srgb, var(--accent, #3f8fd6) 20%, transparent);
-  color: var(--accent, #3f8fd6);
+  background: color-mix(in srgb, var(--accent, #0ae448) 22%, transparent);
+  color: var(--accent, var(--green));
 }
 
 .cs-context-icon .case-icon {
@@ -1193,18 +1192,18 @@
 
 .cs-context-row dd {
   margin: 0;
-  font-size: 13px;
+  font-size: clamp(13px, 1vw, 14.5px);
   line-height: 1.55;
-  color: rgba(255, 252, 225, 0.68);
+  color: rgba(255, 252, 225, 0.74);
 }
 
 .cs-context-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 252, 225, 0.1);
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--accent, #0ae448) 24%, transparent);
 }
 
 /* ── cross-link ── */
