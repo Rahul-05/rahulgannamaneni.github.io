@@ -31,7 +31,7 @@ export const CASE_CONTENT = {
             {
               icon: 'lightbulb',
               k: 'Concept',
-              v: 'Something a department reasons about — capital allocation, exposure, liquidity — independent of whatever any one system happens to call it.',
+              v: 'Something a department reasons about, like capital allocation, exposure or liquidity, independent of whatever any one system happens to call it.',
             },
             {
               icon: 'book',

@@ -227,7 +227,7 @@ export default function App() {
 
   // keep the tab title in step with what is on screen
   useEffect(() => {
-    document.title = project ? `${project.title} — Rahul Rao` : 'RAHUL RAO — Portfolio';
+    document.title = project ? `${project.title} · Rahul Rao` : 'RAHUL RAO · Portfolio';
   }, [project]);
 
   const onPreloaderDone = useCallback(() => {

@@ -138,7 +138,7 @@ export const PROJECTS = [
     pinned: [
       'One front door to every department’s data, searched in business language rather than table names',
       'A quality score and a scorecard on every product, so trust is a number a stranger can read',
-      'Lineage and impact drawn as a graph — what breaks if this changes, answered in a glance instead of a week',
+      'Lineage and impact drawn as a graph, so what breaks if this changes is answered in a glance instead of a week',
       'Entitlements, ownership and usage on the same page as the data itself',
       'The pipelines that build it live behind the same door, so the product and its machinery are one click apart',
       'Other internal teams started asking to be added to the catalogue',
@@ -183,7 +183,7 @@ export const PROJECTS = [
       'dynamodb',
     ],
     pinned: [
-      'The agent narrows what you meant before it answers — a wrong reading answered confidently is worse than no answer',
+      'The agent narrows what you meant before it answers, because a wrong reading answered confidently is worse than no answer',
       'Clarifying turns are concrete choices, not an open prompt, so they cost a second not a sentence',
       'Debug mode shows the SQL, the metadata it leaned on and the assumptions it made',
       'The dashboard answers a different question for a different person: where is this used, what is it asked, what is failing',
@@ -223,7 +223,7 @@ export const PROJECTS = [
     pinned: [
       'Give the form a view name and it derives every underlying table, column and type from the catalogue',
       'People supply only what a person actually knows: names, descriptions, ownership, classification',
-      'It fails loudly and specifically — the view name that is missing, not “invalid input”',
+      'It fails loudly and specifically: the view name that is missing, not “invalid input”',
       'Errors surface during entry instead of weeks later in someone else’s report',
       'A flow expression DSL with a visual read, so the transformation is reviewable by people who will not read code',
       'Approvers read a diff against the last version rather than a document',
@@ -264,7 +264,7 @@ export const PROJECTS = [
       'Cardinality on every link, which is what makes the model checkable rather than decorative',
       'The editor validates all 58 relationships instead of leaving a human to audit dropdowns',
       'Every concept got an owner, so a question about a word has somewhere to go',
-      'This is the vocabulary the agent reasons over — it is why its answers land on the right product',
+      'This is the vocabulary the agent reasons over, which is why its answers land on the right product',
     ],
     sections: 'cdm',
   },
@@ -290,7 +290,7 @@ export const PROJECTS = [
     stack: ['figma', 'miro', 'design-system', 'prototype'],
     pinned: [
       'Started as a corporate LMS with no real search: people browsed endlessly to find a 90-second video',
-      'Pivoted to mental health eight months in — the users changed entirely and the research had to earn its place again',
+      'Pivoted to mental health eight months in, so the users changed entirely and the research had to earn its place again',
       'Ended as a dual interface: therapists assign and track, patients see what to do between sessions',
       'I led design across sprints and drove discovery, not just the screens',
       'A component set so the two audiences shared one product rather than forking it',
@@ -354,7 +354,7 @@ export const PROJECTS = [
     stack: ['figma', 'miro', 'cad', 'prototype'],
     pinned: [
       'A smart helmet that projects navigation onto the visor, with a companion app',
-      'For delivery riders on tight windows, who check a phone at junctions — exactly where looking away costs most',
+      'For delivery riders on tight windows, who check a phone at junctions, exactly where looking away costs most',
       'The finding that shaped it: a rider does not need more information, they need it where looking costs nothing',
       'Field of view tested on a physical rig to decide what the visor is allowed to show and where',
       'Handedness and glance cost drove the layout more than any visual preference',
@@ -386,7 +386,7 @@ export const PROJECTS = [
     stack: ['figma', 'miro', 'prototype'],
     pinned: [
       'A dual-device app for children with ADHD and the parent supporting them',
-      'Supports executive function — planning, starting, switching — rather than trying to supply motivation',
+      'Supports executive function, meaning planning, starting and switching, rather than trying to supply motivation',
       'The finding that changed the design: rewards a parent can bend do not hold',
       'So the structure sits with the app, and the parent gets to stay the ally rather than the enforcer',
       'The child plans and completes; the parent sees progress without standing over them',
