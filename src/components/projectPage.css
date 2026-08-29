@@ -320,24 +320,14 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  /* The panel is taller than a screen once the summary is in it, and a
-     sticky element taller than the viewport strands its own bottom. Capping
-     it and letting it scroll keeps the last line reachable. */
-  max-height: 96vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 252, 225, 0.2) transparent;
-  padding-right: 4px;
-}
-
-.pp-index::-webkit-scrollbar {
-  width: 4px;
-}
-
-.pp-index::-webkit-scrollbar-thumb {
-  background: rgba(255, 252, 225, 0.2);
-  border-radius: 2px;
+  /* Capped to the screen, but the panel itself never scrolls. The summary
+     inside it absorbs the overflow instead, so the section list stays put
+     at the top and the stack stays put at the bottom -- only the part that
+     is genuinely too long moves. */
+  /* The scroller starts below the bar and the sticky offset adds to that,
+     so a plain vh cap runs the panel off the bottom of the screen. */
+  max-height: calc(100vh - 92px);
+  overflow: hidden;
 }
 
 .pp-index-k {
@@ -406,12 +396,24 @@
   display: none;
 }
 
+/* Everything in the panel holds its size. Only the summary below gives any
+   up -- without this the shrink lands on whichever flex item comes first,
+   and it was the stack that quietly lost its last row of chips. */
 .pp-index-meta {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 252, 225, 0.16);
+  flex: none;
+}
+
+.pp-index-meta .pp-index-k {
+  flex: none;
+}
+
+.pp-index > .pp-index-k {
+  flex: none;
 }
 
 /* ── content column ── */
@@ -1305,12 +1307,61 @@
    A case study runs several screens and the argument is easy to lose
    halfway down. The stats at the top say what the project was; this says
    why it mattered, and it stays put while everything else scrolls. */
+/* the one flexible row: it gives up height before anything else does */
+.pp-pinned {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Second to give, and only after the summary has hit its floor. On a short
+   laptop screen something has to yield; better the directory, which is
+   navigable by scrolling, than the writing. */
+.pp-index > nav {
+  flex: 0 1 auto;
+  min-height: 96px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.pp-index > nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* A percentage max-height here is circular -- the parent is sized by this
+   list, so 100% of it is whatever the list already wanted. Being a flex
+   item with a zero minimum is what actually makes it give up height. */
 .pp-pinned-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 6px 0 0;
   display: grid;
   gap: 9px;
+  align-content: start;
+  flex: 1 1 auto;
+  /* a floor, so it stays worth reading rather than collapsing to one line */
+  min-height: 116px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 252, 225, 0.22) transparent;
+}
+
+.pp-pinned-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.pp-pinned-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 252, 225, 0.22);
+  border-radius: 2px;
+}
+
+/* the top strip is a normal block, so nothing there needs to scroll */
+.pp-topmeta .pp-pinned-list {
+  flex: none;
+  min-height: auto;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .pp-pinned-list li {

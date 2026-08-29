@@ -269,6 +269,22 @@ export default function ProjectPage({ project, onClose, onOpen }) {
               ))}
             </nav>
 
+            {/* What the study actually claims, kept in view for the whole
+                scroll -- the stats at the top say what this was, this says
+                why it mattered. It sits above the stack and takes the
+                leftover height, so it is the only thing that ever scrolls
+                and the stack below it stays put. */}
+            {project.pinned?.length > 0 && (
+              <div className="pp-index-meta pp-pinned">
+                <span className="pp-index-k">The short version</span>
+                <ul className="pp-pinned-list">
+                  {project.pinned.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="pp-index-meta">
               <span className="pp-index-k">Stack</span>
               <div className="pp-chips">
@@ -280,21 +296,6 @@ export default function ProjectPage({ project, onClose, onOpen }) {
                 ))}
               </div>
             </div>
-
-            {/* Three claims the study actually makes, kept in view for the
-                whole scroll. A case study is long and the point is easy to
-                lose halfway down; the stats at the top say what this was,
-                this says why it mattered. */}
-            {project.pinned?.length > 0 && (
-              <div className="pp-index-meta pp-pinned">
-                <span className="pp-index-k">The short version</span>
-                <ul className="pp-pinned-list">
-                  {project.pinned.map((line) => (
-                    <li key={line}>{line}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </aside>
         </div>
 
