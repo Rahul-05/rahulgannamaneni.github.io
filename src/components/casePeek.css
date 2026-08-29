@@ -1,0 +1,162 @@
+/* One case study opened over another. Sized to the brief: 90% of the
+   viewport each way, so it reads as a second document rather than as a
+   tooltip, while the page underneath stays visible at the edges and the
+   reader keeps their sense of where they were. */
+.peek {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+}
+
+.peek-scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(6, 8, 7, 0.72);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.peek-panel {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--off-black, #121312);
+  border: 1px solid rgba(255, 252, 225, 0.16);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+
+/* ── bar ── */
+.peek-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 252, 225, 0.12);
+  background: rgba(255, 252, 225, 0.03);
+  flex: none;
+}
+
+.peek-id {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.peek-n {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 8px;
+  background: var(--accent, #3f8fd6);
+  color: #0e100f;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.peek-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.peek-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 225, 0.45);
+}
+
+.peek-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream, #fffce1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.peek-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.peek-full,
+.peek-close {
+  border: 1px solid rgba(255, 252, 225, 0.22);
+  background: transparent;
+  color: var(--cream, #fffce1);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.peek-full {
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.peek-close {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+.peek-full:hover,
+.peek-close:hover {
+  background: rgba(255, 252, 225, 0.1);
+  border-color: rgba(255, 252, 225, 0.4);
+}
+
+/* ── body ── */
+.peek-scroll {
+  flex: 1;
+  min-height: 0; /* a flex item defaults to auto and would grow to content */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px clamp(18px, 4vw, 56px) 64px;
+}
+
+.peek-section {
+  padding: 26px 0;
+  border-radius: 12px;
+  scroll-margin-top: 16px;
+}
+
+.peek-section + .peek-section {
+  border-top: 1px solid rgba(255, 252, 225, 0.09);
+}
+
+@media (max-width: 720px) {
+  .peek-panel {
+    width: 94vw;
+    height: 92vh;
+    border-radius: 16px;
+  }
+
+  .peek-full {
+    display: none; /* the close button is the only action that fits */
+  }
+}

@@ -25,6 +25,38 @@ export const CASE_CONTENT = {
       icon: 'grid',
       blocks: [
         {
+          type: 'context',
+          title: 'The words this is about',
+          items: [
+            {
+              k: 'Concept',
+              v: 'Something a department reasons about — capital allocation, exposure, liquidity — independent of whatever any one system happens to call it.',
+            },
+            {
+              k: 'Term',
+              v: 'The word a department actually uses for a concept. Several terms often point at one concept, which is exactly where the disagreements start.',
+            },
+            {
+              k: 'Conceptual domain model',
+              v: 'The concepts, the terms, and the typed links between them. It is what lets a question asked in business language find the right data product underneath.',
+            },
+          ],
+          links: [
+            {
+              to: 'agent',
+              section: 'asking',
+              k: 'Related',
+              title: 'What the agent needs this for',
+            },
+            {
+              to: 'portal',
+              section: 'overview',
+              k: 'Related',
+              title: 'The products it maps onto',
+            },
+          ],
+        },
+        {
           type: 'prose',
           lead: 'Getting a firm to agree what its own words mean',
           body: [
@@ -242,6 +274,14 @@ export const CASE_CONTENT = {
             'The agent had a vocabulary to reason over, which is what made its answers land in the language people asked in.',
           ],
         },
+        {
+          type: 'crosslink',
+          to: 'portal',
+          section: 'overview',
+          k: 'What it powers',
+          title: 'The portal this vocabulary makes searchable',
+          text: 'A model nobody uses is a diagram. This one is what lets a business-language search reach the right data product.',
+        },
       ],
     },
     {
@@ -275,6 +315,38 @@ export const CASE_CONTENT = {
       label: 'Overview',
       icon: 'grid',
       blocks: [
+        {
+          type: 'context',
+          title: 'What is being registered, and where it ends up',
+          items: [
+            {
+              k: 'Data product',
+              v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
+            },
+            {
+              k: 'Registering one',
+              v: 'Describing a new data product well enough for the rest of the platform to use it: what it holds, which tables it comes from, who owns it, who may see it.',
+            },
+            {
+              k: 'Why it matters here',
+              v: 'Everything captured in this form is what the portal later shows and the agent later answers from. A sloppy record does not stay a local problem.',
+            },
+          ],
+          links: [
+            {
+              to: 'portal',
+              section: 'overview',
+              k: 'Related',
+              title: 'The portal this feeds',
+            },
+            {
+              to: 'cdm',
+              section: 'concepts',
+              k: 'Related',
+              title: 'The vocabulary it has to match',
+            },
+          ],
+        },
         {
           type: 'prose',
           lead: 'Replacing the spreadsheet with a form that knows things',
@@ -401,6 +473,14 @@ export const CASE_CONTENT = {
           figure: 'arc',
           k: 'An error that names the object beats one that names the rule',
           text: 'View not found in Glue catalog, and then the exact view name, is actionable. Invalid input is not. Every message points at the thing it is complaining about and, where it can, at the fix.',
+        },
+        {
+          type: 'crosslink',
+          to: 'cdm',
+          section: 'concepts',
+          k: 'What it validates against',
+          title: 'The vocabulary a record has to line up with',
+          text: 'Failing loudly is only useful if there is an agreed definition to fail against. That agreement is the domain model.',
         },
       ],
     },
@@ -539,6 +619,38 @@ export const CASE_CONTENT = {
       icon: 'grid',
       blocks: [
         {
+          type: 'context',
+          title: 'What this sits on top of',
+          items: [
+            {
+              k: 'Data product',
+              v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
+            },
+            {
+              k: 'Agent',
+              v: 'A question-answering assistant over one data product. You ask in business language; it works out which question you actually meant before it answers, and it shows the SQL and metadata it leaned on.',
+            },
+            {
+              k: 'Usage dashboard',
+              v: 'The other half of this project. Not what the agent answers, but where it is being used across the firm, what it is being asked, and which parts are quietly failing.',
+            },
+          ],
+          links: [
+            {
+              to: 'portal',
+              section: 'overview',
+              k: 'Related',
+              title: 'The portal these products live in',
+            },
+            {
+              to: 'cdm',
+              section: 'overview',
+              k: 'Related',
+              title: 'The vocabulary it has to answer in',
+            },
+          ],
+        },
+        {
           type: 'prose',
           lead: 'An agent that asks first, and a dashboard that watches it',
           body: [
@@ -607,6 +719,14 @@ export const CASE_CONTENT = {
           url: 'dataportal / recourse-leverage',
           title: 'Depth is the person\u2019s decision',
           body: 'Normal mode answers. Debug mode shows the SQL, the metadata it leaned on and the assumptions it made. The same question, two audiences, one control.',
+        },
+        {
+          type: 'crosslink',
+          to: 'cdm',
+          section: 'relationships',
+          k: 'What it reads',
+          title: 'The typed links the agent narrows a question with',
+          text: 'Working out which question someone meant needs an agreed map of concepts and terms. Building that map with the stewards was its own project.',
         },
       ],
     },
@@ -697,6 +817,14 @@ export const CASE_CONTENT = {
               url: 'dataportal / admin / agent-usage',
             },
           ],
+        },
+        {
+          type: 'crosslink',
+          to: 'portal',
+          section: 'navigation',
+          k: 'Where it is used',
+          title: 'The portal the agent is embedded in',
+          text: 'The agent is not a separate destination. It sits on the product page people were already on.',
         },
       ],
     },
@@ -825,6 +953,38 @@ export const CASE_CONTENT = {
       label: 'Overview',
       icon: 'grid',
       blocks: [
+        {
+          type: 'context',
+          title: 'Before any of this makes sense',
+          items: [
+            {
+              k: 'Data product',
+              v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
+            },
+            {
+              k: 'Data portal',
+              v: 'The front door. One place to search every data product in the firm and see, before you use it, whether it can be trusted.',
+            },
+            {
+              k: 'Data factory',
+              v: 'The pipelines that build and refresh those products. Put behind the same door, so the data and the machinery keeping it current are one click apart.',
+            },
+          ],
+          links: [
+            {
+              to: 'ingestion',
+              section: 'overview',
+              k: 'Related',
+              title: 'How a data product gets registered',
+            },
+            {
+              to: 'agent',
+              section: 'overview',
+              k: 'Related',
+              title: 'The agent that answers questions about one',
+            },
+          ],
+        },
         {
           type: 'prose',
           lead: 'One place to find data, and a reason to trust it',
@@ -995,6 +1155,14 @@ export const CASE_CONTENT = {
           title: 'And a way to ask about it in words',
           body: 'The quality assistant answers questions about a specific check on a specific product, which is what people actually want at the moment they are looking at a score they do not like.',
         },
+        {
+          type: 'crosslink',
+          to: 'agent',
+          section: 'overview',
+          k: 'The other half',
+          title: 'The agent behind the Data Q&A button',
+          text: 'The quality panel answers whether a product is sound. Asking it a question in words is a separate build, and its own case study.',
+        },
       ],
     },
     {
@@ -1116,6 +1284,14 @@ export const CASE_CONTENT = {
               url: 'dataportal / jobs / run',
             },
           ],
+        },
+        {
+          type: 'crosslink',
+          to: 'ingestion',
+          section: 'autofill',
+          k: 'Where products come from',
+          title: 'The form that puts a product here in the first place',
+          text: 'Everything the portal shows about a product was captured at registration. That form is the reason this page has anything worth reading.',
         },
       ],
     },

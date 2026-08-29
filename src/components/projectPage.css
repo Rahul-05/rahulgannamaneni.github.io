@@ -1086,3 +1086,154 @@
     font-size: 28px;
   }
 }
+
+/* ── context: the short glossary before the argument ──────────────────
+   These four studies are one platform seen from four sides, and they share
+   its vocabulary. A reader who does not know what a data product is cannot
+   weigh any decision that follows, so the definitions come first and stay
+   deliberately brief -- enough to follow the case, not a primer. */
+.cs-context {
+  margin: 6px 0 22px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 252, 225, 0.16);
+  border-left: 3px solid var(--accent, #3f8fd6);
+  border-radius: 14px;
+  background: rgba(255, 252, 225, 0.035);
+}
+
+.cs-context-k {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, #3f8fd6);
+}
+
+.cs-context-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.cs-context-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 22%) 1fr;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+
+.cs-context-row dt {
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 650;
+  color: var(--cream, #fffce1);
+}
+
+.cs-context-row dd {
+  margin: 0;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.55;
+  color: rgba(255, 252, 225, 0.72);
+}
+
+.cs-context-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 252, 225, 0.1);
+}
+
+/* ── cross-link ── */
+.cs-crossblock {
+  margin: 20px 0;
+}
+
+.cs-crosslink {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 14px 9px 11px;
+  border: 1px solid rgba(255, 252, 225, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 252, 225, 0.04);
+  color: var(--cream, #fffce1);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cs-crosslink:hover {
+  background: rgba(255, 252, 225, 0.09);
+  border-color: var(--accent, #3f8fd6);
+  transform: translateY(-1px);
+}
+
+.cs-crosslink.is-wide {
+  display: flex;
+  width: 100%;
+  padding: 15px 18px;
+  gap: 14px;
+}
+
+.cs-crosslink-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 9px;
+  background: var(--accent, #3f8fd6);
+  color: #0e100f;
+}
+
+.cs-crosslink-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cs-crosslink-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cs-crosslink-k {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent, #3f8fd6);
+}
+
+.cs-crosslink-title {
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 600;
+}
+
+.cs-crosslink-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 252, 225, 0.66);
+}
+
+.cs-crosslink-go {
+  margin-left: auto;
+  padding-left: 8px;
+  font-size: 13px;
+  color: rgba(255, 252, 225, 0.5);
+}
+
+@media (max-width: 720px) {
+  .cs-context-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
