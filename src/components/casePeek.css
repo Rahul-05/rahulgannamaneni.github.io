@@ -28,6 +28,11 @@
   flex-direction: column;
   min-height: 0;
   background: var(--off-black, #121312);
+  /* The case blocks set no colour of their own -- they inherit it from .pp.
+     This panel is portalled to the body, outside that, so without a colour
+     here every heading and stat value inherits the body's near-black and
+     disappears into the panel. */
+  color: var(--cream, #fffce1);
   border: 1px solid rgba(255, 252, 225, 0.16);
   border-radius: 20px;
   overflow: hidden;
