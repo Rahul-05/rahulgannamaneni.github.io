@@ -310,6 +310,10 @@
   gap: clamp(28px, 5vw, 90px);
   align-items: start;
   padding-top: 6vh;
+  /* The sticky column travels the whole length of this grid, so without a
+     floor here it comes to rest flush against the next-project rule and the
+     stack reads as sitting on the line. */
+  padding-bottom: clamp(44px, 7vh, 90px);
   border-top: 1px solid rgba(255, 252, 225, 0.16);
 }
 
@@ -1313,18 +1317,10 @@
   min-height: 0;
 }
 
-/* Second to give, and only after the summary has hit its floor. On a short
-   laptop screen something has to yield; better the directory, which is
-   navigable by scrolling, than the writing. */
+/* The directory never gives. It is how you move around the study, so it is
+   always there in full -- the summary is the only thing that yields. */
 .pp-index > nav {
-  flex: 0 1 auto;
-  min-height: 96px;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.pp-index > nav::-webkit-scrollbar {
-  display: none;
+  flex: none;
 }
 
 /* A percentage max-height here is circular -- the parent is sized by this
@@ -1338,12 +1334,44 @@
   gap: 9px;
   align-content: start;
   flex: 1 1 auto;
-  /* a floor, so it stays worth reading rather than collapsing to one line */
-  min-height: 116px;
+  /* The only flexible thing in the panel, so it takes the whole squeeze.
+     A low floor rather than a comfortable one: the directory and the stack
+     are guaranteed their space first, and whatever is left is this. */
+  min-height: 58px;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 252, 225, 0.22) transparent;
+}
+
+/* Fading the edge that still has content is what says "there is more here".
+   A thin scrollbar alone is easy to miss, and on a trackpad it is hidden
+   until you already started scrolling -- which is too late to be a hint. */
+.pp-pinned-list.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 34px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 34px), transparent);
+}
+
+.pp-pinned-list.has-prev {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30px);
+  mask-image: linear-gradient(to bottom, transparent, #000 30px);
+}
+
+.pp-pinned-list.has-prev.has-more {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 30px,
+    #000 calc(100% - 34px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 30px,
+    #000 calc(100% - 34px),
+    transparent
+  );
 }
 
 .pp-pinned-list::-webkit-scrollbar {
@@ -1411,4 +1439,34 @@
 
 .pp--embed .pp-scroll {
   padding-top: 8px;
+}
+
+/* ── short screens ────────────────────────────────────────────────────
+   On a laptop shorter than about 730px the panel cannot hold the
+   directory, the summary and the stack at once, and squeezing the summary
+   to a couple of lines makes it useless rather than merely short. Below
+   that height it leaves the panel and runs inline at the top of the study,
+   where it has room. The directory and the stack keep their places. */
+/* Set from a measurement, not a breakpoint: the panel is only as short as
+   its own directory makes it, and that varies by study. */
+.pp--summary-inline .pp-index .pp-pinned {
+  display: none;
+}
+
+@media (min-width: 721px) {
+  .pp--summary-inline .pp-topmeta {
+    display: grid;
+    gap: 20px;
+    padding: 22px var(--pad) 4px;
+  }
+
+  .pp--summary-inline .pp-topmeta-block {
+    display: grid;
+    gap: 10px;
+  }
+
+  /* the panel keeps the stack; only the summary moves */
+  .pp--summary-inline .pp-topmeta-block--stack {
+    display: none;
+  }
 }

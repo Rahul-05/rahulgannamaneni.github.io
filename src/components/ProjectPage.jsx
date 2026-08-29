@@ -16,6 +16,8 @@ import './projectPage.css';
 // Rendered inside the peek iframe as well as at the top level. In embed mode
 // it drops its own bar and footer -- the panel around it supplies those --
 // and skips the slide-up, which only makes sense when it covers the page.
+const MIN_SUMMARY = 112; // three lines; below this it is not worth the panel
+
 const isEmbed = () => new URLSearchParams(window.location.search).has('embed');
 
 export default function ProjectPage({ project, onClose, onOpen }) {
@@ -25,6 +27,10 @@ export default function ProjectPage({ project, onClose, onOpen }) {
   const indexNavRef = useRef(null);
   const [zoom, setZoom] = useState(null);
   const [peek, setPeek] = useState(null);
+  const pinnedRef = useRef(null);
+  const asideRef = useRef(null);
+  // whether the summary has room to be worth reading in the panel
+  const [summaryInline, setSummaryInline] = useState(false);
   const [active, setActive] = useState((CASE_CONTENT[project.sections] || CASE_SECTIONS)[0].id);
 
   const sections = CASE_CONTENT[project.sections] || CASE_SECTIONS;
@@ -112,6 +118,68 @@ export default function ProjectPage({ project, onClose, onOpen }) {
     return () => clearTimeout(t);
   }, [project.slug]);
 
+  // The directory is never allowed to shrink and the stack sits below it, so
+  // on a short window the summary is left with whatever is over -- sometimes
+  // two lines, which is worse than not being there. A height breakpoint
+  // cannot decide this: a study with ten sections runs out of room long
+  // before one with eight. So measure what is actually left and, when it is
+  // not enough to read, move the summary inline at the top of the study
+  // where it has the width to be short instead of cramped.
+  useEffect(() => {
+    const aside = asideRef.current;
+    if (!aside) return undefined;
+
+    const decide = () => {
+      const nav = aside.querySelector('nav');
+      const label = aside.querySelector(':scope > .pp-index-k');
+      const stack = aside.querySelector('.pp-index-meta:not(.pp-pinned)');
+      if (!nav || !stack) return;
+      const cs = getComputedStyle(aside);
+      const gap = parseFloat(cs.rowGap) || 18;
+      // label + nav + stack + the gaps between them, plus the summary's own
+      // heading and the rule above it
+      const used =
+        (label?.offsetHeight || 0) + nav.offsetHeight + stack.offsetHeight + gap * 3 + 37;
+      // Against the cap, not the rendered height: once the summary moves out
+      // the panel shrinks to fit what is left, and measuring that would say
+      // there is no room for the thing whose absence created the room.
+      const cap = parseFloat(cs.maxHeight) || aside.clientHeight;
+      setSummaryInline(cap - used < MIN_SUMMARY);
+    };
+
+    decide();
+    const ro = new ResizeObserver(decide);
+    ro.observe(aside);
+    // the panel is capped in vh, so the viewport changing is what matters
+    ro.observe(document.documentElement);
+    window.addEventListener('resize', decide);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', decide);
+    };
+  }, [project.slug]);
+
+  // Flags whichever edge of the summary still has content, so the fade can
+  // say there is more to read. Re-run on resize because the list's height is
+  // whatever the panel has left over, which changes with the window.
+  useEffect(() => {
+    const el = pinnedRef.current;
+    if (!el) return undefined;
+    const sync = () => {
+      const more = el.scrollHeight - el.clientHeight;
+      el.classList.toggle('has-more', more > 2 && el.scrollTop < more - 2);
+      el.classList.toggle('has-prev', el.scrollTop > 2);
+    };
+    sync();
+    el.addEventListener('scroll', sync, { passive: true });
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener('scroll', sync);
+      ro.disconnect();
+    };
+  }, [project.slug, summaryInline]);
+
   const close = () => {
     gsap.to(rootRef.current, {
       yPercent: 100,
@@ -141,7 +209,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
 
   return (
     <div
-      className={`pp ${embed ? 'pp--embed' : ''}`}
+      className={`pp ${embed ? 'pp--embed' : ''} ${summaryInline ? 'pp--summary-inline' : ''}`}
       ref={rootRef}
       style={project.accent ? { '--accent': project.accent } : undefined}
     >
@@ -188,7 +256,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
             at the top, where a reader meets them before the long scroll. */}
         <div className="pp-topmeta">
           {project.pinned?.length > 0 && (
-            <div className="pp-topmeta-block">
+            <div className="pp-topmeta-block pp-topmeta-block--summary">
               <span className="pp-index-k">The short version</span>
               <ul className="pp-pinned-list">
                 {project.pinned.map((line) => (
@@ -197,7 +265,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
               </ul>
             </div>
           )}
-          <div className="pp-topmeta-block">
+          <div className="pp-topmeta-block pp-topmeta-block--stack">
             <span className="pp-index-k">Stack</span>
             <div className="pp-chips">
               {project.stack.map((t) => (
@@ -235,7 +303,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
             ))}
           </main>
 
-          <aside className="pp-index">
+          <aside className="pp-index" ref={asideRef}>
             <span className="pp-index-k">Sections</span>
 
             {/* On narrow screens the list becomes a horizontal strip. The
@@ -277,7 +345,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
             {project.pinned?.length > 0 && (
               <div className="pp-index-meta pp-pinned">
                 <span className="pp-index-k">The short version</span>
-                <ul className="pp-pinned-list">
+                <ul className="pp-pinned-list" ref={pinnedRef}>
                   {project.pinned.map((line) => (
                     <li key={line}>{line}</li>
                   ))}
