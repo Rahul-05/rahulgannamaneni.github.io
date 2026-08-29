@@ -37,6 +37,7 @@ function projectFromPathOnBoot() {
 export default function App() {
   const [loaded, setLoaded] = useState(() => !!projectFromPathOnBoot());
   const [navDark, setNavDark] = useState(false);
+  const embed = new URLSearchParams(window.location.search).has('embed');
   // an overlay (a lab popup) needs ordinary scrolling, so the engine stands down
   const [overlay, setOverlay] = useState(false);
   // Whether the active section has run out of internal travel. Sections that
@@ -233,6 +234,22 @@ export default function App() {
     setLoaded(true);
     handles.current[0]?.playIntro?.();
   }, []);
+
+  // Inside the peek iframe the page is only ever the one case study. Sending
+  // back just that -- no stage, no nav, no contact chip -- keeps the frame
+  // from building an entire second copy of the site behind a panel nobody
+  // can see, and means the peek cannot pick up chrome that belongs to the
+  // window around it.
+  if (embed) {
+    return project ? (
+      <ProjectPage
+        key={project.n}
+        project={project}
+        onOpen={setProject}
+        onClose={() => setProject(null)}
+      />
+    ) : null;
+  }
 
   return (
     <>

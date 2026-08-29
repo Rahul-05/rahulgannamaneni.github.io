@@ -13,7 +13,13 @@ import Block, { Media } from './caseBlocks.jsx';
 import CasePeek from './CasePeek.jsx';
 import './projectPage.css';
 // ── the page ─────────────────────────────────────────────────────────
+// Rendered inside the peek iframe as well as at the top level. In embed mode
+// it drops its own bar and footer -- the panel around it supplies those --
+// and skips the slide-up, which only makes sense when it covers the page.
+const isEmbed = () => new URLSearchParams(window.location.search).has('embed');
+
 export default function ProjectPage({ project, onClose, onOpen }) {
+  const embed = isEmbed();
   const rootRef = useRef(null);
   const scrollRef = useRef(null);
   const indexNavRef = useRef(null);
@@ -32,8 +38,8 @@ export default function ProjectPage({ project, onClose, onOpen }) {
         .timeline()
         .fromTo(
           rootRef.current,
-          { yPercent: 100 },
-          { yPercent: 0, duration: 0.75, ease: 'power3.inOut' },
+          { yPercent: embed ? 0 : 100 },
+          { yPercent: 0, duration: embed ? 0 : 0.75, ease: 'power3.inOut' },
         )
         .fromTo(
           q('.pp-tag, .pp-title-line, .pp-lede'),
@@ -91,6 +97,21 @@ export default function ProjectPage({ project, onClose, onOpen }) {
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
   }, [project.slug]);
 
+  // The peek asks for a section through the hash. Jumping after layout, not
+  // on mount, because the images above set their own height first.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return undefined;
+    const t = setTimeout(() => {
+      const el = rootRef.current?.querySelector(`#${CSS.escape(id)}`);
+      const root = scrollRef.current;
+      if (!el || !root) return;
+      root.scrollTop += el.getBoundingClientRect().top - root.getBoundingClientRect().top - 12;
+      setActive(id);
+    }, 60);
+    return () => clearTimeout(t);
+  }, [project.slug]);
+
   const close = () => {
     gsap.to(rootRef.current, {
       yPercent: 100,
@@ -120,18 +141,20 @@ export default function ProjectPage({ project, onClose, onOpen }) {
 
   return (
     <div
-      className="pp"
+      className={`pp ${embed ? 'pp--embed' : ''}`}
       ref={rootRef}
       style={project.accent ? { '--accent': project.accent } : undefined}
     >
-      <header className="pp-bar">
-        <button className="pp-back" onClick={close}>
-          <span className="pp-back-arrow">←</span> All work
-        </button>
-        <span className="pp-count">
-          {project.n} / {String(PROJECTS.length).padStart(2, '0')}
-        </span>
-      </header>
+      {!embed && (
+        <header className="pp-bar">
+          <button className="pp-back" onClick={close}>
+            <span className="pp-back-arrow">←</span> All work
+          </button>
+          <span className="pp-count">
+            {project.n} / {String(PROJECTS.length).padStart(2, '0')}
+          </span>
+        </header>
+      )}
 
       <div className="pp-scroll" ref={scrollRef}>
         {/* ── hero ── */}
@@ -159,6 +182,34 @@ export default function ProjectPage({ project, onClose, onOpen }) {
           />
         </section>
 
+        {/* On a phone the sticky directory collapses to a section strip and
+            its panels are hidden -- there is no room to pin anything. Rather
+            than lose the stack and the summary entirely, they run once here,
+            at the top, where a reader meets them before the long scroll. */}
+        <div className="pp-topmeta">
+          {project.pinned?.length > 0 && (
+            <div className="pp-topmeta-block">
+              <span className="pp-index-k">The short version</span>
+              <ul className="pp-pinned-list">
+                {project.pinned.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <div className="pp-topmeta-block">
+            <span className="pp-index-k">Stack</span>
+            <div className="pp-chips">
+              {project.stack.map((t) => (
+                <span className="pp-chip" key={t}>
+                  <TechIcon name={t} />
+                  {TECH_LABEL[t]}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* ── case study: content left, sticky directory right ── */}
         <div className="pp-body">
           <main className="pp-content">
@@ -166,7 +217,19 @@ export default function ProjectPage({ project, onClose, onOpen }) {
               <section className="cs-section" id={sec.id} key={sec.id}>
                 <SectionTag icon={sec.icon}>{sec.label}</SectionTag>
                 {sec.blocks.map((b, i) => (
-                  <Block block={b} key={i} onOpen={setZoom} onPeek={setPeek} />
+                  <Block
+                    block={b}
+                    key={i}
+                    onOpen={setZoom}
+                    onPeek={
+                      embed
+                        ? (l) => {
+                            const t = PROJECTS.find((x) => x.sections === l.to);
+                            if (t) window.location.href = `/${t.slug}?embed=1#${l.section}`;
+                          }
+                        : setPeek
+                    }
+                  />
                 ))}
               </section>
             ))}
@@ -217,16 +280,33 @@ export default function ProjectPage({ project, onClose, onOpen }) {
                 ))}
               </div>
             </div>
+
+            {/* Three claims the study actually makes, kept in view for the
+                whole scroll. A case study is long and the point is easy to
+                lose halfway down; the stats at the top say what this was,
+                this says why it mattered. */}
+            {project.pinned?.length > 0 && (
+              <div className="pp-index-meta pp-pinned">
+                <span className="pp-index-k">The short version</span>
+                <ul className="pp-pinned-list">
+                  {project.pinned.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </aside>
         </div>
 
-        <button className="pp-next" onClick={() => onOpen(next)}>
-          <span className="pp-next-k">Next project</span>
-          <span className="pp-next-title">{next.title}</span>
-          <span className="pp-next-arrow" aria-hidden="true">
-            →
-          </span>
-        </button>
+        {!embed && (
+          <button className="pp-next" onClick={() => onOpen(next)}>
+            <span className="pp-next-k">Next project</span>
+            <span className="pp-next-title">{next.title}</span>
+            <span className="pp-next-arrow" aria-hidden="true">
+              →
+            </span>
+          </button>
+        )}
       </div>
 
       <Lightbox image={zoom} onClose={() => setZoom(null)} />

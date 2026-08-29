@@ -215,6 +215,16 @@
   gap: 6px;
 }
 
+/* Every other place a tech icon is used sizes it. This one never did, so
+   the svg collapsed to nothing and the chips have been text-only all along
+   -- invisible while the stack was a single Figma chip. */
+.pp-chip .tech-icon {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  opacity: 0.75;
+}
+
 .pp-chip {
   display: inline-flex;
   align-items: center;
@@ -1088,53 +1098,104 @@
 }
 
 /* ── context: the short glossary before the argument ──────────────────
-   These four studies are one platform seen from four sides, and they share
-   its vocabulary. A reader who does not know what a data product is cannot
-   weigh any decision that follows, so the definitions come first and stay
-   deliberately brief -- enough to follow the case, not a primer. */
+   These studies share a platform and its vocabulary. A reader who does not
+   know what a data product is cannot weigh any decision that follows, so the
+   definitions come first, stay brief, and are built as cards rather than a
+   list -- three things to know, each with a face, scannable before anyone
+   commits to reading the study. */
 .cs-context {
-  margin: 6px 0 22px;
-  padding: 20px 22px;
-  border: 1px solid rgba(255, 252, 225, 0.16);
-  border-left: 3px solid var(--accent, #3f8fd6);
-  border-radius: 14px;
-  background: rgba(255, 252, 225, 0.035);
+  margin: 6px 0 26px;
+  padding: 22px;
+  border: 1px solid rgba(255, 252, 225, 0.14);
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(255, 252, 225, 0.07), transparent 62%),
+    rgba(255, 252, 225, 0.022);
+  position: relative;
+  overflow: hidden;
+}
+
+/* a thin accent edge rather than a heavy left border */
+.cs-context::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent, #3f8fd6), rgba(255, 252, 225, 0.06) 70%);
 }
 
 .cs-context-k {
-  display: block;
-  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--accent, #3f8fd6);
 }
 
+.cs-context-k .case-icon {
+  width: 13px;
+  height: 13px;
+}
+
 .cs-context-list {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
   margin: 0;
 }
 
 .cs-context-row {
   display: grid;
-  grid-template-columns: minmax(120px, 22%) 1fr;
-  gap: 4px 20px;
-  align-items: baseline;
+  gap: 8px;
+  align-content: start;
+  padding: 16px 16px 17px;
+  border: 1px solid rgba(255, 252, 225, 0.1);
+  border-radius: 13px;
+  background: rgba(14, 16, 15, 0.4);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.cs-context-row:hover {
+  border-color: rgba(255, 252, 225, 0.2);
+  background: rgba(14, 16, 15, 0.62);
 }
 
 .cs-context-row dt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-size: clamp(13px, 1vw, 15px);
   font-weight: 650;
   color: var(--cream, #fffce1);
 }
 
+.cs-context-icon {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  flex: none;
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--accent, #3f8fd6) 20%, transparent);
+  color: var(--accent, #3f8fd6);
+}
+
+.cs-context-icon .case-icon {
+  width: 15px;
+  height: 15px;
+}
+
 .cs-context-row dd {
   margin: 0;
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: 13px;
   line-height: 1.55;
-  color: rgba(255, 252, 225, 0.72);
+  color: rgba(255, 252, 225, 0.68);
 }
 
 .cs-context-links {
@@ -1142,7 +1203,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 16px;
-  padding-top: 14px;
+  padding-top: 15px;
   border-top: 1px solid rgba(255, 252, 225, 0.1);
 }
 
@@ -1232,8 +1293,72 @@
 }
 
 @media (max-width: 720px) {
-  .cs-context-row {
-    grid-template-columns: 1fr;
-    gap: 2px;
+  .cs-context {
+    padding: 18px 16px;
   }
+
+  .cs-context-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── the short version, pinned in the sticky index ────────────────────
+   A case study runs several screens and the argument is easy to lose
+   halfway down. The stats at the top say what the project was; this says
+   why it mattered, and it stays put while everything else scrolls. */
+.pp-pinned-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.pp-pinned-list li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 252, 225, 0.74);
+}
+
+.pp-pinned-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent, var(--green));
+}
+
+/* The top strip only exists where the sticky index cannot carry these. */
+.pp-topmeta {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .pp-topmeta {
+    display: grid;
+    gap: 20px;
+    padding: 22px var(--pad) 4px;
+  }
+
+  .pp-topmeta-block {
+    display: grid;
+    gap: 10px;
+  }
+}
+
+/* ── embedded in the peek ────────────────────────────────────────────
+   The panel supplies the bar and the close control, so the page inside
+   drops its own and sits flush in the frame. */
+.pp--embed {
+  position: static;
+  height: 100%;
+}
+
+.pp--embed .pp-scroll {
+  padding-top: 8px;
 }

@@ -12,9 +12,9 @@ const P = {
   ),
   typescript: (
     <>
-      <rect x="2.5" y="2.5" width="19" height="19" rx="3" />
-      <path d="M6.5 10h5M9 10v7" />
-      <path d="M18.5 11.2c-.5-.8-1.4-1.2-2.3-1.1-1 .1-1.7.8-1.6 1.7.1 1.9 3.9 1.2 4 3.4.1 1.1-.9 1.9-2.1 1.9-1 0-1.9-.4-2.4-1.2" />
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="2.6" />
+      <path d="M6.2 10.6h5.2M8.8 10.6v7" />
+      <path d="M18.6 11.4c-.5-.7-1.3-1-2.1-.9-.9.1-1.6.7-1.5 1.6.1 1.7 3.6 1.1 3.7 3.1.1 1-.9 1.8-2 1.8-.9 0-1.7-.4-2.2-1" />
     </>
   ),
   gsap: (
@@ -25,11 +25,11 @@ const P = {
   ),
   figma: (
     <>
-      <path d="M9 2.8h3v6H9a3 3 0 0 1 0-6Z" />
-      <path d="M12 2.8h3a3 3 0 0 1 0 6h-3v-6Z" />
-      <path d="M9 8.8h3v6H9a3 3 0 0 1 0-6Z" />
-      <path d="M9 14.8h3v3a3 3 0 1 1-3-3Z" />
-      <circle cx="15" cy="11.8" r="3" />
+      <path d="M8.8 2.6h3.2v4.7H8.8a2.35 2.35 0 0 1 0-4.7z" />
+      <path d="M12 2.6h3.2a2.35 2.35 0 0 1 0 4.7H12z" />
+      <path d="M8.8 7.3H12V12H8.8a2.35 2.35 0 0 1 0-4.7z" />
+      <path d="M8.8 12H12v4.7H8.8a2.35 2.35 0 0 1 0-4.7z" />
+      <circle cx="15.2" cy="9.65" r="2.35" />
     </>
   ),
   storybook: (
@@ -61,6 +61,79 @@ const P = {
       <ellipse cx="12" cy="7" rx="7.5" ry="3.4" />
       <path d="M4.5 7v10c0 1.9 3.4 3.4 7.5 3.4s7.5-1.5 7.5-3.4V7" />
       <path d="M4.5 12.2c0 1.9 3.4 3.4 7.5 3.4s7.5-1.5 7.5-3.4" />
+    </>
+  ),
+  angular: (
+    <>
+      <path d="M12 2.4 3.2 5.5l1.35 11.7L12 21.6l7.45-4.4L20.8 5.5z" />
+      <path d="M8.7 15.1 12 7.1l3.3 8M9.9 12.9h4.2" />
+    </>
+  ),
+  'figma-make': (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="4" />
+      <path d="M12 7.4 13.3 10.7 16.6 12l-3.3 1.3L12 16.6l-1.3-3.3L7.4 12l3.3-1.3z" />
+    </>
+  ),
+  aws: (
+    <>
+      <path d="M4.2 10.3c1 .6 2.3 1 3.5.9M4.2 8v3.6M4.2 8c0-.8.9-1.3 1.9-1.3s1.8.5 1.8 1.3v3.7" />
+      <path d="M10.4 7.6 11.9 12l1.5-4.4L14.9 12l1.5-4.4" />
+      <path d="M18.6 11.4c.6.4 1.4.5 2 .2.7-.3.8-1.1.2-1.5-.9-.6-2.3-.4-2.3-1.5 0-.7.8-1.1 1.6-1 .5 0 .9.2 1.2.4" />
+      <path d="M3 16.4c4.4 2.6 11.6 2.9 17 .6" />
+      <path d="M18.8 16.2c1.8-.6 2.6-.3 2 1.2" />
+    </>
+  ),
+  neptune: (
+    <>
+      <circle cx="12" cy="4.9" r="2.1" />
+      <circle cx="5.2" cy="16.2" r="2.1" />
+      <circle cx="18.8" cy="16.2" r="2.1" />
+      <circle cx="12" cy="12.2" r="2.3" />
+      <path d="M12 7v2.9M10.1 13.5 6.9 15.1M13.9 13.5l3.2 1.6M7.3 16.2h9.4" />
+    </>
+  ),
+  dynamodb: (
+    <>
+      <ellipse cx="12" cy="5.6" rx="7.4" ry="2.8" />
+      <path d="M4.6 5.6v12.8c0 1.55 3.3 2.8 7.4 2.8s7.4-1.25 7.4-2.8V5.6" />
+      <path d="M4.6 12c0 1.55 3.3 2.8 7.4 2.8s7.4-1.25 7.4-2.8" />
+      <path d="m10.4 9.4 2.6 2.6-2.6 2.6" />
+    </>
+  ),
+  quicksight: (
+    <>
+      <rect x="2.6" y="3.6" width="18.8" height="13.6" rx="2.3" />
+      <path d="M6.6 13.6v-2.7M10.2 13.6V8.2M13.8 13.6v-4M17.4 13.6V6.6" />
+      <path d="M8.6 20.4h6.8M12 17.2v3.2" />
+    </>
+  ),
+  miro: (
+    <>
+      <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="3.4" />
+      <path d="M7.6 17V9.6l2.9 2v-4l2.9 2v-3.6l2.9 2V17" />
+    </>
+  ),
+  cad: (
+    <>
+      <path d="M12 2.8 20.4 7.4v9.2L12 21.2 3.6 16.6V7.4z" />
+      <path d="M3.6 7.4 12 12l8.4-4.6M12 12v9.2" />
+    </>
+  ),
+  prototype: (
+    <>
+      <rect x="3" y="4" width="7" height="6" rx="1.6" />
+      <rect x="14" y="14" width="7" height="6" rx="1.6" />
+      <path d="M10 7h3.2a2 2 0 0 1 2 2v3.4" />
+      <path d="m13.6 11.2 1.6 1.8 1.7-1.8" />
+    </>
+  ),
+  'design-system': (
+    <>
+      <rect x="3.2" y="3.2" width="7.2" height="7.2" rx="1.7" />
+      <rect x="13.6" y="3.2" width="7.2" height="7.2" rx="3.6" />
+      <rect x="3.2" y="13.6" width="7.2" height="7.2" rx="3.6" />
+      <rect x="13.6" y="13.6" width="7.2" height="7.2" rx="1.7" />
     </>
   ),
   resume: (
@@ -112,11 +185,21 @@ export const TECH_LABEL = {
   typescript: 'TypeScript',
   gsap: 'Motion',
   figma: 'Figma',
+  'figma-make': 'Figma Make',
   storybook: 'Storybook',
   webgl: 'WebGL',
   css: 'CSS',
   node: 'Node',
   postgres: 'Postgres',
+  angular: 'Angular',
+  aws: 'AWS',
+  neptune: 'Neptune Analytics',
+  dynamodb: 'DynamoDB',
+  quicksight: 'QuickSight',
+  miro: 'Miro',
+  cad: 'CAD',
+  prototype: 'Prototyping',
+  'design-system': 'Design system',
 };
 
 export default function TechIcon({ name, className = '' }) {

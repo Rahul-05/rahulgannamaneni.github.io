@@ -29,14 +29,17 @@ export const CASE_CONTENT = {
           title: 'The words this is about',
           items: [
             {
+              icon: 'lightbulb',
               k: 'Concept',
               v: 'Something a department reasons about — capital allocation, exposure, liquidity — independent of whatever any one system happens to call it.',
             },
             {
+              icon: 'book',
               k: 'Term',
               v: 'The word a department actually uses for a concept. Several terms often point at one concept, which is exactly where the disagreements start.',
             },
             {
+              icon: 'layers',
               k: 'Conceptual domain model',
               v: 'The concepts, the terms, and the typed links between them. It is what lets a question asked in business language find the right data product underneath.',
             },
@@ -320,14 +323,17 @@ export const CASE_CONTENT = {
           title: 'What is being registered, and where it ends up',
           items: [
             {
+              icon: 'database',
               k: 'Data product',
               v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
             },
             {
+              icon: 'handoff',
               k: 'Registering one',
               v: 'Describing a new data product well enough for the rest of the platform to use it: what it holds, which tables it comes from, who owns it, who may see it.',
             },
             {
+              icon: 'alert',
               k: 'Why it matters here',
               v: 'Everything captured in this form is what the portal later shows and the agent later answers from. A sloppy record does not stay a local problem.',
             },
@@ -623,14 +629,17 @@ export const CASE_CONTENT = {
           title: 'What this sits on top of',
           items: [
             {
+              icon: 'database',
               k: 'Data product',
               v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
             },
             {
+              icon: 'agent',
               k: 'Agent',
               v: 'A question-answering assistant over one data product. You ask in business language; it works out which question you actually meant before it answers, and it shows the SQL and metadata it leaned on.',
             },
             {
+              icon: 'chart',
               k: 'Usage dashboard',
               v: 'The other half of this project. Not what the agent answers, but where it is being used across the firm, what it is being asked, and which parts are quietly failing.',
             },
@@ -958,14 +967,17 @@ export const CASE_CONTENT = {
           title: 'Before any of this makes sense',
           items: [
             {
+              icon: 'database',
               k: 'Data product',
               v: 'A dataset the firm treats as a product: it has an owner, a fixed shape, a quality bar and teams that depend on it. Not a table someone exported once.',
             },
             {
+              icon: 'search',
               k: 'Data portal',
               v: 'The front door. One place to search every data product in the firm and see, before you use it, whether it can be trusted.',
             },
             {
+              icon: 'flow',
               k: 'Data factory',
               v: 'The pipelines that build and refresh those products. Put behind the same door, so the data and the machinery keeping it current are one click apart.',
             },
@@ -1348,6 +1360,27 @@ export const CASE_CONTENT = {
       icon: 'overview',
       blocks: [
         {
+          type: 'context',
+          title: 'What Guide was, and what it became',
+          items: [
+            {
+              icon: 'book',
+              k: 'LMS',
+              v: 'A learning management system: where an organisation keeps its training content and tracks who has worked through it.',
+            },
+            {
+              icon: 'route',
+              k: 'The pivot',
+              v: 'Eight months in the audience changed from corporate learners to mental health patients, and the research had to earn its place again.',
+            },
+            {
+              icon: 'people',
+              k: 'Dual interface',
+              v: 'Two products on one base. Therapists assign and track; patients see what to do between sessions.',
+            },
+          ],
+        },
+        {
           type: 'prose',
           lead: 'A search and content-tracking experience that changed industry halfway through the project.',
           body: [
@@ -1603,6 +1636,27 @@ export const CASE_CONTENT = {
       icon: 'overview',
       blocks: [
         {
+          type: 'context',
+          title: 'What a marketplace is doing inside an HR product',
+          items: [
+            {
+              icon: 'grid',
+              k: 'HRMS',
+              v: 'A human resource management system: payroll, leave, performance and hiring in one place. Keka is one of India\u2019s larger ones.',
+            },
+            {
+              icon: 'layers',
+              k: 'Marketplace',
+              v: 'The catalogue of outside tools a company can connect to that system, and the screens for connecting them.',
+            },
+            {
+              icon: 'shield',
+              k: 'Integration',
+              v: 'One live connection to an outside tool. Each needs setting up, scoped permissions, and a way to see that it is still working.',
+            },
+          ],
+        },
+        {
           type: 'prose',
           lead: 'A new way to visualise, control and manage company-wide integrations inside the Keka HR portal.',
           body: [
@@ -1828,6 +1882,27 @@ export const CASE_CONTENT = {
       icon: 'overview',
       blocks: [
         {
+          type: 'context',
+          title: 'The problem this is aimed at',
+          items: [
+            {
+              icon: 'eye',
+              k: 'Heads-up display',
+              v: 'Information projected into your field of view, so reading it does not mean looking away from the road.',
+            },
+            {
+              icon: 'route',
+              k: 'The rider\u2019s problem',
+              v: 'Delivery riders on tight windows check a phone at junctions, which is exactly where looking away costs the most.',
+            },
+            {
+              icon: 'search',
+              k: 'Field of view',
+              v: 'How much a rider takes in without moving their head. It decides where anything on the visor is allowed to sit.',
+            },
+          ],
+        },
+        {
           type: 'prose',
           lead: 'A helmet that projects navigation onto the visor, so riders stop looking down at a phone.',
           body: [
@@ -2048,6 +2123,27 @@ export const CASE_CONTENT = {
       label: 'Overview',
       icon: 'overview',
       blocks: [
+        {
+          type: 'context',
+          title: 'Who this is for',
+          items: [
+            {
+              icon: 'people',
+              k: 'ADHD',
+              v: 'Attention deficit hyperactivity disorder. Among other things it makes starting, sequencing and finishing tasks harder, separately from ability or effort.',
+            },
+            {
+              icon: 'flow',
+              k: 'Executive function',
+              v: 'Planning, starting and switching between tasks. That is what the app supports, rather than trying to supply motivation.',
+            },
+            {
+              icon: 'device',
+              k: 'Dual-device',
+              v: 'Two apps, one system. The child plans and completes; the parent supports without having to stand over them.',
+            },
+          ],
+        },
         {
           type: 'prose',
           lead: 'A dual-device app helping children with ADHD manage their own day.',

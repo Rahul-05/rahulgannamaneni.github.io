@@ -1,5 +1,6 @@
 import { IMAGE_SIZES } from '../imageSizes.js';
 import TempImg from './TempImg.jsx';
+import CaseIcon from './CaseIcon.jsx';
 
 // A media slot. Real image when the block supplies one, otherwise the
 // labelled placeholder.
@@ -231,11 +232,19 @@ export default function Block({ block, onOpen, onPeek }) {
     case 'context':
       return (
         <aside className="cs-context">
-          <span className="cs-context-k">{block.title || 'Context'}</span>
+          <span className="cs-context-k">
+            <CaseIcon name="book" />
+            {block.title || 'Context'}
+          </span>
           <dl className="cs-context-list">
             {block.items.map((it) => (
               <div className="cs-context-row" key={it.k}>
-                <dt>{it.k}</dt>
+                <dt>
+                  <span className="cs-context-icon" aria-hidden="true">
+                    <CaseIcon name={it.icon || 'lightbulb'} />
+                  </span>
+                  {it.k}
+                </dt>
                 <dd>{it.v}</dd>
               </div>
             ))}
