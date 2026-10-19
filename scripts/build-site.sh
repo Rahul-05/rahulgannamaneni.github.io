@@ -28,7 +28,9 @@ cd "$(dirname "$0")/.."
 npx vite build
 
 # slugs come from the data file, so a new project cannot be forgotten here
-SLUGS=$(node -e "import('./src/data.js').then(m => console.log(m.PROJECTS.map(p => p.slug).join(' ')))")
+# absorbed slugs too, so an address shared before two studies were merged
+# still answers 200 and the app forwards it to the study that took it in
+SLUGS=$(node -e "import('./src/data.js').then(m => console.log(m.PROJECTS.flatMap(p => [p.slug, ...(p.aliases || [])]).join(' ')))")
 
 for slug in $SLUGS; do
   mkdir -p "dist/$slug"

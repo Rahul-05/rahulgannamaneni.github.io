@@ -8,7 +8,7 @@ import './casePeek.css';
 /**
  * One case study opened over another, scrolled to the part being referenced.
  *
- * The four CPP studies are four halves of the same platform, so each keeps
+ * The two CPP studies are two halves of the same platform, so each keeps
  * reaching for a definition another one owns. Linking out would cost the
  * reader their place in the argument they are already in, and the back button
  * is a poor answer to "what is a data product".

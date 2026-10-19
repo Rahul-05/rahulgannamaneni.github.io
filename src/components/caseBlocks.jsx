@@ -1,6 +1,7 @@
 import { IMAGE_SIZES } from '../imageSizes.js';
 import TempImg from './TempImg.jsx';
 import CaseIcon from './CaseIcon.jsx';
+import LiveFrame from './LiveFrame.jsx';
 
 // A media slot. Real image when the block supplies one, otherwise the
 // labelled placeholder.
@@ -226,7 +227,7 @@ export default function Block({ block, onOpen, onPeek }) {
       );
 
     // A short glossary, placed before the argument rather than after it.
-    // These four studies sit inside one platform and share its vocabulary,
+    // These studies sit inside one platform and share its vocabulary,
     // and a reader who does not already know what a data product is cannot
     // judge any of the decisions that follow.
     case 'context':
@@ -259,6 +260,42 @@ export default function Block({ block, onOpen, onPeek }) {
         </aside>
       );
 
+    // A running build in a device frame. With a title it sits beside its
+    // commentary like a split; without one it runs the full column.
+    case 'live': {
+      const frame = <LiveFrame {...block.live} />;
+      if (!block.title) return <div className="cs-live">{frame}</div>;
+      return (
+        <div className={`cs-live-split ${block.flip ? 'cs-live-split--flip' : ''}`}>
+          {frame}
+          <div className="cs-split-text">
+            <h4 className="cs-h4">{block.title}</h4>
+            <p className="cs-body">{block.body}</p>
+            {block.points && (
+              <ul className="cs-feature-points">
+                {block.points.map((t) => (
+                  <li key={t}>
+                    <span className="cs-bullet" aria-hidden="true" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // the same product on two devices at once
+    case 'livepair':
+      return (
+        <div className="cs-livepair">
+          {block.items.map((it) => (
+            <LiveFrame key={it.src} {...it} />
+          ))}
+        </div>
+      );
+
     case 'crosslink':
       return (
         <div className="cs-crossblock">
@@ -271,7 +308,7 @@ export default function Block({ block, onOpen, onPeek }) {
   }
 }
 
-// The four CPP studies describe one platform, so each keeps running into a
+// The two CPP studies describe one platform, so each keeps running into a
 // piece another one owns. Sending the reader off to a different page loses
 // their place in this argument; the link opens that section over the top
 // instead, and closing it puts them back exactly where they were.

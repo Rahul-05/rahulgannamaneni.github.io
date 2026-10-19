@@ -11,6 +11,7 @@ import Lightbox from './Lightbox.jsx';
 import CardArt from './CardArt.jsx';
 import Block, { Media } from './caseBlocks.jsx';
 import CasePeek from './CasePeek.jsx';
+import LiveFrame from './LiveFrame.jsx';
 import './projectPage.css';
 // ── the page ─────────────────────────────────────────────────────────
 // Rendered inside the peek iframe as well as at the top level. In embed mode
@@ -242,12 +243,17 @@ export default function ProjectPage({ project, onClose, onOpen }) {
         </section>
 
         <section className="pp-cover">
-          <Media
-            src={project.cover}
-            label={`${project.title} cover`}
-            ratio="16 / 8"
-            onOpen={setZoom}
-          />
+          {/* a project that shipped as code opens on the running thing */}
+          {project.coverLive ? (
+            <LiveFrame {...project.coverLive} />
+          ) : (
+            <Media
+              src={project.cover}
+              label={`${project.title} cover`}
+              ratio="16 / 8"
+              onOpen={setZoom}
+            />
+          )}
         </section>
 
         {/* On a phone the sticky directory collapses to a section strip and

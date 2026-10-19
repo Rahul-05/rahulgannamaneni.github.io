@@ -354,7 +354,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 12px;
+  padding: 6px 12px; /* 13 rows in the merged CPP studies; at 9px the
+     list crowded the summary out of the panel on a 900px laptop */
   color: var(--surface-50);
   font-size: 12.5px;
   font-weight: 500;

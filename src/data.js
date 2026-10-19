@@ -99,19 +99,20 @@ export const SCATTER_NOTES = [
   },
 ];
 
-// Six projects, browsed one at a time in the Work section. Copy is
-// placeholder until the real case studies are transferred across.
-// Six projects. `roles` and `stack` are icon keys resolved by TechIcon.
-// Projects 03-06 are real work carried over from the previous portfolio
-// (github.com/Rahul-05/rahulgannamaneni.github.io). 01 and 02 are still
-// placeholders. `sections` names a per-project case study in caseContent.js;
+// Seven projects, browsed in the Work section. `roles` and `stack` are icon
+// keys resolved by TechIcon. 04-07 are real work carried over from the
+// previous portfolio (github.com/Rahul-05/rahulgannamaneni.github.io).
+// 03, mise, ships as code: its case study embeds the running builds from
+// /mise/ (built by mealkit's `npm run build:embed`) instead of screenshots. `sections` names a per-project case study in caseContent.js;
 // anything without one falls back to the generic template.
 export const PROJECTS = [
   {
     n: '01',
     slug: 'data-product-marketplace',
-    title: 'Data portal and data factory',
-    kicker: 'Platform, Discovery',
+    // the agent used to be its own study; its old address still lands here
+    aliases: ['ai-agent-usage-dashboard'],
+    title: 'Data portal and AI agent',
+    kicker: 'Platform, Discovery, AI',
     year: '2026',
     company: 'CPP Investments',
     logo: '/work/shared/cpp-investments.webp',
@@ -125,47 +126,9 @@ export const PROJECTS = [
     card: '/work/data-product-marketplace/cover.webp',
     cover: '/work/data-product-marketplace/browse.webp',
     summary:
-      'One place to find data across the firm, a reason to trust it, and the pipelines that keep it current.',
+      'One place to find the firm’s data, a reason to trust it, and an agent that asks before it answers.',
     industry: 'Finance',
-    tags: ['Data Visualisation', 'Governance', 'Lineage'],
-    roles: [
-      { label: 'UX Research', icon: 'research' },
-      { label: 'Design', icon: 'design' },
-      { label: 'Frontend', icon: 'frontend' },
-      { label: 'Backend', icon: 'backend' },
-    ],
-    stack: ['figma', 'figma-make', 'angular', 'typescript', 'aws', 'neptune', 'dynamodb'],
-    pinned: [
-      'One front door to every department’s data, searched in business language rather than table names',
-      'A quality score and a scorecard on every product, so trust is a number a stranger can read',
-      'Lineage and impact drawn as a graph, so what breaks if this changes is answered in a glance instead of a week',
-      'Entitlements, ownership and usage on the same page as the data itself',
-      'The pipelines that build it live behind the same door, so the product and its machinery are one click apart',
-      'Other internal teams started asking to be added to the catalogue',
-    ],
-    sections: 'portal',
-  },
-  {
-    n: '02',
-    slug: 'ai-agent-usage-dashboard',
-    title: 'AI agent and usage dashboard',
-    kicker: 'Assistant, Observability',
-    year: '2026',
-    company: 'CPP Investments',
-    logo: '/work/shared/cpp-investments.webp',
-    // a flat navy wordmark, so it inverts cleanly; the colourful
-    // marks on the other cards must not be touched
-    logoInvert: true,
-    accent: '#5a9ee0',
-    heroShape: 'wireframe',
-    // the card leads with the branded cover; the case study still opens
-    // on the screenshot, which is the thing worth seeing
-    card: '/work/ai-agent-usage-dashboard/cover.webp',
-    cover: '/work/ai-agent-usage-dashboard/dashboard.webp',
-    summary:
-      'An agent that asks before it answers, and a dashboard that turned those questions into the team’s research.',
-    industry: 'Finance',
-    tags: ['Data Visualisation', 'Observability', 'Governance'],
+    tags: ['Data Visualisation', 'AI Agents', 'Governance'],
     roles: [
       { label: 'UX Research', icon: 'research' },
       { label: 'Design', icon: 'design' },
@@ -183,36 +146,38 @@ export const PROJECTS = [
       'dynamodb',
     ],
     pinned: [
+      'One front door to every department’s data, searched in business language rather than table names',
+      'A quality score and a scorecard on every product, so trust is a number a stranger can read',
+      'Lineage and impact drawn as a graph, so what breaks if this changes is answered in a glance instead of a week',
+      'The pipelines that build it live behind the same door, so the product and its machinery are one click apart',
       'The agent narrows what you meant before it answers, because a wrong reading answered confidently is worse than no answer',
       'Clarifying turns are concrete choices, not an open prompt, so they cost a second not a sentence',
       'Debug mode shows the SQL, the metadata it leaned on and the assumptions it made',
-      'The dashboard answers a different question for a different person: where is this used, what is it asked, what is failing',
+      'The usage dashboard answers a different question for a different person: where is this used, what is it asked, what is failing',
       'Clusters of poor answers pointed straight at the metadata behind them, turning complaints into an owned backlog',
-      'Adoption arguments got settled with the department split rather than with opinion',
+      'Other internal teams started asking to be added to the catalogue',
     ],
-    sections: 'agent',
+    sections: 'portal',
   },
   {
-    n: '03',
+    n: '02',
     slug: 'data-ingestion-flow',
-    title: 'Data product ingestion',
-    kicker: 'Enterprise, Pipelines',
+    // the domain model used to be its own study; its old address lands here
+    aliases: ['ai-keyword-domain-model'],
+    title: 'Data ingestion and domain model',
+    kicker: 'Enterprise, Taxonomy',
     year: '2026',
     company: 'CPP Investments',
     logo: '/work/shared/cpp-investments.webp',
-    // a flat navy wordmark, so it inverts cleanly; the colourful
-    // marks on the other cards must not be touched
     logoInvert: true,
     accent: '#3f8fd6',
     heroShape: 'bridge',
-    // the card leads with the branded cover; the case study still opens
-    // on the screenshot, which is the thing worth seeing
     card: '/work/data-ingestion-flow/cover.webp',
     cover: '/work/data-ingestion-flow/onboarding-list.webp',
     summary:
-      'The form that replaced the spreadsheet: give it a view name, it fills in every column and fails loudly first.',
+      'The form that replaced the spreadsheet, and the shared vocabulary every record has to agree with.',
     industry: 'Finance',
-    tags: ['Secure Dataflow', 'Governance', 'Data Modelling'],
+    tags: ['Secure Dataflow', 'Data Modelling', 'Taxonomy'],
     roles: [
       { label: 'UX Research', icon: 'research' },
       { label: 'Design', icon: 'design' },
@@ -224,52 +189,65 @@ export const PROJECTS = [
       'Give the form a view name and it derives every underlying table, column and type from the catalogue',
       'People supply only what a person actually knows: names, descriptions, ownership, classification',
       'It fails loudly and specifically: the view name that is missing, not “invalid input”',
-      'Errors surface during entry instead of weeks later in someone else’s report',
       'A flow expression DSL with a visual read, so the transformation is reviewable by people who will not read code',
       'Approvers read a diff against the last version rather than a document',
-    ],
-    sections: 'ingestion',
-  },
-  {
-    n: '04',
-    slug: 'ai-keyword-domain-model',
-    title: 'Conceptual domain model',
-    kicker: 'Taxonomy, Semantics',
-    year: '2026',
-    company: 'CPP Investments',
-    logo: '/work/shared/cpp-investments.webp',
-    // a flat navy wordmark, so it inverts cleanly; the colourful
-    // marks on the other cards must not be touched
-    logoInvert: true,
-    accent: '#6fb0e8',
-    heroShape: 'tokens',
-    // the card leads with the branded cover; the case study still opens
-    // on the screenshot, which is the thing worth seeing
-    card: '/work/ai-keyword-domain-model/cover.webp',
-    cover: '/work/ai-keyword-domain-model/relationships.webp',
-    summary:
-      'Getting a firm to agree what its own words mean, in sessions with the stewards who own the vocabulary.',
-    industry: 'Finance',
-    tags: ['Taxonomy', 'Data Modelling', 'Governance'],
-    roles: [
-      { label: 'UX Research', icon: 'research' },
-      { label: 'Design', icon: 'design' },
-      { label: 'Frontend', icon: 'frontend' },
-      { label: 'Backend', icon: 'backend' },
-    ],
-    stack: ['figma', 'figma-make', 'angular', 'typescript', 'aws', 'neptune', 'dynamodb'],
-    pinned: [
-      'Built in working sessions with the domain stewards who own the vocabulary, not handed to them',
-      'Concepts, the terms that express them, and typed links between the two',
-      'Cardinality on every link, which is what makes the model checkable rather than decorative',
+      'The domain model was built in working sessions with the stewards who own the vocabulary, not handed to them',
+      'Concepts, the terms that express them, and typed links with cardinality, which is what makes the model checkable',
       'The editor validates all 58 relationships instead of leaving a human to audit dropdowns',
       'Every concept got an owner, so a question about a word has somewhere to go',
       'This is the vocabulary the agent reasons over, which is why its answers land on the right product',
     ],
-    sections: 'cdm',
+    sections: 'ingestion',
   },
   {
-    n: '05',
+    n: '03',
+    title: 'mise',
+    slug: 'mise',
+    heroShape: 'layers',
+    company: 'mise',
+    logo: '/work/mise/logo.webp',
+    accent: '#f0532f',
+    kicker: 'Brand, Product, 3D, Personal project',
+    tagline: 'A meal kit that shows you every ingredient before you buy',
+    summary:
+      'A meal kit built from nothing: brand, packaging, a 3D X-ray of every dish, and the ordering app, all running.',
+    industry: 'Food & Commerce',
+    tags: ['Brand Identity', 'Packaging', 'E-commerce', '3D'],
+    roles: [
+      { icon: 'research', label: 'Research' },
+      { icon: 'design', label: 'Brand & Product Design' },
+      { icon: 'motion', label: 'Motion & 3D' },
+      { icon: 'frontend', label: 'Frontend' },
+    ],
+    stack: ['react', 'gsap', 'webgl', 'css', 'design-system', 'figma'],
+    pinned: [
+      'Meal kits sell a photo of dinner and deliver a box of mystery bags; mise shows every ingredient before you pay',
+      'The Ingredient X-ray: tap any dish and it comes apart into its exact ingredients, each weighed and labeled, in 3D',
+      'The box is the brand: plain kraft, two inks, the full ingredient list printed on the side',
+      'A six-question quiz that reshapes the menu while you answer, then pre-picks your week',
+      'Bowlie leads a small cast drawn like the fridge reference: one ink line, flat colour, little breaks',
+      'Real lifestyle photography left whole, a cartoon 3D pantry wherever something needs explaining',
+      'Marketing site, ordering app and brand book on one shared design system',
+      'Everything on this page is the running build, not a screenshot',
+      'Designed and developed solo, April 2026',
+    ],
+    year: '2026',
+    outcome: 'Marketing site, ordering app and brand book',
+    card: '/work/mise/cover.webp',
+    cover: '/work/mise/cover.webp',
+    // the case study opens on the live marketing site rather than an image
+    coverLive: {
+      frame: 'browser',
+      src: '/mise/web/index.html#/',
+      url: 'mise.co',
+      tab: 'mise · dinner, decoded',
+      label: 'The marketing site, live. Scroll it, pack the box, open a meal.',
+    },
+    sections: 'mise',
+    href: '#',
+  },
+  {
+    n: '04',
     title: 'Guide',
     slug: 'guide',
     heroShape: 'lens',
@@ -303,7 +281,7 @@ export const PROJECTS = [
     href: '#',
   },
   {
-    n: '06',
+    n: '05',
     title: 'Keka Marketplace',
     slug: 'keka-marketplace',
     heroShape: 'bridge',
@@ -336,7 +314,7 @@ export const PROJECTS = [
     href: '#',
   },
   {
-    n: '07',
+    n: '06',
     title: 'Apoyo Smart Helmet',
     slug: 'apoyo-smart-helmet',
     heroShape: 'ripple',
@@ -367,7 +345,7 @@ export const PROJECTS = [
     href: '#',
   },
   {
-    n: '08',
+    n: '07',
     title: 'Space',
     slug: 'space-adhd-app',
     heroShape: 'layers',
@@ -758,3 +736,9 @@ export const EMAIL = 'rahulraog.work@gmail.com';
 export const LINKEDIN = 'https://www.linkedin.com/in/rahulraog/';
 
 export const WORDMARK = "RAHUL'RAO";
+
+// A case study by its own slug, or by one it absorbed. The CPP work used to be
+// four studies and is now two, and addresses that were already shared should
+// still land on the right page rather than on the home screen.
+export const projectBySlug = (slug) =>
+  PROJECTS.find((p) => p.slug === slug || p.aliases?.includes(slug)) || null;

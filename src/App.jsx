@@ -12,7 +12,7 @@ import Testimonials from './components/sections/Testimonials.jsx';
 import Projects from './components/sections/Projects.jsx';
 import Contact from './components/sections/Contact.jsx';
 import ProjectPage from './components/ProjectPage.jsx';
-import { PROJECTS } from './data.js';
+import { PROJECTS, projectBySlug } from './data.js';
 import { onOverlay } from './overlay.js';
 
 gsap.registerPlugin(Observer);
@@ -31,7 +31,7 @@ const DARK_NAV_SECTIONS = new Set([2, 3, 4, 5]);
 // read once at module scope so the loader can be skipped on a deep link
 function projectFromPathOnBoot() {
   const slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
-  return PROJECTS.some((p) => p.slug === slug);
+  return !!projectBySlug(slug);
 }
 
 export default function App() {
@@ -50,9 +50,17 @@ export default function App() {
   // deep link or a refresh lands on the right page.
   const projectFromPath = () => {
     const slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
-    return PROJECTS.find((p) => p.slug === slug) || null;
+    return projectBySlug(slug);
   };
   const [project, setProjectState] = useState(projectFromPath);
+  useEffect(() => {
+    if (project && window.location.pathname !== `/${project.slug}`)
+      window.history.replaceState(
+        {},
+        '',
+        `/${project.slug}${window.location.search}${window.location.hash}`,
+      );
+  }, [project]);
   const stageRef = useRef(null);
   const handles = useRef([]);
   const engine = useRef({ index: 0, animating: false, accum: 0, decayTimer: null });

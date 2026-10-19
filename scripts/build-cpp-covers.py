@@ -1,4 +1,4 @@
-"""Covers for the four CPP case studies.
+"""Covers for the two CPP case studies.
 
 Same language as the Guide and Keka covers: a bright saturated ground, the
 client wordmark centred with clear space around it, and real components from
@@ -160,11 +160,10 @@ def wordmark(bg, width=486):
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# 01 · portal — the data product card, the search bar, a quality gauge
+# Components, each lifted off a real screen and returned as a card ready to
+# place. Kept separate from the layouts so a cover can borrow from any study.
 # ══════════════════════════════════════════════════════════════════════════
-def portal():
-    bg = ground((16, 52, 148), (28, 92, 214), (56, 170, 240)).convert('RGBA')
-
+def search_bar():
     # search bar with its suggestion chips and the blue Search button
     c, d, p = panel(430, 62)
     f = font(REG, 13 * S); fb = font(BOLD, 12 * S)
@@ -172,8 +171,9 @@ def portal():
     txt(d, (p + 42, p + 31), 'Search data products', f, MUTE, 'lm')
     rr(d, (p + 300, p + 18, p + 412, p + 44), 6, fill=BLUE)
     txt(d, (p + 356, p + 31), 'Search', fb, (255, 255, 255), 'mm')
-    place(bg, c, 300, 128, 6, 0.94)
+    return c
 
+def product_card():
     # the data product card, the unit the whole portal is built from
     c, d, p = panel(272, 168)
     ft = font(BOLD, 16 * S); fs = font(REG, 11 * S); fc = font(BOLD, 10 * S)
@@ -184,8 +184,9 @@ def portal():
     chip(d, p + 20, p + 130, 'Ready', GREEN, GREEN_BG, fc, dot=True)
     rr(d, (p + 168, p + 128, p + 252, p + 152), 6, fill=(240, 245, 252))
     txt(d, (p + 210, p + 140), '✦ Data Q&A', fc, BLUE, 'mm')
-    place(bg, c, 232, 424, -7, 1.0)
+    return c
 
+def quality_gauge():
     # the quality score, the reason to trust any of it
     c, d, p = panel(150, 150, r=16)
     box = (p + 26, p + 22, p + 124, p + 120)
@@ -193,8 +194,9 @@ def portal():
     d.arc([v * S for v in box], -90, 208, fill=(22, 163, 74), width=13 * S)
     txt(d, (p + 75, p + 68), '83', font(BOLD, 30 * S), INK, 'mm')
     txt(d, (p + 75, p + 132), 'QUALITY SCORE', font(BOLD, 9 * S), MUTE, 'mm')
-    place(bg, c, 1440, 200, 8, 1.0)
+    return c
 
+def department_rows():
     # a department row from the browse grid
     c, d, p = panel(250, 96)
     fb2 = font(BOLD, 13 * S); fs2 = font(REG, 10 * S)
@@ -205,20 +207,9 @@ def portal():
         txt(d, (p + 228, y + 8), n, fs2, MUTE, 'rm')
         if i == 0:
             ln(d, (p + 18, y + 27, p + 232, y + 27), fill=LINE, width=1 * S)
-    place(bg, c, 1418, 486, -5, 1.0)
+    return c
 
-    connector(bg, [(470, 178), (556, 178), (556, 262)])
-    connector(bg, [(1268, 470), (1180, 470), (1180, 392)])
-    wordmark(bg)
-    return grain(bg.convert('RGB'))
-
-
-# ══════════════════════════════════════════════════════════════════════════
-# 02 · agent — questions by department, the donut, a ranked row
-# ══════════════════════════════════════════════════════════════════════════
-def agent():
-    bg = ground((58, 22, 140), (108, 44, 208), (176, 92, 246)).convert('RGBA')
-
+def department_chart():
     # the bar chart that told the team who was actually asking
     c, d, p = panel(300, 176)
     ft = font(BOLD, 12 * S); fs = font(REG, 9 * S)
@@ -230,8 +221,9 @@ def agent():
         txt(d, (p + 20, y + 8), name, fs, MUTE, 'lm')
         rr(d, (p + 128, y + 1, p + 128 + 118 * v, y + 15), 3, fill=(96, 132, 246))
         txt(d, (p + 256, y + 8), n, font(BOLD, 9 * S), INK, 'lm')
-    place(bg, c, 268, 178, 5, 0.96)
+    return c
 
+def usage_donut():
     # the split the dashboard opens on
     c, d, p = panel(154, 154, r=16)
     box = (p + 30, p + 26, p + 124, p + 120)
@@ -240,8 +232,9 @@ def agent():
         d.arc([v * S for v in box], start, end, fill=col, width=15 * S)
     txt(d, (p + 77, p + 73), '58%', font(BOLD, 22 * S), INK, 'mm')
     txt(d, (p + 77, p + 134), 'TOP PRODUCT SHARE', font(BOLD, 8 * S), MUTE, 'mm')
-    place(bg, c, 300, 470, -8, 1.0)
+    return c
 
+def agent_turn():
     # the agent turn itself: a question, and the answer with its source
     c, d, p = panel(286, 150)
     fq = font(REG, 11 * S); fb2 = font(BOLD, 10 * S)
@@ -250,8 +243,9 @@ def agent():
     rr(d, (p + 20, p + 62, p + 210, p + 128), 10, fill=(245, 247, 251))
     skeleton(d, p + 32, p + 76, 166, 3, col=(214, 220, 232))
     chip(d, p + 32, p + 106, 'view.risk_lcr', BLUE, (226, 236, 254), font(BOLD, 8 * S), ph=7, pw=7)
-    place(bg, c, 1416, 210, 7, 1.0)
+    return c
 
+def ranked_rows():
     # the ranked table row, rank pill and all
     c, d, p = panel(266, 92)
     fb3 = font(BOLD, 11 * S); fs3 = font(REG, 9 * S)
@@ -263,20 +257,9 @@ def agent():
         txt(d, (p + 27, y + 7), str(r), font(BOLD, 8 * S), INK, 'mm')
         txt(d, (p + 44, y + 7), name, fs3, INK, 'lm')
         txt(d, (p + 248, y + 7), share, fb3, (96, 132, 246), 'rm')
-    place(bg, c, 1396, 486, -6, 1.0)
+    return c
 
-    connector(bg, [(440, 254), (530, 254), (530, 340)])
-    connector(bg, [(1246, 434), (1160, 434), (1160, 356)])
-    wordmark(bg)
-    return grain(bg.convert('RGB'))
-
-
-# ══════════════════════════════════════════════════════════════════════════
-# 03 · ingestion — the stepper, the form field, the error panel
-# ══════════════════════════════════════════════════════════════════════════
-def ingestion():
-    bg = ground((6, 78, 106), (12, 140, 148), (64, 214, 178)).convert('RGBA')
-
+def stepper():
     # the seven steps that replaced the spreadsheet
     c, d, p = panel(368, 76)
     fb2 = font(BOLD, 10 * S); fs2 = font(REG, 8 * S)
@@ -296,8 +279,9 @@ def ingestion():
         if i < len(steps) - 1:
             ln(d, (x + 22, cy + 26, x + pitch - 4, cy + 26), fill=LINE, width=1 * S)
         x += pitch
-    place(bg, c, 350, 148, 4, 0.92)
+    return c
 
+def form_fields():
     # the form: a view name in, every column and type back out
     c, d, p = panel(280, 156)
     fl = font(BOLD, 9 * S); fv = font(REG, 11 * S)
@@ -308,8 +292,9 @@ def ingestion():
     rr(d, (p + 20, p + 94, p + 240, p + 120), 6, fill=(244, 247, 250), outline=(214, 222, 232), width=1 * S)
     txt(d, (p + 32, p + 107), 'risk_trusted_prod.rl_trade', font(REG, 10 * S), (86, 96, 114), 'lm')
     chip(d, p + 20, p + 130, 'Auto-filled  ·  21 columns', GREEN, GREEN_BG, font(BOLD, 8 * S), ph=7, pw=8)
-    place(bg, c, 296, 468, -6, 1.0)
+    return c
 
+def error_panel():
     # it fails loudly, before a human is asked to approve it
     c, d, p = panel(292, 132)
     rr(d, (p, p, p + 5, p + 132), 0, fill=RED)
@@ -323,8 +308,9 @@ def ingestion():
         y = p + 56 + i * 24
         d.ellipse([v * S for v in (p + 24, y + 4, p + 30, y + 10)], fill=(240, 160, 160))
         txt(d, (p + 40, y + 7), s, fs3, (150, 60, 60), 'lm')
-    place(bg, c, 1408, 196, 6, 1.0)
+    return c
 
+def submit_bar():
     # the approval that only ever sees clean records
     c, d, p = panel(228, 84)
     chip(d, p + 20, p + 20, 'Validated  ·  20 / 21 complete', GREEN, GREEN_BG, font(BOLD, 9 * S), ph=8, pw=9)
@@ -332,20 +318,9 @@ def ingestion():
     txt(d, (p + 64, p + 63), 'Submit', font(BOLD, 10 * S), (255, 255, 255), 'mm')
     rr(d, (p + 118, p + 52, p + 190, p + 74), 6, outline=(206, 212, 222), width=1 * S)
     txt(d, (p + 154, p + 63), 'Save draft', font(BOLD, 10 * S), MUTE, 'mm')
-    place(bg, c, 1416, 476, -5, 1.0)
+    return c
 
-    connector(bg, [(470, 214), (556, 214), (556, 300)])
-    connector(bg, [(1260, 430), (1176, 430), (1176, 352)])
-    wordmark(bg)
-    return grain(bg.convert('RGB'))
-
-
-# ══════════════════════════════════════════════════════════════════════════
-# 04 · cdm — the relationship row, the filter counts, the all-clear
-# ══════════════════════════════════════════════════════════════════════════
-def cdm():
-    bg = ground((104, 16, 122), (176, 40, 168), (238, 108, 190)).convert('RGBA')
-
+def relationship_row():
     # the typed link: concept, verb, concept
     c, d, p = panel(330, 104)
     fc = font(BOLD, 8 * S); ft = font(BOLD, 13 * S); fv = font(REG, 10 * S)
@@ -358,8 +333,9 @@ def cdm():
     txt(d, (p + 169, y - 12), 'defines', fv, (120, 130, 148), 'mm')
     chip(d, p + 200, y - 6, 'CONCEPT', (146, 64, 190), (243, 232, 250), font(BOLD, 7 * S), ph=6, pw=7)
     txt(d, (p + 200, y + 26), 'Capital Usage', ft, INK, 'lm')
-    place(bg, c, 296, 166, 5, 0.96)
+    return c
 
+def filter_counts():
     # the counts the stewards argued their way to
     c, d, p = panel(224, 148)
     fb2 = font(BOLD, 9 * S); fs2 = font(REG, 10 * S)
@@ -372,8 +348,9 @@ def cdm():
             rr(d, (p + 14, y, p + 210, y + 24), 6, fill=(247, 236, 252))
         txt(d, (p + 24, y + 12), name, fs2, INK if sel else (110, 120, 140), 'lm')
         txt(d, (p + 200, y + 12), n, fb2, (146, 64, 190) if sel else MUTE, 'rm')
-    place(bg, c, 268, 458, -7, 1.0)
+    return c
 
+def concept_card():
     # a concept and the terms hanging off it
     c, d, p = panel(250, 138)
     txt(d, (p + 20, p + 22), 'CONCEPT', font(BOLD, 8 * S), MUTE)
@@ -385,27 +362,48 @@ def cdm():
         if x > p + 190:
             x = p + 20
     txt(d, (p + 20, p + 118), '12 terms  ·  4 departments', font(REG, 9 * S), MUTE, 'lm')
-    place(bg, c, 1420, 200, 7, 1.0)
+    return c
 
+def all_clear():
     # every link checked before it is published
     c, d, p = panel(268, 62)
     d.ellipse([v * S for v in (p + 20, p + 22, p + 38, p + 40)], fill=GREEN_BG)
     check(d, p + 29, p + 31, 12, GREEN, 2.4)
     txt(d, (p + 48, p + 25), 'All 58 relationships look good', font(BOLD, 11 * S), (22, 120, 60), 'lm')
     txt(d, (p + 48, p + 42), 'No dropdown mismatches found', font(REG, 9 * S), (100, 150, 120), 'lm')
-    place(bg, c, 1408, 480, -5, 1.0)
+    return c
 
-    connector(bg, [(486, 240), (566, 240), (566, 322)])
+# ══════════════════════════════════════════════════════════════════════════
+# Covers. Two studies now, each built from the components of both of its
+# halves: the portal on the left and the agent on the right for the first,
+# the ingestion form on the left and the domain model on the right for the
+# second. The ground runs from one half's colour into the other's.
+# ══════════════════════════════════════════════════════════════════════════
+def portal_and_agent():
+    bg = ground((16, 52, 148), (40, 86, 214), (122, 76, 236)).convert('RGBA')
+    place(bg, search_bar(), 300, 128, 6, 0.94)
+    place(bg, product_card(), 232, 424, -7, 1.0)
+    place(bg, agent_turn(), 1416, 210, 7, 1.0)
+    place(bg, department_chart(), 1416, 470, -6, 0.96)
+    connector(bg, [(470, 178), (556, 178), (556, 262)])
+    connector(bg, [(1246, 434), (1160, 434), (1160, 356)])
+    wordmark(bg)
+    return grain(bg.convert('RGB'))
+
+def ingestion_and_domain_model():
+    bg = ground((6, 78, 106), (12, 132, 150), (126, 92, 214)).convert('RGBA')
+    place(bg, stepper(), 350, 148, 4, 0.92)
+    place(bg, form_fields(), 296, 468, -6, 1.0)
+    place(bg, relationship_row(), 1404, 196, 6, 0.96)
+    place(bg, all_clear(), 1408, 480, -5, 1.0)
+    connector(bg, [(470, 214), (556, 214), (556, 300)])
     connector(bg, [(1254, 428), (1170, 428), (1170, 348)])
     wordmark(bg)
     return grain(bg.convert('RGB'))
 
-
 if __name__ == '__main__':
-    for slug, fn in (('data-product-marketplace', portal),
-                     ('ai-agent-usage-dashboard', agent),
-                     ('data-ingestion-flow', ingestion),
-                     ('ai-keyword-domain-model', cdm)):
+    for slug, fn in (('data-product-marketplace', portal_and_agent),
+                     ('data-ingestion-flow', ingestion_and_domain_model)):
         out = os.path.join(ROOT, slug, 'cover.webp')
         fn().save(out, 'WEBP', quality=90, method=6)
         print(f'{slug:28} {os.path.getsize(out) // 1024} KB')

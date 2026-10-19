@@ -1,0 +1,133 @@
+/* live builds inside device frames */
+
+.live {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.live-device {
+  position: relative;
+  width: 100%;
+}
+
+.live--browser .live-device {
+  aspect-ratio: 1180 / 778;
+}
+
+.live--phone .live-device {
+  height: min(760px, 82vh);
+}
+
+.live-device > * {
+  position: absolute;
+  inset: 0;
+}
+
+.live-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* under the phone's drawn status bar, down to the bottom edge */
+.live-phone-screen {
+  position: absolute;
+  inset: 50px 0 0;
+}
+
+.live-wait {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 600 15px/1 system-ui, sans-serif;
+  color: rgba(14, 16, 15, 0.45);
+}
+
+.live-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted, rgba(255, 255, 255, 0.6));
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 0 4px rgba(61, 220, 132, 0.18);
+  flex: 0 0 auto;
+}
+
+.live-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.live-act {
+  appearance: none;
+  border: 1px solid currentColor;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.live-act:hover {
+  opacity: 1;
+}
+
+/* two devices side by side, phone narrower */
+.cs-livepair {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: end;
+}
+
+.cs-livepair .live--phone .live-device {
+  height: auto;
+  aspect-ratio: 412 / 866;
+}
+
+.cs-live-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.cs-live-split--flip .live {
+  order: 2;
+}
+
+.cs-live-split .live--phone .live-device {
+  height: min(700px, 78vh);
+}
+
+@media (max-width: 860px) {
+  .cs-livepair,
+  .cs-live-split {
+    grid-template-columns: 1fr;
+  }
+  .cs-live-split--flip .live {
+    order: 0;
+  }
+  .cs-livepair .live--phone .live-device,
+  .live--phone .live-device {
+    height: 640px;
+    aspect-ratio: auto;
+  }
+}
