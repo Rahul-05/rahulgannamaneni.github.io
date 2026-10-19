@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Production build for GitHub Pages.
 #
-# Three things Pages needs that a plain `vite build` does not give you:
+# What Pages needs beyond the bundle. All of it is now written by `vite build`
+# itself (CNAME from public/, the rest by the route-pages plugin); this script
+# builds and then checks the result:
 #
 #  * CNAME. Pages reads the custom domain from a file at the site root and
 #    clears the setting if it goes missing, so it lives in public/ and is
@@ -27,20 +29,16 @@ cd "$(dirname "$0")/.."
 
 npx vite build
 
-# slugs come from the data file, so a new project cannot be forgotten here
-# absorbed slugs too, so an address shared before two studies were merged
-# still answers 200 and the app forwards it to the study that took it in
-SLUGS=$(node -e "import('./src/data.js').then(m => console.log(m.PROJECTS.flatMap(p => [p.slug, ...(p.aliases || [])]).join(' ')))")
-
-for slug in $SLUGS; do
-  mkdir -p "dist/$slug"
-  cp dist/index.html "dist/$slug/index.html"
-done
-
-cp dist/index.html dist/404.html
-touch dist/.nojekyll
+# The route pages, 404.html and .nojekyll are written by the route-pages
+# plugin in vite.config.js, so a plain `vite build` produces the same site.
+# Check rather than trust: every HTML page must name a bundle that exists.
+BUNDLE=$(ls dist/assets/ | grep -E '^index-.*\.js$')
+STALE=$(grep -rL "$BUNDLE" --include=index.html --include=404.html dist | grep -v '^dist/mise/[a-z]*/' || true)
+if [ -n "$STALE" ]; then
+  echo "pages pointing at a missing bundle:"; echo "$STALE"; exit 1
+fi
 
 echo
 echo "routes written:"
-for slug in $SLUGS; do echo "  /$slug"; done
+find dist -mindepth 2 -maxdepth 2 -name index.html ! -path 'dist/mise/*/*' | sed 's|dist/|  /|; s|/index.html||' | sort
 echo "size: $(du -sh dist | cut -f1)"
