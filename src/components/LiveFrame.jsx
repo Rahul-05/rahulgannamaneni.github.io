@@ -27,12 +27,12 @@ export default function LiveFrame({ src, frame = 'browser', url, tab, tint = '#f
       key={run}
       className="live-iframe"
       src={src}
-      title={label || url || 'Live build'}
+      title={label || url || 'mise'}
       loading="lazy"
       allow="fullscreen"
     />
   ) : (
-    <span className="live-wait">Loading the live build…</span>
+    <span className="live-wait">Loading…</span>
   );
 
   return (
@@ -49,8 +49,7 @@ export default function LiveFrame({ src, frame = 'browser', url, tab, tint = '#f
         )}
       </div>
       <figcaption className="live-bar">
-        <span className="live-dot" aria-hidden="true" />
-        <span className="live-label">{label || 'Live build'}</span>
+        <span className="live-label">{label}</span>
         <button type="button" className="live-act" onClick={() => setRun((n) => n + 1)}>
           Restart
         </button>

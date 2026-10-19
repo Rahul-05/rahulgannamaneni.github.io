@@ -2214,7 +2214,7 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'context',
-          title: 'Three words this study leans on',
+          title: 'Terms used below',
           items: [
             {
               icon: 'layers',
@@ -2224,21 +2224,21 @@ export const CASE_CONTENT = {
             {
               icon: 'eye',
               k: 'Ingredient X-ray',
-              v: 'The signature feature: any dish comes apart, in 3D, into the exact ingredients that ship, each one weighed and labeled.',
+              v: 'The main feature. A dish opens up in 3D into the ingredients that ship in the box, with the weight of each one.',
             },
             {
               icon: 'book',
               k: 'Print sheet',
-              v: 'The flat artwork a printer puts on cardboard. Here it is also the visual system for the whole site.',
+              v: 'The flat artwork a printer puts on a box. I reused the same artwork as a texture across the website.',
             },
           ],
         },
         {
           type: 'prose',
-          lead: 'A small-menu meal kit built from nothing: name, characters, packaging, a 3D way to see inside every dish, and the store that sells it.',
+          lead: 'mise is a meal kit concept with a short menu, where you can see every ingredient in a meal before you order it.',
           body: [
-            'mise started with one sentence: meal kits sell you a photo of dinner, then a box of mystery bags shows up. Everything after that was an attempt to put the food back in plain sight, before anyone pays.',
-            'I designed and developed it from a blank folder to three running products on one shared system: a marketing site, a mobile-first ordering app and a brand book. The pages below are those builds, live. Click around in them.',
+            'When you order from most meal kits you choose from a photo of the finished dish, and the box that arrives is full of small bags you have to figure out. I wanted to try a version where the ingredients are visible before you pay.',
+            'I designed and developed the brand, the packaging, a marketing site, a mobile ordering app and a brand book, all on one shared codebase. The frames on this page load those builds directly, so you can use them.',
           ],
         },
         {
@@ -2259,17 +2259,17 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'You commit to a meal kit before you can see what is in it.',
+          lead: 'You have to commit to a meal kit before you can see what is in it.',
           body: [
             'The usual journey asks eight questions about your diet, then shows the same sixty-meal menu everyone gets. Each meal is one glossy photo. What actually arrives is a stack of unlabeled pouches, and the portions, allergens and protein live on a recipe card you only see after paying.',
-            'For anyone who cooks most nights and cares what is on the plate, that is backwards. The decision happens with the least information, and the information arrives once it no longer matters.',
+            'For someone who cooks most nights and pays attention to what they eat, this is the wrong way round. The details they care about only show up after the order is placed.',
           ],
         },
         {
           type: 'highlight',
           figure: 'orbit',
-          k: 'The bet',
-          text: 'Show the food. Every ingredient, every weight, every allergen, on screen before you add a meal, and printed on the box when it lands.',
+          k: 'The idea',
+          text: 'Show the ingredients, weights and allergens on screen before a meal goes in the box, and print the same list on the box when it arrives.',
         },
       ],
     },
@@ -2280,20 +2280,20 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'A short audit of how subscription food sells, and of the sites that set the visual bar.',
+          lead: 'I started by looking at how existing meal kits and quiz-based subscription brands sell, and at a few sites for visual direction.',
           body: [
-            'I looked at how the big meal kits and the quiz-led direct to consumer brands sell, from the first question to checkout, and at where each one asks for commitment against how much it has shown.',
+            'For each one I went from the first question to checkout and noted when it asked me to commit and how much it had shown me by then.',
           ],
         },
         {
           type: 'list',
-          title: 'What the audit kept finding',
+          title: 'What I noticed',
           items: [
             'Quizzes collect preferences, then barely change the menu, so the answers feel like a formality',
             'Menus are long and shallow: dozens of photos, almost nothing about what is inside',
             'Allergens and nutrition sit on a PDF or a card that arrives with the box',
-            'The box itself is generic brown cardboard, the one physical touchpoint wasted',
-            'The best quiz funnels use your answers in the copy straight away, so the product feels made for you',
+            'The box is usually plain brown cardboard with a logo, even though it is the one thing people hold',
+            'The quizzes that worked best reused my answers straight away, which made the result feel personal'
           ],
         },
         {
@@ -2301,8 +2301,8 @@ export const CASE_CONTENT = {
           items: [
             { k: 'Audit', v: 'Meal kits and quiz funnels, end to end' },
             { k: 'Reference', v: 'GSAP for motion, Arc for texture, Headspace for character' },
-            { k: 'Art direction', v: 'A broken ink line drawing and kraft packaging shots' },
-            { k: 'Decide', v: 'One feature to own: seeing inside the food' },
+            { k: 'Art direction', v: 'Line illustration and kraft packaging references' },
+            { k: 'Focus', v: 'Seeing inside the food as the main feature' },
           ],
         },
       ],
@@ -2314,27 +2314,27 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'The name is the product: mise, from mise en place, a chef laying out every ingredient before cooking.',
+          lead: 'The name comes from mise en place, the kitchen habit of laying out every ingredient before you start cooking.',
           body: [
-            'The wordmark ends on a pea instead of a full stop, and the app icon is a bowl whose rim is a smile. The faces belong to the characters; the logo stays simple enough to work at sixteen pixels and on box tape.',
-            'The palette is warm cream, tomato and navy ink, with blush and kraft pulled in from the references. Fraunces with its Soft and Wonk axes turned up does the talking, Figtree does the interface.',
+            'The wordmark ends with a pea instead of a full stop, and the app icon is a bowl with a smile for a rim. I kept faces out of the logo so it still reads at sixteen pixels and on packing tape.',
+            'The palette is cream, tomato and navy, with blush and kraft as supporting colours. Headlines use Fraunces with its Soft and Wonk axes turned up, and the interface uses Figtree.',
           ],
         },
         {
           type: 'live',
-          title: 'Bowlie leads, the Crew supports',
-          body: 'Drawn like the reference fridge illustration: one thick navy line with small breaks where strokes meet, flat colour, no shine. Bowlie is the host. Tomato, Avo, Grain and Sal are supporting cast who label the X-ray and peek in from the edges.',
+          title: 'Bowlie and the Crew',
+          body: 'The characters are drawn with one thick navy line, flat colour and small breaks where strokes meet. Bowlie is the main character. Tomato, Avo, Grain and Sal appear around the site and in the X-ray.',
           points: [
-            'Three resting moods only, in order of use: love, sleepy, happy',
-            'Wink is a reaction, never a resting face: tap a character and it winks back',
-            'No open mouths and no curious face; next to the rest of the system both read too young',
+            'Three resting expressions, used in this order of preference: love, sleepy, happy',
+            'A wink plays for a moment when you tap a character, then it goes back to its resting face',
+            'I dropped open mouths and a curious expression because they looked too young next to everything else'
           ],
           live: {
             frame: 'browser',
             src: '/mise/web/index.html#/demo/cast',
             url: 'mise.co/brand/cast',
             tab: 'The cast',
-            label: 'Switch moods, then tap a character.',
+            label: 'Change the expression, or tap a character.',
           },
         },
         {
@@ -2344,7 +2344,7 @@ export const CASE_CONTENT = {
             src: '/mise/brand/index.html',
             url: 'mise.co/brand',
             tab: 'mise brand book',
-            label: 'The brand book, live: logo, cast, colour, type, packaging, 3D pantry, motion.',
+            label: 'Brand book: logo, characters, colour, type, packaging, 3D ingredients and motion.',
           },
         },
       ],
@@ -2356,23 +2356,23 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'The box is the brand. It is the only part of a meal kit that sits on a doorstep, so it does the work a billboard would.',
+          lead: 'The box is the part of a meal kit people actually hold, so I gave it as much attention as the screens.',
           body: [
-            'Plain kraft board, two inks, the wordmark across the front and the full ingredient list printed on the end panel: the X-ray, in cardboard. Bowlie says hi under the lid. One strip of tomato tape seals it.',
-            'I built it as a real 3D object rather than a mockup, so the site can pack it in front of you: matte kraft under soft studio light, flaps on hinges, the order dropping in, tape running over the seam, a label slapped on.',
+            'It is plain kraft board printed in two inks. The wordmark runs across the front, the full ingredient list is printed on one end, Bowlie says hello under the lid, and a strip of tomato tape seals it.',
+            'I built the box in three.js so the site can pack it on screen. The flaps are hinged, the ingredients go in, the flaps fold, the tape runs over the seam and a shipping label goes on top.',
           ],
         },
         {
           type: 'live',
-          title: 'Pack it yourself',
-          body: 'The printed list on the side is generated from whatever is in the box, so a one-meal box lists ingredients and a three-meal box lists meals. The food is the cartoon 3D kit, placed rather than thrown in.',
-          points: ['Real board thickness and corrugated edges', 'No gloss anywhere: soft light, contact shadow, matte paper', 'The ordering app packs the reader’s actual order the same way'],
+          title: 'Packing the box',
+          body: 'The list printed on the side is generated from what is in the box. A single meal lists its ingredients and a bigger box lists its meals.',
+          points: ['Board thickness and corrugated edges are modelled', 'Matte paper under soft light, with no gloss', 'The ordering app packs your actual order the same way'],
           live: {
             frame: 'browser',
             src: '/mise/web/index.html#/demo/box',
             url: 'mise.co/the-box',
             tab: 'The box',
-            label: 'Pick a box size and press Pack.',
+            label: 'Choose a box size and press Pack the box.',
           },
         },
         {
@@ -2386,8 +2386,8 @@ export const CASE_CONTENT = {
           type: 'split',
           src: '/work/mise/print-lid.webp',
           media: 'Under the lid',
-          title: 'Print sheets became the site',
-          body: 'The flat sheets looked better than any mockup, so the same kraft and two inks run through the site: a strip of printed labels, tape and stamps sliding across the page, kraft panels, and a footer that is the bottom of the box.',
+          title: 'From print sheets to the website',
+          body: 'I liked the flat artwork enough to reuse it on the website. The scrolling strips of labels and tape, the kraft panels and the footer all use the same kraft texture and inks.',
         },
       ],
     },
@@ -2398,10 +2398,10 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'Tap any dish and it comes apart into the exact ingredients that ship, each on its own labeled layer.',
+          lead: 'Any dish can be opened up into the ingredients that ship with it, each on its own labelled layer.',
           body: [
-            'The first version split photo cutouts in CSS 3D. The moment they tilted they skewed, and the transparency made the food look ghostly. It was rebuilt in three.js with a cartoon ingredient kit: the 2D characters, extruded, with two-step toon shading and a navy ink outline.',
-            'Labels are flat HTML projected onto each layer every frame, so they never slice through the 3D. Every dish on the menu is X-rayable because the menu data lists ingredients bottom layer first, with a model key for each.',
+            'My first version stacked cut-out photos in CSS 3D. Once they tilted they looked skewed and washed out, so I rebuilt it in three.js with simple 3D ingredients drawn in the same style as the characters.',
+            'The labels are HTML positioned over each layer every frame, so they stay sharp and never cut through the 3D. The menu data lists each meal’s ingredients from the bottom layer up, which is what lets every dish use the X-ray.',
           ],
         },
         {
@@ -2411,14 +2411,14 @@ export const CASE_CONTENT = {
             src: '/mise/web/index.html#/demo/xray',
             url: 'mise.co/menu/x-ray',
             tab: 'Ingredient X-ray',
-            label: 'Switch dishes, scrub from bowl to X-ray, tap a layer.',
+            label: 'Choose a dish, drag the slider, and tap a layer for details.',
           },
         },
         {
           type: 'highlight',
           figure: 'spark',
-          k: 'What fixed it',
-          text: 'Photos stay whole and illustration does the explaining. Real food is never cut apart; when something needs to come apart, the cartoon kit does it.',
+          k: 'A rule that came out of it',
+          text: 'Food photos are always used whole. Whenever something needs to come apart, the 3D illustrations do it.',
         },
       ],
     },
@@ -2429,36 +2429,36 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'Mobile first, one thumb: a quiz that talks back, a plan that is already picked, and a box you watch get packed.',
+          lead: 'The ordering app is designed for a phone first. It moves from a short quiz to a suggested plan, the menu, your box and checkout.',
           body: [
-            'Six questions: who you cook for, how many dinners, what sounds good, what you cannot eat, how much heat, how much time. With every answer the matching meals reshuffle at the bottom of the screen, so the quiz visibly does something.',
-            'The plan screen pre-picks the best matches, so nobody lands on an empty box. From there: the menu with the X-ray on every dish, the box packed in 3D, a demo checkout, and an account where weeks are skipped, meals swapped and the plan paused.',
+            'The quiz asks six questions: who you cook for, how many dinners, what you like, what you cannot eat, how spicy, and how much time you have. After each answer the matching meals update at the bottom of the screen.',
+            'The plan screen fills the box with the best matches so you never start from an empty box. After checkout there is an account area for skipping weeks, swapping meals and pausing the plan.',
           ],
         },
         {
           type: 'live',
-          title: 'Run the whole flow',
-          body: 'This is the real app at phone size. Start the quiz and go all the way to an order; your box, plan and deliveries are remembered on this device.',
+          title: 'Try the full order',
+          body: 'This is the app at phone size. You can take the quiz and go all the way through an order. Your choices are saved in this browser.',
           points: [
-            'Allergens you flag hide meals and print in red on every label',
-            'Add to box is calm on purpose: the button cross-fades, nothing jumps',
-            'Checkout is a demo and says so; no card is taken',
+            'Meals containing allergens you flag are hidden',
+            'Adding a meal only changes the button, so the menu stays still',
+            'Checkout is a demo and does not ask for a card'
           ],
           live: {
             frame: 'phone',
             src: '/mise/app/index.html#/start',
-            label: 'Ordering app, live.',
+            label: 'Ordering app',
           },
         },
         {
           type: 'live',
           flip: true,
           title: 'After the order',
-          body: 'Deliveries as a stack of weeks: the packed one in kraft, the next ones editable until Sunday. Skip a week and Bowlie takes a nap; tap a meal to X-ray it again.',
+          body: 'Deliveries are listed week by week. The packed week is shown on kraft, and later weeks can be edited until Sunday. Skipping a week shows Bowlie asleep, and tapping a meal opens its X-ray.',
           live: {
             frame: 'phone',
             src: '/mise/app/index.html#/account',
-            label: 'Account, live.',
+            label: 'Account',
           },
         },
       ],
@@ -2470,10 +2470,10 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'A store, not a gallery: it sells a physical product, so the box leads and every card ends in a buy button.',
+          lead: 'The marketing site sells a physical product, so it leads with the box and every meal card has an add to box button.',
           body: [
-            'Five pages: home, this week’s menu, how it works, plans and the box. The hero packs a box on arrival, the menu is a thumb-swipe rail on phones, every photo opens its X-ray, and every Add to box drops you into the app with that meal already in it.',
-            'Photography is real and left whole: bowls on blush, white plates on pastel, bright bowls in daylight, a lemon on the side. Twelve meals chosen from three series that share light and angle.',
+            'There are five pages: home, this week’s menu, how it works, plans and the box. On phones the menu scrolls sideways. Tapping a photo opens the X-ray, and adding a meal takes you into the app with that meal already selected.',
+            'All twelve dishes are stock photos chosen from three series with similar light and angles. They are used uncropped and uncut.',
           ],
         },
         {
@@ -2484,12 +2484,12 @@ export const CASE_CONTENT = {
               src: '/mise/web/index.html#/menu',
               url: 'mise.co/menu',
               tab: 'This week',
-              label: 'Menu with filters. Tap a photo for its X-ray.',
+              label: 'Menu page. Tap a photo to open its X-ray.',
             },
             {
               frame: 'phone',
               src: '/mise/web/index.html#/',
-              label: 'The same site on a phone.',
+              label: 'Home page on a phone',
             },
           ],
         },
@@ -2502,10 +2502,10 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'One pantry of cartoon 3D ingredients fills the box and explodes the X-ray.',
+          lead: 'The same set of 3D ingredients is used in the box and in the X-ray.',
           body: [
-            'About thirty pieces, each a few primitives with transforms baked into the geometry so the ink outline stays an even width. Where two parts touch, the outline is pushed back in depth so one part’s line never draws across another.',
-            'Motion has four named eases: pop for things arriving, squish for things you touch, soft for text, drift for idle. Physics only when food is flying. Lenis carries the scroll, GSAP drives everything else, including the 3D.',
+            'There are about thirty, each built from a few simple shapes. Their outlines are offset in depth so that where two parts touch, one outline does not draw across the other.',
+            'Motion uses four named easing curves for arrivals, presses, text and idle movement. Lenis handles scrolling and GSAP drives the rest, including the 3D scenes.',
           ],
         },
         {
@@ -2515,7 +2515,7 @@ export const CASE_CONTENT = {
             src: '/mise/web/index.html#/demo/pantry',
             url: 'mise.co/brand/pantry',
             tab: 'The 3D pantry',
-            label: 'The whole kit, turning.',
+            label: 'All the 3D ingredients',
           },
         },
       ],
@@ -2527,18 +2527,18 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'Three apps, one design system, and the portfolio runs them directly.',
+          lead: 'The three apps share one package of components and data.',
           body: [
-            'A shared package holds the tokens, characters, logo, 3D box, food kit, X-ray and the menu data. The marketing site, the ordering app and the brand book are thin apps on top of it, so a change to Bowlie lands everywhere at once.',
-            'For this page they are built a second way: hash routing, assets pointed at one shared folder, and each one framed at true device size. That is why the study has no screenshots of the product, only the product.',
+            'The shared package holds the design tokens, characters, logo, 3D box, 3D ingredients, X-ray and menu data. The marketing site, ordering app and brand book are built on top of it, so a change in one place shows up in all three.',
+            'For this portfolio each app is also built with hash routing and a shared asset folder, so it can run inside the device frames on this page.',
           ],
         },
         {
           type: 'stats',
           items: [
-            { k: 'Apps', v: '3 on one system' },
+            { k: 'Apps', v: '3' },
             { k: 'Meals', v: '12, all X-rayable' },
-            { k: '3D pieces', v: '30 or so' },
+            { k: '3D ingredients', v: 'About 30' },
             { k: 'Stack', v: 'React, GSAP, three.js' },
           ],
         },
@@ -2551,12 +2551,12 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'list',
-          title: 'What I would keep',
+          title: 'What I learned',
           items: [
-            'Owning one feature properly beats a long list: the X-ray carried the brand, the box and the store',
-            'Real photos and illustration have different jobs; mixing them inside one image is where it went wrong',
-            'Physical touchpoints are design surfaces: the box did more for the brand than any page',
-            'Building the thing, not a picture of it, changes the decisions: skew, weight and timing only show up when it runs',
+            'Focusing on one feature helped: the X-ray shaped the brand, the box and the site',
+            'Photos and illustration worked better kept apart than combined in one image',
+            'Designing the packaging early gave the website most of its look',
+            'Building it in code showed problems with skew and timing that I would not have seen in static mockups'
           ],
         },
         {
@@ -2565,7 +2565,7 @@ export const CASE_CONTENT = {
           items: [
             'A recipe mode with timers that follows the X-ray layer by layer',
             'Real stock and delivery zones behind the plan and checkout',
-            'Usability sessions on the quiz, to see whether talking back actually raises completion',
+            'Test the quiz with people to see whether the live updates help them finish it'
           ],
         },
       ],

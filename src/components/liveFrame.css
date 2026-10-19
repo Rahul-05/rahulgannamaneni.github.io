@@ -56,14 +56,6 @@
   color: var(--muted, rgba(255, 255, 255, 0.6));
 }
 
-.live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #3ddc84;
-  box-shadow: 0 0 0 4px rgba(61, 220, 132, 0.18);
-  flex: 0 0 auto;
-}
 
 .live-label {
   flex: 1;
