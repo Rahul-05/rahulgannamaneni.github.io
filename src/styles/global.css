@@ -234,6 +234,19 @@ img {
   }
 }
 
+/* Reduced motion: kill CSS transitions/animations for anyone who asked
+   for less motion. GSAP timelines are shortened in App.jsx / Preloader. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Grid and flex children default to a min-content floor, which lets one
    wide image push a whole column past the viewport. These keep tracks
    shrinkable and images inside them. */

@@ -1,6 +1,7 @@
-// ── Placeholder content ─────────────────────────────────────────────
-// All copy + images here are temporary. Real content gets transferred
-// from the old portfolio (rahulraog.com) later.
+// ── Site content ────────────────────────────────────────────────────
+// Real content: projects, testimonials and lab pieces. Copy matches the
+// Nov 4, 2026 master resume (workspace/user/files, also hosted at
+// /resume.pdf) — do not change resume facts here without updating it too.
 
 // The hero ring shows what I do, not project thumbnails.
 // The hero ring shows what I do. Each card carries a `shape` whose drawing
@@ -83,19 +84,6 @@ export const TESTIMONIALS = [
     role: 'AI Product Manager, LLM & Agent Evaluation',
     place: 'Keka HR',
     logo: '/work/keka-marketplace/logo.webp',
-  },
-];
-
-export const SCATTER_NOTES = [
-  {
-    text: 'Placeholder note, a short scribbled review that sits tilted next to the main testimonial card, exactly like little paper notes pinned to a board.',
-    author: 'Temp Author',
-    rotate: 8,
-  },
-  {
-    text: 'Second placeholder note with slightly different length so the pile of tilted papers feels organic and hand-placed rather than generated.',
-    author: 'Temp Author 2',
-    rotate: -6,
   },
 ];
 
@@ -273,6 +261,7 @@ export const PROJECTS = [
       'I led design across sprints and drove discovery, not just the screens',
       'A component set so the two audiences shared one product rather than forking it',
       'Eight months, six people, one audience change survived',
+      'Validated with 30+ healthcare professionals and 15+ A/B tests: 98% task completion rate',
     ],
     year: '2025',
     outcome: 'Dual therapist and patient interface',
@@ -306,6 +295,7 @@ export const PROJECTS = [
       'The card had to survive that growth, not just look right at five',
       'Permissions and security state made visible on the integration itself',
       'Ten weeks, as a UX design intern, shipped into the product',
+      'Outcomes: manual admin tasks down 40%, exit-interview completion up 60%, HR processing time down 45%, help desk tickets down 35%',
     ],
     year: '2023',
     outcome: 'Scales from 5 to 25+ integrations',
@@ -702,8 +692,10 @@ export const LAB_ITEMS = [
   },
 ];
 
-export const RESUME_URL =
-  'https://drive.google.com/file/d/1LEDEb0LSjwRhwep3wFS4TuRdxn9wjsDj/view?usp=sharing';
+// Hosted on the site itself: the Nov 4, 2026 master resume, byte-identical
+// to workspace/user/files/Master_Rahul_Gannamaneni_Resume__3__0_f45q.pdf.
+// (Was a Google Drive link; a local file cannot go stale or lose sharing.)
+export const RESUME_URL = '/resume.pdf';
 
 // Testimonials sits between About and Contact in the scroll order but is
 // intentionally absent here: it is something you come across, not a
@@ -727,7 +719,7 @@ export const ABOUT = {
   ],
   stats: [
     { k: 'Working since', v: '2019' },
-    { k: 'Based in', v: 'United States' },
+    { k: 'Based in', v: 'New York, NY' },
     { k: 'Focus', v: 'Design × Code' },
   ],
 };

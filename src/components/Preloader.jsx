@@ -20,6 +20,19 @@ export default function Preloader({ onDone }) {
   const panelRef = useRef(null);
   const charWrapRef = useRef(null);
   const spriteRef = useRef(null);
+  const tlRef = useRef(null);
+  const doneRef = useRef(false);
+
+  // The loader runs ~6s on a fresh load, which is a long time to hold a
+  // recruiter at the door. Clicking anywhere (or the Skip button) ends it
+  // at once — the signature push stays for anyone who watches it.
+  const skip = () => {
+    if (doneRef.current) return;
+    doneRef.current = true;
+    tlRef.current?.kill();
+    spriteRef.current?.stop();
+    onDone?.();
+  };
 
   useGSAP(
     () => {
@@ -31,7 +44,13 @@ export default function Preloader({ onDone }) {
       // both stay on screen; must match .pre-sprite in preloader.css
       const charH = (vw <= 720 ? 0.4 : 0.434) * vh;
       // the pushing palms sit at the very right edge of the trimmed frame
-      const charAt = (panelX) => panelX - 0.97 * (charH * 0.72);
+      // clamped so the sprite never slides half off the right edge: at the
+      // last shove the panel runs to 1.12× viewport width, and unclamped
+      // the character ended up cut in half, hands off-screen, over the
+      // final "O". He stops at the edge instead, then walks off fading.
+      const spriteW = charH * 0.755;
+      const charAt = (panelX) =>
+        Math.min(panelX - 0.97 * (charH * 0.72), vw - spriteW - 12);
 
       const startX = 0.34 * vw;
       gsap.set(panelRef.current, { x: startX });
@@ -53,10 +72,18 @@ export default function Preloader({ onDone }) {
 
       const tl = gsap.timeline({
         onComplete: () => {
+          if (doneRef.current) return;
+          doneRef.current = true;
           spriteRef.current?.stop();
           onDone?.();
         },
       });
+      tlRef.current = tl;
+      // Reduced motion: the loader still plays, but fast — nobody should
+      // sit through a ~4s push cycle they asked not to see.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tl.timeScale(5);
+      }
 
       // one grinding heave, the panel gives, then creeps back
       const shove = (toX, { last = false } = {}) => {
@@ -91,9 +118,15 @@ export default function Preloader({ onDone }) {
       shove(0.84 * vw);
       shove(1.12 * vw, { last: true });
 
-      // panel is gone, he walks off after it, screen lifts to the hero
+      // panel is gone, he walks off after it, screen lifts to the hero.
+      // He fades as he leaves, so the walk-off never reads as the sprite
+      // being sliced by the viewport edge.
       tl.addLabel('exit')
-        .to(charWrapRef.current, { x: vw + 80, duration: 0.95, ease: 'power2.in' }, 'exit')
+        .to(
+          charWrapRef.current,
+          { x: vw + 80, autoAlpha: 0, duration: 0.95, ease: 'power2.in' },
+          'exit',
+        )
         .to(
           screenRef.current,
           { yPercent: -103, duration: 0.9, ease: 'power3.inOut' },
@@ -104,7 +137,10 @@ export default function Preloader({ onDone }) {
   );
 
   return (
-    <div className="preloader" ref={rootRef}>
+    <div className="preloader" ref={rootRef} onClick={skip}>
+      <button type="button" className="pre-skip" onClick={skip}>
+        Skip
+      </button>
       <div className="pre-screen" ref={screenRef}>
         {/* one line spanning the full width, exactly like the reference ,
             letters end up different widths, which is the whole point */}

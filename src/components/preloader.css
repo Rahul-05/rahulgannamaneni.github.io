@@ -2,7 +2,34 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  pointer-events: none;
+  /* clickable so the loader can be skipped; it unmounts on done, so the
+     hero underneath is never blocked by it */
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* small, quiet, bottom-right — the loader is the signature, the skip is
+   the escape hatch for anyone in a hurry */
+.pre-skip {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 252, 225, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  cursor: pointer;
+}
+
+.pre-skip:hover {
+  opacity: 1;
 }
 
 /* white loader screen — lifts away at the end */

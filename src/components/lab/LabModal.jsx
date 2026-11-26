@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { LAB_FILTERS } from '../../data.js';
 import { pushOverlay } from '../../overlay.js';
@@ -48,7 +48,13 @@ export default function LabModal({ item, onClose }) {
           </button>
         </header>
 
-        <div className="labmodal-hero">{Demo ? <Demo /> : null}</div>
+        <div className="labmodal-hero">
+          {Demo ? (
+            <Suspense fallback={null}>
+              <Demo />
+            </Suspense>
+          ) : null}
+        </div>
 
         <div className="labmodal-chips">
           {item.kinds.map((k) => (

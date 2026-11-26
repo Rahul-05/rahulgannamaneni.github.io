@@ -17,6 +17,14 @@ import { onOverlay } from './overlay.js';
 
 gsap.registerPlugin(Observer);
 
+// Respect the OS reduced-motion setting: section transitions become
+// instant, and the preloader / hero intros are shortened the same way
+// (see Preloader.jsx and global.css). Motion is the site's signature,
+// but it should never be forced on someone who asked for less of it.
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const SECTION_COUNT = 6;
 const WHEEL_THRESHOLD = 60; // accumulated delta before a section transition fires
 // sections with a light ground, which need dark nav ink over them. Hero and
@@ -74,6 +82,21 @@ export default function App() {
     if (s.animating || next < 0 || next >= SECTION_COUNT || next === s.index) return;
 
     s.animating = true;
+
+    // Reduced motion: no tilt, no slide — swap sections instantly.
+    if (prefersReducedMotion()) {
+      const incoming = handles.current[next]?.el();
+      const outgoing = handles.current[s.index]?.el();
+      setNavDark(DARK_NAV_SECTIONS.has(next));
+      setNavIndex(next);
+      if (incoming) gsap.set(incoming, { zIndex: 2, visibility: 'visible', yPercent: 0, rotation: 0 });
+      if (outgoing) gsap.set(outgoing, { visibility: 'hidden', yPercent: 0, rotation: 0 });
+      handles.current[s.index]?.onLeave?.();
+      s.index = next;
+      s.animating = false;
+      handles.current[next]?.onEnter?.(dir);
+      return;
+    }
     // a fresh section starts at its top unless it has no travel at all
     setAtEnd(!handles.current[next]?.atEnd);
     const incoming = handles.current[next]?.el();
@@ -210,6 +233,35 @@ export default function App() {
     });
     return () => obs.kill();
   }, [loaded, project, overlay, handleDelta]);
+
+  // Keyboard navigation: the page never scrolls natively, so without this
+  // a keyboard-only visitor was stuck on the hero. Arrow / Page keys move
+  // one section, Home / End jump to the ends. Skipped while a case study
+  // or lab popup is open (those scroll natively) and while focus is in a
+  // field, so typing in a lab piece is never hijacked.
+  useEffect(() => {
+    if (!loaded || project || overlay) return undefined;
+    const onKey = (e) => {
+      const t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+      const s = engine.current;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        handleDelta(80);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        handleDelta(-80);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goto(0, -1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goto(SECTION_COUNT - 1, 1);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [loaded, project, overlay, handleDelta, goto]);
 
   const navigate = useCallback(
     (target) => {

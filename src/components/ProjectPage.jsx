@@ -252,6 +252,7 @@ export default function ProjectPage({ project, onClose, onOpen }) {
               label={`${project.title} cover`}
               ratio="16 / 8"
               onOpen={setZoom}
+              eager
             />
           )}
         </section>

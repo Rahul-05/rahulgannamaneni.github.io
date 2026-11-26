@@ -55,6 +55,14 @@
   color: var(--black);
 }
 
+/* the availability line under the pitch: same voice, smaller, so the
+   pitch stays the headline and this reads as a status, not a second one */
+.contact-lede--open {
+  font-size: clamp(15px, 1.25vw, 20px);
+  font-weight: 500;
+  max-width: none;
+}
+
 .contact-email {
   font-size: clamp(16px, 1.5vw, 23px);
   font-weight: 600;
