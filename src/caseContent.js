@@ -604,14 +604,14 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'What changed',
+          lead: 'What changed — the portal',
           body: [
             'The portal gave the firm a shared vocabulary for its own data, and the lineage graph gave it a way to argue about change without a week of investigation first. Both of those are worth more than the catalogue itself.',
           ],
         },
         {
           type: 'list',
-          title: 'What it moved',
+          title: 'What it moved — the portal',
           items: [
             'Duplicate build work fell, because teams could see a product already existed before starting one.',
             'Definition arguments got shorter, because both parties were reading the same field description.',
@@ -621,14 +621,14 @@ export const CASE_CONTENT = {
         },
         {
           type: 'prose',
-          lead: 'What changed',
+          lead: 'What changed — the agent',
           body: [
             'The agent lowered the cost of asking a question about a data product from a support ticket to a sentence. The dashboard did something less expected: it made the platform team the best informed people in the building about their own product.',
           ],
         },
         {
           type: 'list',
-          title: 'What it moved',
+          title: 'What it moved — the agent',
           items: [
             'Product owners started reading real questions about their own data products instead of guessing at them.',
             'Poor answers became a metadata backlog with an owner, rather than an anecdote in a meeting.',
@@ -1132,14 +1132,14 @@ export const CASE_CONTENT = {
       blocks: [
         {
           type: 'prose',
-          lead: 'What changed',
+          lead: 'What changed — registration',
           body: [
             'Registering a product went from a workbook and a wait to a guided form that fails fast. More importantly, what comes out the other end is uniform, which is the thing everything downstream was missing.',
           ],
         },
         {
           type: 'list',
-          title: 'What it moved',
+          title: 'What it moved — registration',
           items: [
             'Structural metadata stopped being typed by hand, so it stopped being wrong.',
             'Errors surfaced during entry rather than weeks later in someone else’s pipeline.',
@@ -1149,14 +1149,14 @@ export const CASE_CONTENT = {
         },
         {
           type: 'prose',
-          lead: 'What changed',
+          lead: 'What changed — the vocabulary',
           body: [
             'The firm got a written, owned, checkable vocabulary per department, and a way to say which definition is authoritative. That is unglamorous and it is the foundation everything else in the platform stands on.',
           ],
         },
         {
           type: 'list',
-          title: 'What it moved',
+          title: 'What it moved — the shared vocabulary',
           items: [
             'Definition disagreements became a change request against a model rather than an argument in a meeting.',
             'Search could connect a business question to the data product that answers it.',

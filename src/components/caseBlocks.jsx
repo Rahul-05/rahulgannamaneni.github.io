@@ -10,7 +10,7 @@ import LiveFrame from './LiveFrame.jsx';
 // wide flow boards, and boxing them to a fixed ratio letterboxed most of them
 // into bands of dead space. The figure hugs the image instead, so the layout
 // follows the artwork rather than the other way round.
-export function Media({ src, label, ratio = '4 / 3', tone = '#1c1c1c', onOpen, chrome, url }) {
+export function Media({ src, label, ratio = '4 / 3', tone = '#1c1c1c', onOpen, chrome, url, eager = false }) {
   if (!src) return <TempImg label={label} ratio={ratio} tone={tone} />;
   const [w, h] = IMAGE_SIZES[src] || [];
   return (
@@ -27,7 +27,10 @@ export function Media({ src, label, ratio = '4 / 3', tone = '#1c1c1c', onOpen, c
           <em>{url || 'dataportal'}</em>
         </span>
       )}
-      <img src={src} alt={label} loading="lazy" width={w} height={h} />
+      {/* The hero cover is eager: it used to be lazy like every other
+          image, so it rendered as an empty near-black panel for seconds
+          on a case study's first paint. */}
+      <img src={src} alt={label} loading={eager ? 'eager' : 'lazy'} width={w} height={h} />
       <button className="cs-expand" onClick={() => onOpen({ src, label })}>
         <svg
           viewBox="0 0 24 24"

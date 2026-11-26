@@ -336,7 +336,7 @@ const Hero = forwardRef(function Hero({ onSeeWork }, ref) {
       <p className="hero-role">
         <span className="mask-line">
           <span className="mask-inner">
-            UX Designer Engineer II at
+            UX Design Engineer II at
             <img src="/work/shared/cpp-investments.webp" alt="CPP Investments" />
           </span>
         </span>
