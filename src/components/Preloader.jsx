@@ -57,6 +57,11 @@ export default function Preloader({ onDone }) {
           onDone?.();
         },
       });
+      // Reduced motion: the loader still plays, but fast — nobody should
+      // sit through a ~4s push cycle they asked not to see.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tl.timeScale(5);
+      }
 
       // one grinding heave, the panel gives, then creeps back
       const shove = (toX, { last = false } = {}) => {

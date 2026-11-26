@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { forwardRef, Suspense, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { LAB_FILTERS, LAB_ITEMS } from '../../data.js';
@@ -193,7 +193,11 @@ const Lab = forwardRef(function Lab(_, ref) {
                     here has to scroll the grid. Drag-driven pieces get their
                     gestures in the popup, which does carry the flag. */}
                   <div className="lab-stage">
-                    {Demo ? <Demo /> : null}
+                    {Demo ? (
+                      <Suspense fallback={null}>
+                        <Demo />
+                      </Suspense>
+                    ) : null}
 
                     {/* On a phone the mock fills the card, so there is
                         nowhere left to start a scroll from. Rather than fight

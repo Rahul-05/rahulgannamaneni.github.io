@@ -47,6 +47,9 @@ const Contact = forwardRef(function Contact(_, ref) {
           <p className="contact-lede">
             Let&rsquo;s build your next product wherever it needs to ship.
           </p>
+          <p className="contact-lede contact-lede--open">
+            Open to Product Design and UX Engineer roles, US-wide.
+          </p>
 
           <a className="contact-email" href={`mailto:${EMAIL}`}>
             {EMAIL}
