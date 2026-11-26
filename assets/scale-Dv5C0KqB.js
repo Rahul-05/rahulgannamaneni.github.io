@@ -1,0 +1,1 @@
+function e(e){if(!e)return 1;let t=e.offsetWidth;if(!t)return 1;let n=e.getBoundingClientRect().width/t;return n>1e-4?n:1}export{e as t};

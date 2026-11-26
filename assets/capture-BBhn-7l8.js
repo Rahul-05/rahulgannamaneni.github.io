@@ -1,0 +1,1 @@
+function e(e){try{e.currentTarget.setPointerCapture(e.pointerId)}catch{}}export{e as t};
